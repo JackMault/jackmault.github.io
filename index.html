@@ -2,58 +2,65 @@
 <html lang="en">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Mault • MIIR</title>
+<title>Mault • MIIR — Identity, made visible</title>
+<meta name="description" content="MIIR is a high-resolution mirror for identity. Two conversations. Two portraits. One clarified self-model.">
+<link rel="icon" href="/favicon.ico">
 <style>
-  :root{--bg:#0a0a0a;--card:#111;--ink:#eaeaea;--muted:#a8a8a8;--line:#242424}
-  html,body{margin:0;background:var(--bg);color:var(--ink);font-family:ui-sans-serif,system-ui,Segoe UI,Roboto,Arial}
-  .wrap{max-width:1100px;margin:0 auto;padding:48px 20px}
+  :root{--bg:#0a0a0a;--card:#111;--ink:#eaeaea;--muted:#a8a8a8;--line:#242424;--pill:#181818;--accent:#ffffff}
+  *{box-sizing:border-box} html,body{margin:0;background:var(--bg);color:var(--ink);font-family:ui-sans-serif,system-ui,Segoe UI,Roboto,Arial}
+  a{color:var(--ink)} .wrap{max-width:1120px;margin:0 auto;padding:48px 20px}
   header{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
   .brand{font-size:26px;letter-spacing:.6px}
-  .nav a{color:var(--muted);text-decoration:none;margin-left:18px}
-  .hero{padding:64px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(160deg,#0d0d0d,#0a0a0a)}
+  nav a{text-decoration:none;color:var(--muted);margin-left:18px}
+  nav a:hover{color:#fff}
+  .hero{padding:56px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(160deg,#0d0d0d,#0a0a0a)}
   h1{font-size:40px;line-height:1.1;margin:0 0 14px}
-  p{color:#c8c8c8;max-width:720px}
-  .cta{display:inline-block;margin-top:18px;background:#fff;color:#000;padding:12px 16px;border-radius:12px;text-decoration:none}
+  p{color:#c8c8c8;max-width:760px}
+  .cta{display:inline-block;margin-top:18px;background:var(--accent);color:#000;padding:12px 16px;border-radius:12px;text-decoration:none}
+  .cta.ghost{background:var(--pill);color:#fff;border:1px solid var(--line)}
   .grid{display:grid;gap:18px;margin-top:28px;grid-template-columns:1fr 1fr}
   .card{border:1px solid var(--line);border-radius:18px;padding:20px;background:var(--card)}
+  .pill{display:inline-block;background:var(--pill);border:1px solid var(--line);padding:6px 10px;border-radius:999px;color:#bdbdbd;font-size:12px}
   .footer{color:var(--muted);font-size:12px;margin:40px 0 10px}
   @media(max-width:860px){ .grid{grid-template-columns:1fr} .hero{padding:36px} h1{font-size:32px} }
 </style>
 <header class="wrap">
   <div class="brand">Mault</div>
-  <nav class="nav"><a href="#miir">MIIR</a><a href="#work">Featured</a><a href="#contact">Connect</a></nav>
+  <nav><a href="/process.html">MIIR</a><a href="/before-after.html">Featured</a><a href="/apply.html">Connect</a></nav>
 </header>
 <main class="wrap">
-  <section class="hero" id="miir">
+  <section class="hero">
+    <span class="pill">Private • By invitation</span>
     <h1>MIIR — a high‑resolution mirror for identity</h1>
     <p>Two conversations. Two portraits. One clarified self‑model. MIIR blends science‑informed structure (RTSS) with decade‑plus portrait mastery to make inner change visible.</p>
-    <a class="cta" href="/rtss.html" target="_blank">Try the RTSS demo ↗</a>
+    <a class="cta" href="/rtss.html" target="_blank" rel="noopener">Try the RTSS demo ↗</a>
+    <a class="cta ghost" href="/apply.html">Request a consult</a>
   </section>
 
   <section class="grid">
     <div class="card">
       <h3>Why it works</h3>
-      <p>Guided serialization → plotting → disruption → re‑serialization. The RTSS visualizes confidence and focus shifts. The paired portraits embody the change.</p>
+      <p>Guided serialization → plotting → disruption → re‑serialization. The RTSS makes confidence and focus shifts visible. The paired portraits embody the change.</p>
       <p style="color:#aeb">“Functions like a shared mirror… restoring the dynamics of interpersonal exchange.” — Karl Friston (theoretical discussion)</p>
-      <a class="cta" href="/quotes.html" target="_blank">Perspectives ↗</a>
+      <a class="cta ghost" href="/process.html">See the process</a>
     </div>
     <div class="card">
       <h3>Private sessions</h3>
       <p>Limited availability. Conducted personally, on location. Designed for leaders and creators navigating consequential decisions.</p>
-      <a class="cta" href="#contact">Request consult</a>
+      <a class="cta ghost" href="/apply.html">Request consult</a>
     </div>
   </section>
 
-  <section id="contact" class="grid">
+  <section class="grid">
     <div class="card">
-      <h3>Request a private consultation</h3>
-      <p>What are you trying to grow — in yourself or in the world?</p>
-      <p><a class="cta" href="mailto:jack@mault.co?subject=MIIR Consultation&body=What%20are%20you%20trying%20to%20grow%20—in%20yourself%20or%20in%20the%20world?%0A%0A">Email Jack</a></p>
+      <h3>Before / After</h3>
+      <p>Subtle posture shifts. Different presence. The visual story of clarity.</p>
+      <a class="cta ghost" href="/before-after.html">Explore the gallery</a>
     </div>
     <div class="card">
-      <h3>Featured work</h3>
-      <p>Curated portraits and identity studies.</p>
-      <p><a class="cta" href="https://www.adobe.com/portfolio">Portfolio ↗</a></p>
+      <h3>Perspectives</h3>
+      <p>MIIR’s roots align with contemporary cognitive science on shared models and dynamic interaction.</p>
+      <a class="cta ghost" href="/quotes.html" target="_blank" rel="noopener">Read the quotes ↗</a>
     </div>
   </section>
 
