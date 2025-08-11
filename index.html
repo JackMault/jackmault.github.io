@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mault • MIIR</title>
+<style>
+  :root{--bg:#0a0a0a;--card:#111;--ink:#eaeaea;--muted:#a8a8a8;--line:#242424}
+  html,body{margin:0;background:var(--bg);color:var(--ink);font-family:ui-sans-serif,system-ui,Segoe UI,Roboto,Arial}
+  .wrap{max-width:1100px;margin:0 auto;padding:48px 20px}
+  header{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
+  .brand{font-size:26px;letter-spacing:.6px}
+  .nav a{color:var(--muted);text-decoration:none;margin-left:18px}
+  .hero{padding:64px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(160deg,#0d0d0d,#0a0a0a)}
+  h1{font-size:40px;line-height:1.1;margin:0 0 14px}
+  p{color:#c8c8c8;max-width:720px}
+  .cta{display:inline-block;margin-top:18px;background:#fff;color:#000;padding:12px 16px;border-radius:12px;text-decoration:none}
+  .grid{display:grid;gap:18px;margin-top:28px;grid-template-columns:1fr 1fr}
+  .card{border:1px solid var(--line);border-radius:18px;padding:20px;background:var(--card)}
+  .footer{color:var(--muted);font-size:12px;margin:40px 0 10px}
+  @media(max-width:860px){ .grid{grid-template-columns:1fr} .hero{padding:36px} h1{font-size:32px} }
+</style>
+<header class="wrap">
+  <div class="brand">Mault</div>
+  <nav class="nav"><a href="#miir">MIIR</a><a href="#work">Featured</a><a href="#contact">Connect</a></nav>
+</header>
+<main class="wrap">
+  <section class="hero" id="miir">
+    <h1>MIIR — a high‑resolution mirror for identity</h1>
+    <p>Two conversations. Two portraits. One clarified self‑model. MIIR blends science‑informed structure (RTSS) with decade‑plus portrait mastery to make inner change visible.</p>
+    <a class="cta" href="/rtss.html" target="_blank">Try the RTSS demo ↗</a>
+  </section>
+
+  <section class="grid">
+    <div class="card">
+      <h3>Why it works</h3>
+      <p>Guided serialization → plotting → disruption → re‑serialization. The RTSS visualizes confidence and focus shifts. The paired portraits embody the change.</p>
+      <p style="color:#aeb">“Functions like a shared mirror… restoring the dynamics of interpersonal exchange.” — Karl Friston (theoretical discussion)</p>
+      <a class="cta" href="/quotes.html" target="_blank">Perspectives ↗</a>
+    </div>
+    <div class="card">
+      <h3>Private sessions</h3>
+      <p>Limited availability. Conducted personally, on location. Designed for leaders and creators navigating consequential decisions.</p>
+      <a class="cta" href="#contact">Request consult</a>
+    </div>
+  </section>
+
+  <section id="contact" class="grid">
+    <div class="card">
+      <h3>Request a private consultation</h3>
+      <p>What are you trying to grow — in yourself or in the world?</p>
+      <p><a class="cta" href="mailto:jack@mault.co?subject=MIIR Consultation&body=What%20are%20you%20trying%20to%20grow%20—in%20yourself%20or%20in%20the%20world?%0A%0A">Email Jack</a></p>
+    </div>
+    <div class="card">
+      <h3>Featured work</h3>
+      <p>Curated portraits and identity studies.</p>
+      <p><a class="cta" href="https://www.adobe.com/portfolio">Portfolio ↗</a></p>
+    </div>
+  </section>
+
+  <div class="footer">© 2025 Jack Mault • Based in Grand Forks, ND — available globally</div>
+</main>
+</html>
