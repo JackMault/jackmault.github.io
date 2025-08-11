@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Before & After • MIIR</title>
+<style>
+  :root{--bg:#0a0a0a;--ink:#eaeaea;--line:#242424}
+  html,body{margin:0;background:var(--bg);color:var(--ink);font-family:ui-sans-serif,system-ui,Segoe UI,Roboto,Arial}
+  .wrap{max-width:1120px;margin:0 auto;padding:48px 20px}
+  .pair{margin:22px 0;border:1px solid var(--line);border-radius:18px;overflow:hidden}
+  .ba{position:relative;aspect-ratio:3/2;background:#000}
+  .ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .ba .after{clip-path:inset(0 0 0 50%)} /* start halfway */
+  .handle{position:absolute;top:0;bottom:0;left:50%;width:2px;background:#fff}
+  .knob{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:26px;height:26px;border-radius:50%;background:#fff}
+  .cap{padding:12px 16px;color:#c8c8c8}
+</style>
+<main class="wrap">
+  <h1>Before / After</h1>
+  <p>Subtle posture shifts. Different presence. The visual story of clarity.</p>
+
+  <!-- Pair 1: replace src with your images -->
+  <div class="pair">
+    <div class="ba" data-pos="50">
+      <img class="before" src="/images/sample-before.jpg" alt="Before">
+      <img class="after"  src="/images/sample-after.jpg"  alt="After">
+      <div class="handle"></div><div class="knob"></div>
+    </div>
+    <div class="cap">Client Alpha — MIIR session result</div>
+  </div>
+
+  <!-- Duplicate block above for more pairs -->
+</main>
+<script>
+document.querySelectorAll('.ba').forEach(ba=>{
+  const after = ba.querySelector('.after'), handle = ba.querySelector('.handle'), knob=ba.querySelector('.knob');
+  const set = x => { after.style.clipPath=`inset(0 0 0 ${x}%)`; handle.style.left=knob.style.left=`${x}%`; }
+  set(ba.dataset.pos||50);
+  const move = e=>{
+    const r=ba.getBoundingClientRect(), x = Math.min(100, Math.max(0, ((e.touches?e.touches[0].clientX:e.clientX)-r.left)/r.width*100));
+    set(x);
+  };
+  ba.addEventListener('pointerdown',e=>{ move(e); ba.onpointermove=move; });
+  window.addEventListener('pointerup',()=> ba.onpointermove=null);
+  ba.addEventListener('touchstart',move,{passive:true}); ba.addEventListener('touchmove',move,{passive:true});
+});
+</script>
+</html>
