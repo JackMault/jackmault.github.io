@@ -38,6 +38,8 @@
     /* Illusion block */
     .illusion{position:relative; padding:18px}
     .display{aspect-ratio:16/12; border-radius:14px; border:1px solid rgba(255,255,255,.1); background:#0e141b; display:grid; place-items:center; overflow:hidden}
+    .controls{display:flex; gap:8px; margin-top:10px}
+    .pill{padding:8px 12px; border-radius:999px; background:#0f141b; border:1px solid rgba(255,255,255,.12); color:var(--ink); font-weight:800}
     .note{margin-top:10px; color:var(--muted); font-size:.95rem}
 
     /* Two-col */
@@ -91,12 +93,12 @@
               <!-- Background -->
               <rect x="0" y="0" width="800" height="560" fill="#0e141b"/>
               <!-- Converging rails -->
-              <g stroke="#2a3646" stroke-width="8" stroke-linecap="round">
+              <g id="rails" stroke="#2a3646" stroke-width="8" stroke-linecap="round">
                 <path d="M120,520 L360,80"/>
                 <path d="M680,520 L440,80"/>
               </g>
               <!-- Ties -->
-              <g stroke="#1b2432" stroke-width="4">
+              <g id="ties" stroke="#1b2432" stroke-width="4">
                 <path d="M150,470 L650,470"/>
                 <path d="M180,420 L620,420"/>
                 <path d="M210,370 L590,370"/>
@@ -120,6 +122,10 @@
             </svg>
           </div>
           <div class="note">What your eyes insist: the upper bar is longer. What the comparator proves every few seconds: they’re identical. That mismatch is the illusion.</div>
+          <div class="controls">
+            <button class="pill" id="toggleRails" aria-pressed="false">Hide rails</button>
+            <button class="pill" id="pause" aria-pressed="false">Pause</button>
+          </div>
         </div>
       </div>
     </section>
@@ -215,33 +221,64 @@
     // year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Ponzo comparator loop
+    // Ponzo comparator with smooth cross‑bar animation + controls
     (function(){
       const svg = document.getElementById('ponzo');
       if(!svg) return;
       const barNear = svg.getElementById ? svg.getElementById('barNear') : document.getElementById('barNear');
       const barFar  = svg.getElementById ? svg.getElementById('barFar')  : document.getElementById('barFar');
       const compare = svg.getElementById ? svg.getElementById('compare') : document.getElementById('compare');
+      const rails   = svg.getElementById ? svg.getElementById('rails')   : document.getElementById('rails');
+      const ties    = svg.getElementById ? svg.getElementById('ties')    : document.getElementById('ties');
 
-      function placeAtBar(bar){
-        const x = +bar.getAttribute('x');
-        const y = +bar.getAttribute('y');
-        const w = +bar.getAttribute('width');
-        compare.setAttribute('transform', `translate(${x}, ${y})`);
-        // ensure comparator width matches exactly
+      const btnRails = document.getElementById('toggleRails');
+      const btnPause = document.getElementById('pause');
+
+      function bboxOf(bar){
+        return {
+          x: +bar.getAttribute('x'),
+          y: +bar.getAttribute('y'),
+          w: +bar.getAttribute('width')
+        };
+      }
+
+      let toFar = false, paused = false, current = bboxOf(barNear);
+      function animateTo(target){
+        const from = current; current = target;
+        // ensure comparator width matches bar
         const rect = compare.querySelector('rect');
-        rect.setAttribute('width', String(w));
-        // center chevrons
-        const ch = compare.querySelectorAll('#chevrons path');
-        ch[0].setAttribute('transform', '');
-        ch[1].setAttribute('transform', `translate(${w-22},0)`);
+        rect.setAttribute('width', String(target.w));
+        const chevrons = compare.querySelectorAll('#chevrons path');
+        chevrons[1].setAttribute('transform', `translate(${target.w-22},0)`);
+        const keyframes = [
+          { transform: `translate(${from.x}px, ${from.y}px)` },
+          { transform: `translate(${target.x}px, ${target.y}px)` }
+        ];
+        compare.animate(keyframes, { duration: 900, easing: 'cubic-bezier(.25,.8,.25,1)', fill:'forwards'});
       }
-      function loop(){
-        placeAtBar(barNear);
-        setTimeout(()=>{ placeAtBar(barFar); }, 1800);
-        setTimeout(loop, 3600);
+
+      function tick(){
+        if(paused) return setTimeout(tick, 400);
+        animateTo(toFar ? bboxOf(barNear) : bboxOf(barFar));
+        toFar = !toFar;
+        setTimeout(tick, 1800);
       }
-      loop();
+      tick();
+
+      btnRails?.addEventListener('click', ()=>{
+        const on = btnRails.getAttribute('aria-pressed') === 'true';
+        const next = !on; btnRails.setAttribute('aria-pressed', String(next));
+        btnRails.textContent = next ? 'Show rails' : 'Hide rails';
+        [rails, ties].forEach(g=> g.style.opacity = next ? '0' : '1');
+      });
+
+      btnPause?.addEventListener('click', ()=>{
+        const on = btnPause.getAttribute('aria-pressed') === 'true';
+        const next = !on; btnPause.setAttribute('aria-pressed', String(next));
+        btnPause.textContent = next ? 'Resume' : 'Pause';
+        paused = next;
+        if(!paused) tick();
+      });
     })();
   </script>
 </body>
