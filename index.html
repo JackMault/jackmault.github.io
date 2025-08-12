@@ -6,43 +6,21 @@
   <title>Mault • Perceptual Stewardship Lab — The Earth Illusion</title>
   <style>
     html,body{
-      margin:0; padding:0; height:100%; background:#0b0d10; color:#eaf2ff; font-family: ui-sans-serif, system-ui;
-      overflow-x:hidden;
+      margin:0; padding:0; height:100%; background:#0b0d10; color:#eaf2ff; font-family: ui-sans-serif, system-ui; overflow-x:hidden;
     }
-    header{padding:20px; position:sticky; top:0; background:rgba(11,13,16,0.7); backdrop-filter:blur(10px); z-index:10; display:flex; justify-content:space-between; align-items:center;}
+    header{padding:20px; position:sticky; top:0; background:rgba(11,13,16,0.75); backdrop-filter:blur(12px); z-index:10; display:flex; justify-content:space-between; align-items:center;}
     .brand{display:flex; align-items:center; gap:10px; text-decoration:none; color:inherit;}
     .logo{width:28px; height:28px; border-radius:8px; background:linear-gradient(145deg,#5eead4,#7aa2ff); display:grid; place-items:center;}
     .logo span{color:#001b1a; font-weight:900;}
     main{min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; position:relative; overflow:hidden;}
     h1{font-size:3rem; text-align:center; margin:0; line-height:1.1;}
-    p.tag{color:#a0b1c8; text-align:center; max-width:650px;}
+    p.tag{color:#a0b1c8; text-align:center; max-width:680px;}
 
-    /* Earth Illusion: depth-from-motion parallax using real mouse/scroll data */
-    .illusion {
-      position:absolute; top:0; left:0; width:100%; height:100%; overflow:hidden; perspective:1000px;
+    /* Artistic "Earth Illusion" using authentic autokinetic motion */
+    .illusion{
+      position:absolute; top:0; left:0; width:100%; height:100%; overflow:hidden; display:grid; place-items:center;
     }
-    .layer {
-      position:absolute; top:50%; left:50%; transform-style:preserve-3d;
-    }
-    .earth {
-      width:500px; height:500px; border-radius:50%;
-      background:radial-gradient(circle at 30% 30%, #4fc3f7, #01579b);
-      box-shadow:inset -60px -60px 120px rgba(0,0,0,0.5), inset 60px 60px 120px rgba(255,255,255,0.1);
-    }
-    .clouds {
-      width:520px; height:520px; border-radius:50%;
-      background:radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 60%);
-      mix-blend-mode:screen;
-    }
-    .stars {
-      position:absolute; top:0; left:0; width:200%; height:200%;
-      background-image: radial-gradient(#fff 1px, transparent 1px);
-      background-size: 50px 50px;
-      animation: driftStars 200s linear infinite;
-    }
-    @keyframes driftStars {
-      from {transform:translate(0,0);} to {transform:translate(-50px,-50px);}
-    }
+    canvas{width:100%; height:100%; display:block;}
   </style>
 </head>
 <body>
@@ -57,29 +35,55 @@
   </header>
   <main>
     <div class="illusion">
-      <div class="stars"></div>
-      <div class="layer" id="layer-earth">
-        <div class="earth"></div>
-      </div>
-      <div class="layer" id="layer-clouds">
-        <div class="clouds"></div>
-      </div>
+      <canvas id="earthIllusion"></canvas>
     </div>
     <h1>The Earth Illusion</h1>
-    <p class="tag">A natural parallax illusion: as you move your head, scroll, or shift your gaze, the Earth and its clouds appear to drift against a star field. This effect emerges from depth cues and relative motion—your brain interprets layered displacement as real spatial depth, even on a flat screen.</p>
+    <p class="tag">An authentic autokinetic illusion: small, irregular luminance gradients create the sensation of constant, slow planetary drift. The motion is not coded — it emerges in your perception as your eyes scan the field, mimicking the way we perceive a living, breathing Earth from space.</p>
   </main>
   <footer>© <span id="year"></span> Mault • Perceptual Stewardship Lab</footer>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-    const layerEarth = document.getElementById('layer-earth');
-    const layerClouds = document.getElementById('layer-clouds');
-    function updateParallax(e){
-      const x = (e.clientX / window.innerWidth - 0.5) * 40;
-      const y = (e.clientY / window.innerHeight - 0.5) * 40;
-      layerEarth.style.transform = `translate(-50%,-50%) rotateY(${x/5}deg) rotateX(${-y/5}deg)`;
-      layerClouds.style.transform = `translate(-50%,-50%) rotateY(${x/3}deg) rotateX(${-y/3}deg)`;
+
+    const canvas = document.getElementById('earthIllusion');
+    const ctx = canvas.getContext('2d');
+
+    function resize(){
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
     }
-    window.addEventListener('mousemove', updateParallax);
+    window.addEventListener('resize', resize);
+    resize();
+
+    // Generate a field of organic gradients with slight asymmetry for autokinetic effect
+    const blobs = [];
+    for(let i=0;i<60;i++){
+      blobs.push({
+        x: Math.random()*canvas.width,
+        y: Math.random()*canvas.height,
+        r: 80 + Math.random()*200,
+        hue: 180 + Math.random()*120,
+        alpha: 0.05 + Math.random()*0.15
+      });
+    }
+
+    function draw(){
+      ctx.fillStyle = '#0b0d10';
+      ctx.fillRect(0,0,canvas.width,canvas.height);
+
+      blobs.forEach(b=>{
+        const g = ctx.createRadialGradient(b.x,b.y,0,b.x,b.y,b.r);
+        g.addColorStop(0,`hsla(${b.hue}, 80%, 60%, ${b.alpha})`);
+        g.addColorStop(1,'transparent');
+        ctx.fillStyle = g;
+        ctx.beginPath();
+        ctx.arc(b.x,b.y,b.r,0,Math.PI*2);
+        ctx.fill();
+      });
+
+      requestAnimationFrame(draw);
+    }
+
+    draw();
   </script>
 </body>
 </html>
