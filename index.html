@@ -1,89 +1,170 @@
 <!doctype html>
+
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Mault • Perceptual Stewardship Lab — The Earth Illusion</title>
+  <meta name="description" content="Experiments that make reality feel weird—then make it make sense. The Earth Illusion, Knops parables, and field-tested perception tools." />
+  <link rel="canonical" href="https://www.mault.co/" />
   <style>
-    html,body{
-      margin:0; padding:0; height:100%; background:#0b0d10; color:#eaf2ff; font-family: ui-sans-serif, system-ui; overflow-x:hidden;
+    :root{
+      --bg:#0b0d10; --ink:#eaf2ff; --muted:#a0b1c8; --card:#10151c; --brand:#5eead4; --brand2:#7aa2ff; --accent:#f7b500;
+      --radius:18px; --shadow:0 15px 45px rgba(0,0,0,.35);
     }
-    header{padding:20px; position:sticky; top:0; background:rgba(11,13,16,0.75); backdrop-filter:blur(12px); z-index:10; display:flex; justify-content:space-between; align-items:center;}
-    .brand{display:flex; align-items:center; gap:10px; text-decoration:none; color:inherit;}
-    .logo{width:28px; height:28px; border-radius:8px; background:linear-gradient(145deg,#5eead4,#7aa2ff); display:grid; place-items:center;}
-    .logo span{color:#001b1a; font-weight:900;}
-    main{min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; position:relative; overflow:hidden;}
-    h1{font-size:3rem; text-align:center; margin:0; line-height:1.1;}
-    p.tag{color:#a0b1c8; text-align:center; max-width:680px;}
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0; font-family:ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; background:var(--bg); color:var(--ink)}
+    a{color:inherit}header{position:sticky; top:0; z-index:20; background:rgba(11,13,16,.7); backdrop-filter:blur(12px); border-bottom:1px solid rgba(255,255,255,.06)}
+.wrap{max-width:1140px; margin:0 auto; padding:18px}
+.nav{display:flex; justify-content:space-between; align-items:center}
+.brand{display:flex; align-items:center; gap:12px; text-decoration:none}
+.logo{width:28px; height:28px; border-radius:8px; background:linear-gradient(145deg,var(--brand),var(--brand2)); display:grid; place-items:center; font-weight:900; color:#012}
 
-    /* Artistic "Earth Illusion" using authentic autokinetic motion */
-    .illusion{
-      position:absolute; top:0; left:0; width:100%; height:100%; overflow:hidden; display:grid; place-items:center;
-    }
-    canvas{width:100%; height:100%; display:block;}
+.btn{padding:10px 14px; border-radius:12px; text-decoration:none; font-weight:800; border:1px solid rgba(255,255,255,.1)}
+.btn.primary{background:linear-gradient(145deg,var(--brand),var(--brand2)); color:#00171a; border-color:transparent}
+
+/* HERO */
+.hero{padding:72px 18px 36px}
+.grid{display:grid; grid-template-columns: 1.05fr .95fr; gap:36px; align-items:center}
+.kicker{color:var(--muted); text-transform:uppercase; letter-spacing:1.6px; font-weight:700}
+.h1{font-size:52px; line-height:1.04; margin:.2em 0 .4em}
+.sub{color:#c9d6ee; font-size:18px}
+
+.card{background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); box-shadow:var(--shadow)}
+
+/* Illusion tile */
+.illusion{position:relative; padding:18px}
+.display{aspect-ratio:16/12; border-radius:14px; border:1px dashed rgba(255,255,255,.08); background:#0e141b; display:grid; place-items:center; overflow:hidden}
+canvas{width:100%; height:100%; display:block}
+.note{margin-top:10px; color:var(--muted); font-size:.95rem}
+
+section{padding:30px 18px 70px}
+.two{display:grid; grid-template-columns:1fr 1fr; gap:28px}
+@media (max-width:980px){ .grid{grid-template-columns:1fr} .h1{font-size:40px} .two{grid-template-columns:1fr} }
+
+footer{padding:30px 18px; border-top:1px solid rgba(255,255,255,.08); color:var(--muted)}
+
   </style>
 </head>
 <body>
   <header>
-    <a href="#" class="brand">
-      <div class="logo"><span>∙</span></div>
-      <strong>MAULT • PERCEPTUAL STEWARDSHIP LAB</strong>
-    </a>
-    <nav>
-      <a href="https://youtube.com" style="color:inherit; text-decoration:none; font-weight:700;">YouTube</a>
-    </nav>
-  </header>
-  <main>
-    <div class="illusion">
-      <canvas id="earthIllusion"></canvas>
+    <div class="wrap nav">
+      <a class="brand" href="#top"><div class="logo">∙</div><strong>MAULT • PERCEPTUAL STEWARDSHIP LAB</strong></a>
+      <nav style="display:flex; gap:12px; align-items:center">
+        <a class="btn" href="#episodes">Episodes</a>
+        <a class="btn primary" href="https://youtube.com" target="_blank" rel="noopener">YouTube</a>
+      </nav>
     </div>
-    <h1>The Earth Illusion</h1>
-    <p class="tag">An authentic autokinetic illusion: small, irregular luminance gradients create the sensation of constant, slow planetary drift. The motion is not coded — it emerges in your perception as your eyes scan the field, mimicking the way we perceive a living, breathing Earth from space.</p>
-  </main>
-  <footer>© <span id="year"></span> Mault • Perceptual Stewardship Lab</footer>
-  <script>
+  </header>  <main id="top" class="wrap">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="grid">
+        <div>
+          <div class="kicker">The Earth Illusion</div>
+          <div class="h1">Make reality feel weird.<br/>Then make it make sense.</div>
+          <div class="sub">A precise, living demonstration of perception: a static image that many viewers feel <em>rotate</em> when they scan it. No animation. Just your brain reading gradients as motion.</div>
+        </div>
+        <!-- Illusion Field: Peripheral Drift (static) -->
+        <div class="card illusion">
+          <div class="display"><canvas id="snakes"></canvas></div>
+          <div class="note">Tip: Don’t stare at one spot. Let your eyes wander or gently scroll; most people see slow rotation in the rings. If you don’t, step back a little or dim the screen slightly.</div>
+        </div>
+      </div>
+    </section><!-- WHY -->
+<section>
+  <div class="two">
+    <div class="card" style="padding:20px">
+      <h3 style="margin-top:0">What you’re perceiving</h3>
+      <p><strong>Peripheral drift illusion.</strong> Alternating segments with a specific luminance order (dark → cool → light → warm) bias motion detectors in your visual cortex. When your eyes make micro-movements, the pattern is misread as rotation.</p>
+      <p>This is the Earth Illusion in miniature: <em>form + position</em> drive truth in perception. Change the order (form) or your gaze (position), and the world behaves differently—without the world changing.</p>
+    </div>
+    <div class="card" style="padding:20px">
+      <h3 style="margin-top:0">Use it</h3>
+      <p>When a problem feels stuck, change the sampling: posture, angle, or pace. Your perception is a moving camera—small shifts unlock new affordances. That’s perceptual stewardship.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EPISODES placeholder -->
+<section id="episodes">
+  <h2 style="margin:0 0 12px 0">Episodes</h2>
+  <div class="card" style="padding:20px; color:var(--muted)">Embed your trailer and latest here.</div>
+</section>
+
+  </main>  <footer>
+    <div class="wrap" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px">
+      <div>© <span id="year"></span> Mault • Perceptual Stewardship Lab</div>
+      <div><a href="/health">health</a></div>
+    </div>
+  </footer>  <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    const canvas = document.getElementById('earthIllusion');
+    // --- Peripheral Drift Field (static drawing, no animation) ---
+    const canvas = document.getElementById('snakes');
     const ctx = canvas.getContext('2d');
 
-    function resize(){
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+    function fit(){
+      const dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+      const w = canvas.parentElement.clientWidth;
+      const h = canvas.parentElement.clientHeight;
+      canvas.width = Math.floor(w*dpr);
+      canvas.height = Math.floor(h*dpr);
+      canvas.style.width = w+'px';
+      canvas.style.height = h+'px';
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+      drawField();
     }
-    window.addEventListener('resize', resize);
-    resize();
+    window.addEventListener('resize', fit);
 
-    // Generate a field of organic gradients with slight asymmetry for autokinetic effect
-    const blobs = [];
-    for(let i=0;i<60;i++){
-      blobs.push({
-        x: Math.random()*canvas.width,
-        y: Math.random()*canvas.height,
-        r: 80 + Math.random()*200,
-        hue: 180 + Math.random()*120,
-        alpha: 0.05 + Math.random()*0.15
-      });
-    }
-
-    function draw(){
-      ctx.fillStyle = '#0b0d10';
-      ctx.fillRect(0,0,canvas.width,canvas.height);
-
-      blobs.forEach(b=>{
-        const g = ctx.createRadialGradient(b.x,b.y,0,b.x,b.y,b.r);
-        g.addColorStop(0,`hsla(${b.hue}, 80%, 60%, ${b.alpha})`);
-        g.addColorStop(1,'transparent');
-        ctx.fillStyle = g;
+    function ring(ctx, cx, cy, rOuter, rInner, seg=24){
+      // colors chosen for luminance order: dark → cool → light → warm
+      const cols = ['#000000','#1e3a8a','#ffffff','#ffd400'];
+      const d = (Math.PI*2)/seg;
+      for(let i=0;i<seg;i++){
+        const a1 = i*d, a2 = (i+1)*d - 0.02; // tiny gap for edge emphasis
+        const m = (a1+a2)/2; // tangent direction
+        // wedge path
         ctx.beginPath();
-        ctx.arc(b.x,b.y,b.r,0,Math.PI*2);
+        ctx.arc(cx, cy, rOuter, a1, a2, false);
+        ctx.arc(cx, cy, rInner, a2, a1, true);
+        ctx.closePath();
+        // tangential gradient to bias motion detectors
+        const rm = (rOuter+rInner)/2;
+        const tx = Math.cos(m+Math.PI/2), ty = Math.sin(m+Math.PI/2);
+        const g = ctx.createLinearGradient(cx+tx*(rOuter-rInner)/2, cy+ty*(rOuter-rInner)/2, cx-tx*(rOuter-rInner)/2, cy-ty*(rOuter-rInner)/2);
+        g.addColorStop(0, cols[0]);
+        g.addColorStop(0.34, cols[1]);
+        g.addColorStop(0.66, cols[2]);
+        g.addColorStop(1, cols[3]);
+        ctx.fillStyle = g;
         ctx.fill();
-      });
-
-      requestAnimationFrame(draw);
+        ctx.strokeStyle = 'rgba(0,0,0,.55)';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      }
     }
 
-    draw();
-  </script>
-</body>
+    function drawField(){
+      const w = canvas.width / (window.devicePixelRatio||1);
+      const h = canvas.height / (window.devicePixelRatio||1);
+      ctx.clearRect(0,0,w,h);
+      // grid of rings
+      const cols = 3, rows = 2;
+      const tileW = w/(cols+0.5);
+      const tileH = h/(rows+0.5);
+      let idx = 0;
+      for(let r=0;r<rows;r++){
+        for(let c=0;c<cols;c++){
+          const cx = (c+0.5)*tileW + (c*20);
+          const cy = (r+0.6)*tileH + (r*12);
+          const ro = Math.min(tileW,tileH)*0.35;
+          const ri = ro*0.68;
+          ring(ctx, cx, cy, ro, ri, 32);
+        }
+      }
+    }
+
+    fit(); // initial draw
+  </script></body>
 </html>
