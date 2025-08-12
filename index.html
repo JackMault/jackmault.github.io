@@ -4,296 +4,68 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Mault • Perceptual Stewardship Lab — The Earth Illusion</title>
-  <meta name="description" content="Experiments that make reality feel weird—then make it make sense. The Earth Illusion, Knops parables, and field-tested perception tools." />
-  <link rel="canonical" href="https://www.mault.co/" />
-  <meta property="og:title\" content=\"Mault • Perceptual Stewardship Lab — The Earth Illusion" />
-  <meta property="og:description" content="Experiments that make reality feel weird—then make it make sense." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.mault.co/" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='black'/%3E%3Ctext x='50' y='60' font-size='52' text-anchor='middle' fill='white' font-family='Arial,Helvetica,sans-serif'%3EM%3C/text%3E%3C/svg%3E" />
   <style>
-    :root{
-      --bg: #0b0d10;           /* deep slate */
-      --card: #11151a;
-      --ink: #eaf2ff;          /* gentle ink */
-      --muted: #a0b1c8;
-      --brand: #5eead4;        /* aqua-mint */
-      --brand-2: #7aa2ff;      /* soft blue */
-      --accent: #f7b500;       /* amber */
-      --danger: #ff6b6b;
-      --ok: #82ffa1;
-      --shadow: 0 15px 45px rgba(0,0,0,.35);
-      --radius: 18px;
+    html,body{
+      margin:0; padding:0; height:100%; background:#0b0d10; color:#eaf2ff; font-family: ui-sans-serif, system-ui;
+      overflow-x:hidden;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      color:var(--ink); background: radial-gradient(1200px 600px at 20% -10%, rgba(94,234,212,.12), transparent 60%), radial-gradient(900px 600px at 120% 10%, rgba(122,162,255,.12), transparent 50%), var(--bg);
-      line-height:1.5; letter-spacing:.2px;
+    header{padding:20px; position:sticky; top:0; background:rgba(11,13,16,0.7); backdrop-filter:blur(10px); z-index:10; display:flex; justify-content:space-between; align-items:center;}
+    .brand{display:flex; align-items:center; gap:10px; text-decoration:none; color:inherit;}
+    .logo{width:28px; height:28px; border-radius:8px; background:linear-gradient(145deg,#5eead4,#7aa2ff); display:grid; place-items:center;}
+    .logo span{color:#001b1a; font-weight:900;}
+    main{min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; position:relative; overflow:hidden;}
+    h1{font-size:3rem; text-align:center; margin:0; line-height:1.1;}
+    p.tag{color:#a0b1c8; text-align:center; max-width:600px;}
+
+    /* Artistic continuous illusion */
+    .illusion{
+      position:absolute; top:0; left:0; width:100%; height:100%;
+      background:radial-gradient(circle at 30% 30%, rgba(94,234,212,0.15), transparent 40%),
+                 radial-gradient(circle at 70% 70%, rgba(122,162,255,0.15), transparent 40%),
+                 radial-gradient(circle at 20% 80%, rgba(247,181,0,0.12), transparent 50%);
+      overflow:hidden;
     }
-    a{color:inherit}
-    .wrap{max-width:1150px; margin:0 auto; padding:20px}
-    header{position:sticky; top:0; backdrop-filter: blur(10px); background: rgba(11,13,16,.55); border-bottom:1px solid rgba(255,255,255,.06); z-index:20}
-    .nav{display:flex; align-items:center; justify-content:space-between}
-    .brand{display:flex; align-items:center; gap:12px; text-decoration:none}
-    .logo{width:28px; height:28px; border-radius:8px; background:linear-gradient(145deg, var(--brand), var(--brand-2)); display:grid; place-items:center; box-shadow: var(--shadow)}
-    .logo span{font-weight:900; color:#001b1a}
-    .brand h1{font-size:16px; margin:0; font-weight:700; letter-spacing:.8px}
-    .nav a.btn{padding:10px 14px; border-radius:12px; text-decoration:none; background:linear-gradient(145deg, var(--brand), var(--brand-2)); color:#012; font-weight:700; box-shadow: var(--shadow)}
-
-    /* Hero */
-    .hero{padding:80px 20px 40px}
-    .hero-grid{display:grid; grid-template-columns: 1.05fr .95fr; gap:40px; align-items:center}
-    .kicker{color:var(--muted); font-weight:600; letter-spacing:1.6px; text-transform:uppercase}
-    .h1{font-size:54px; line-height:1.04; margin:.2em 0 .4em; letter-spacing:.2px}
-    .sub{color:#c9d6ee; font-size:18px}
-    .cta-row{display:flex; gap:14px; margin-top:22px; flex-wrap:wrap}
-    .btn{padding:14px 18px; border-radius:14px; text-decoration:none; font-weight:800; display:inline-flex; align-items:center; gap:10px; border:1px solid rgba(255,255,255,.08); background:#121821}
-    .btn.primary{background:linear-gradient(145deg, var(--brand), var(--brand-2)); color:#00171a; border-color:transparent}
-    .btn.ghost{color:var(--ink)}
-
-    .card{background: rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.08); border-radius: var(--radius); box-shadow: var(--shadow)}
-
-    /* Experiment card */
-    .experiment{position:relative; padding:24px}
-    .panel{padding:18px; border-radius:14px; background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.06)}
-    .exp-display{aspect-ratio: 16 / 12; display:grid; place-items:center; border-radius:12px; background:#0d1218; border:1px dashed rgba(255,255,255,.08); position:relative; overflow:hidden}
-    .center-dot{width:14px; height:14px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 4px rgba(247,181,0,.2), 0 0 60px rgba(247,181,0,.25)}
-    .corner{position:absolute; width:120px; height:120px; border-radius:50%; filter:blur(2px); opacity:.9; transition: opacity .6s ease}
-    .c1{top:6%; left:6%; background: radial-gradient(circle at 30% 30%, #ff8080, #5b0)}
-    .c2{top:6%; right:6%; background: radial-gradient(circle at 70% 30%, #7aa2ff, #b0f)}
-    .c3{bottom:6%; left:6%; background: radial-gradient(circle at 30% 70%, #5eead4, #078)}
-    .c4{bottom:6%; right:6%; background: radial-gradient(circle at 70% 70%, #ffd166, #d33)}
-    .exp-controls{display:flex; gap:10px; margin-top:14px; flex-wrap:wrap}
-    .pill{padding:10px 12px; border-radius:999px; background:#0f141b; border:1px solid rgba(255,255,255,.08); color:var(--ink); font-weight:700}
-    .meter{height:12px; background:#0f141b; border-radius:999px; border:1px solid rgba(255,255,255,.08); overflow:hidden}
-    .bar{height:100%; width:0%; background:linear-gradient(90deg, var(--brand), var(--brand-2))}
-    .status{font-weight:800}
-
-    /* Sections */
-    section{padding:28px 20px 70px}
-    .section-title{font-size:28px; letter-spacing:.5px; margin-bottom:12px}
-    .two-col{display:grid; grid-template-columns: 1fr 1fr; gap:28px}
-
-    /* Episode embeds */
-    .thumb-grid{display:grid; grid-template-columns: repeat(3, 1fr); gap:16px}
-    .thumb-grid iframe, .thumb-grid .thumb{width:100%; aspect-ratio:16/9; border-radius:12px; border:1px solid rgba(255,255,255,.08)}
-
-    /* Footer */
-    footer{padding:40px 20px; border-top:1px solid rgba(255,255,255,.08); color:var(--muted)}
-
-    /* Responsive */
-    @media (max-width: 980px){
-      .hero-grid{grid-template-columns:1fr}
-      .h1{font-size:40px}
-      .two-col{grid-template-columns:1fr}
-      .thumb-grid{grid-template-columns:1fr 1fr}
+    .shape{
+      position:absolute; border-radius:50%; filter:blur(30px); mix-blend-mode:screen; opacity:0.4;
+      animation: drift 60s infinite linear;
     }
-    @media (max-width: 640px){
-      .thumb-grid{grid-template-columns:1fr}
+    .shape:nth-child(1){width:400px; height:400px; background:#5eead4; top:-10%; left:-10%; animation-duration:80s;}
+    .shape:nth-child(2){width:300px; height:300px; background:#7aa2ff; bottom:-20%; right:-15%; animation-duration:100s;}
+    .shape:nth-child(3){width:500px; height:500px; background:#f7b500; top:50%; left:60%; animation-duration:120s;}
+    @keyframes drift{
+      0%{transform:translate(0,0) scale(1);}
+      50%{transform:translate(50px, -50px) scale(1.1);}
+      100%{transform:translate(0,0) scale(1);}
     }
-
-    /* Easter egg: Knop mode */
-    .knop{position:fixed; right:18px; bottom:18px; width:58px; height:58px; border-radius:50%; background:radial-gradient(circle at 35% 30%, #fff, #ffe2aa 40%, #f49f0a 60%, #3b2f00 100%); box-shadow:0 20px 45px rgba(0,0,0,.4), inset 0 0 14px rgba(0,0,0,.25); display:none; align-items:center; justify-content:center; cursor:pointer}
-    .knop::after{content:""; width:8px; height:8px; background:#1a1200; border-radius:50%}
-    .knop.active{display:flex; animation: wob 4s ease-in-out infinite}
-    @keyframes wob{ 0%,100%{ transform: translateY(0)} 50%{ transform: translateY(-5px)} }
-    .toast{position:fixed; left:50%; transform:translateX(-50%); bottom:92px; background:#0f141b; color:var(--ink); padding:10px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.08); display:none}
+    .overlay-pattern{
+      position:absolute; top:0; left:0; width:100%; height:100%;
+      background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 20px);
+      pointer-events:none;
+    }
+    footer{padding:20px; text-align:center; color:#a0b1c8;}
   </style>
 </head>
 <body>
   <header>
-    <div class="wrap nav">
-      <a class="brand" href="#top" aria-label=\"Mault Perceptual Stewardship Lab home\">
-        <div class="logo"><span>∙</span></div>
-        <h1>MAULT • PERCEPTUAL STEWARDSHIP LAB</h1>
-      </a>
-      <nav style="display:flex; gap:12px; align-items:center">
-        <a class="btn ghost" href="#experiment">Run test</a>
-        <a class="btn ghost" href="#episodes">Episodes</a>
-        <a class="btn" href="https://youtube.com" target="_blank" rel="noopener">YouTube</a>
-      </nav>
-    </div>
+    <a href="#" class="brand">
+      <div class="logo"><span>∙</span></div>
+      <strong>MAULT • PERCEPTUAL STEWARDSHIP LAB</strong>
+    </a>
+    <nav>
+      <a href="https://youtube.com" style="color:inherit; text-decoration:none; font-weight:700;">YouTube</a>
+    </nav>
   </header>
-
-  <main id="top" class="wrap">
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero-grid">
-        <div>
-          <div class="kicker">The Earth Illusion</div>
-          <div class="h1">Make reality feel weird.<br/>Then make it make sense.</div>
-          <div class="sub">Weekly experiments, street tests, and Knops parables that reveal how attention builds your world—so you can rebuild it on purpose.</div>
-          <div class="cta-row">
-            <a class="btn primary" href="#experiment">Run the 60‑second test</a>
-            <a class="btn ghost" href="#episodes">Watch an episode</a>
-          </div>
-        </div>
-        <!-- Experiment preview card -->
-        <div class="card experiment" id="experiment-card">
-          <div class="panel">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px">
-              <div style="font-weight:800">Focus Trap — 60s</div>
-              <div class="status" id="status">Ready</div>
-            </div>
-            <div class="exp-display" id="display" aria-live="polite">
-              <div class="corner c1"></div>
-              <div class="corner c2"></div>
-              <div class="corner c3"></div>
-              <div class="corner c4"></div>
-              <div class="center-dot" title="Stare here"></div>
-            </div>
-            <div class=\"exp-controls\">
-              <button class=\"pill\" id=\"start\">Start 60s</button>
-              <button class=\"pill\" id=\"reset\" disabled>Reset</button>
-              <button class=\"pill\" id=\"assist\" aria-pressed=\"false\" title=\"Demo aid; not the real effect\">Assist: OFF</button>
-              <div class=\"pill\" id=\"readout\">Seconds until colors faded: —</div>
-            </div>
-            <div class="meter" aria-hidden="true" style="margin-top:12px"><div class="bar" id="bar"></div></div>
-            <div style=\"margin-top:10px; color:var(--muted)\">Instructions: Sit still. Stare at the center dot for sixty seconds without moving your eyes. Some people see the corner colors <em>fade</em>—that’s Troxler fading (neurons adapt to unchanging input) + attention filtering. If nothing happens, you’re normal; try stepping back 1–2 feet, dim the screen slightly, keep your gaze still, and give it 30–60s. <strong>Assist</strong> simulates a fade for demo purposes; keep it OFF for a pure test.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- WHY SECTION -->
-    <section id="why">
-      <h2 class="section-title">What just happened?</h2>
-      <div class="two-col">
-        <div class="card" style="padding:20px">
-          <p><strong>Your eyes don’t stream the world; they sample it.</strong> When an image stays still on your retina, neurons stop firing as much. Your brain reallocates bandwidth to changes (what might matter) and quietly lets the stable stuff melt into the background.</p>
-          <p>We call this a piece of the <em>Earth Illusion</em>: attention is an editor. 
-            The goal of this channel is to turn that knowledge into daily leverage—
-            better focus, kinder arguments, cleaner self‑talk.</p>
-        </div>
-        <div class="card" style="padding:20px">
-          <p><strong>Try the applied version:</strong> pick one recurring stressor. 
-            When it shows up today, freeze for one breath and ask, 
-            “What am I <em>not</em> sampling?” Then shift one variable—location, posture, or question—and resample. That’s a micro‑coherence reset.</p>
-          <p><span style="color:var(--muted)">Press <kbd>K</kbd> to toggle a tiny Knop friend. It’s a reminder to reset.</span></p>
-        </div>
-      </div>
-    </section>
-
-    <!-- EPISODES -->
-    <section id="episodes">
-      <h2 class="section-title">Episodes</h2>
-      <div class="thumb-grid">
-        <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Channel trailer" frameborder="0" allowfullscreen></iframe>
-        <div class="thumb card" style="display:grid; place-items:center; color:var(--muted)">Add your latest episode embed</div>
-        <div class="thumb card" style="display:grid; place-items:center; color:var(--muted)">Or a Knops micro‑fable</div>
-      </div>
-      <div class="cta-row" style="margin-top:16px">
-        <a class="btn primary" href="https://youtube.com" target="_blank" rel="noopener">Subscribe on YouTube</a>
-        <a class="btn ghost" href="mailto:hello@mault.co?subject=Lab%20Notes&body=Add%20me%20to%20Lab%20Notes">Join Lab Notes (email)</a>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="wrap" style="display:flex; justify-content:space-between; gap:16px; align-items:center; flex-wrap:wrap">
-      <div>© <span id=\"year\"></span> Mault • Perceptual Stewardship Lab</div>
-      <div>Built on GitHub Pages · <a href="/health">health</a></div>
+  <main>
+    <div class="illusion">
+      <div class="shape"></div>
+      <div class="shape"></div>
+      <div class="shape"></div>
+      <div class="overlay-pattern"></div>
     </div>
-  </footer>
-
-  <!-- Knop & Toast -->
-  <div class="knop" id="knop" title="Reset">
-  </div>
-  <div class="toast" id="toast">Knop mode</div>
-
-  <script>
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Focus Trap experiment (Troxler fading)
-    const startBtn = document.getElementById('start');
-    const resetBtn = document.getElementById('reset');
-    const statusEl = document.getElementById('status');
-    const readout = document.getElementById('readout');
-    const bar = document.getElementById('bar');
-    const corners = [...document.querySelectorAll('.corner')];
-    const assistBtn = document.getElementById('assist');
-
-    let assistOn = false;
-
-    let t0, timer, fadeTimer, running=false, elapsed=0;
-
-    function start(){
-      if(running) return; running = true;
-      t0 = performance.now();
-      statusEl.textContent = 'Running…';
-      startBtn.disabled = true; resetBtn.disabled = false;
-      readout.textContent = 'Seconds until colors faded: —';
-      bar.style.width = '0%';
-      if(assistOn){
-        // Demo-only aid: simulate fade so first-timers can see the idea
-        const delay = 8000 + Math.random()*12000;
-        fadeTimer = setTimeout(()=>{
-          corners.forEach(c=> c.style.opacity = .15);
-        }, delay);
-      }
-      timer = requestAnimationFrame(tick);
-    }
-
-    function tick(now){
-      elapsed = (now - t0)/1000;
-      const pct = Math.min(100, (elapsed/60)*100);
-      bar.style.width = pct + '%';
-      if(elapsed >= 60){ finish(); return; }
-      timer = requestAnimationFrame(tick);
-    }
-
-    function finish(){
-      running = false; cancelAnimationFrame(timer); clearTimeout(fadeTimer);
-      statusEl.textContent = 'Complete';
-      corners.forEach(c=> c.style.opacity = .9);
-      readout.textContent = 'Seconds until colors faded: ' + Math.round(elapsed);
-      // Copy the result to clipboard nicely
-      const msg = `Focus Trap result — fade at ${Math.round(elapsed)}s (#EarthIllusion)`;
-      navigator.clipboard?.writeText(msg).catch(()=>{});
-    }
-
-    function reset(){
-      running=false; cancelAnimationFrame(timer); clearTimeout(fadeTimer);
-      startBtn.disabled=false; resetBtn.disabled=true; statusEl.textContent='Ready';
-      readout.textContent = 'Seconds until colors faded: —';
-      bar.style.width='0%'; corners.forEach(c=> c.style.opacity=.9);
-    }
-
-    startBtn.addEventListener('click', start);
-    resetBtn.addEventListener('click', reset);
-    function toggleAssist(){
-      assistOn = !assistOn;
-      assistBtn.setAttribute('aria-pressed', String(assistOn));
-      assistBtn.textContent = 'Assist: ' + (assistOn ? 'ON' : 'OFF');
-    }
-    assistBtn.addEventListener('click', toggleAssist);
-
-    // Keyboard shortcuts
-    window.addEventListener('keydown', (e)=>{
-      if(e.key.toLowerCase()==='k') toggleKnop();
-      if(e.key===' ') { e.preventDefault(); running? finish(): start(); }
-    });
-
-    // Knop easter egg
-    const knop = document.getElementById('knop');
-    const toast = document.getElementById('toast');
-    let knopOn=false;
-    function toggleKnop(){
-      knopOn = !knopOn;
-      knop.classList.toggle('active', knopOn);
-      toast.style.display='block'; toast.textContent = knopOn? 'Knop mode' : 'Knop naps';
-      setTimeout(()=> toast.style.display='none', 1300);
-    }
-    knop.addEventListener('click', toggleKnop);
-
-    // Soft route for /health
-    if(location.pathname === '/health'){
-      document.body.innerHTML = '<div style="display:grid;place-items:center;height:100vh;font:16px ui-sans-serif,system-ui;color:#cfe">OK — ' + new Date().toISOString() + '</div>'
-    }
-  </script>
+    <h1>The Earth Illusion</h1>
+    <p class="tag">A living field of motion, color, and light—always shifting, never still. Let it move in your periphery while your focus stays here. This is perception sculpting your reality in real time.</p>
+  </main>
+  <footer>© <span id="year"></span> Mault • Perceptual Stewardship Lab</footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
