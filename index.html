@@ -1,23 +1,28 @@
-s<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Perceptual Stewardship Lab — The Earth Illusion</title>
-  <meta name="description" content="Experiments that make reality feel weird—then make it make sense. Intuitive illusions, clean explanations, and field-tested perception tools." />
+  <meta name="description" content="Experiments that make reality feel weird—then make it make sense. Intuitive illusions, clean explanations, and field‑tested perception tools. Join Lab Notes on Substack." />
   <link rel="canonical" href="https://www.mault.co/" />
+  <meta property="og:title" content="Perceptual Stewardship Lab — The Earth Illusion" />
+  <meta property="og:description" content="Optical illusions as living metaphors. Truth = Form + Position. Subscribe to Lab Notes." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.mault.co/" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='black'/%3E%3Ctext x='50' y='62' font-size='52' text-anchor='middle' fill='white' font-family='Arial,Helvetica,sans-serif'%3EM%3C/text%3E%3C/svg%3E" />
   <style>
     :root{
-      --bg:#0b0d10; --ink:#eaf2ff; --muted:#a0b1c8; --card:#10151c; --brand:#5eead4; --brand2:#7aa2ff; --accent:#f7b500; --good:#82ffa1;
+      --bg:#0b0d10; --ink:#eaf2ff; --muted:#a0b1c8; --card:#0f141b; --brand:#5eead4; --brand2:#7aa2ff; --accent:#f7b500; --good:#82ffa1;
       --radius:18px; --shadow:0 15px 45px rgba(0,0,0,.35);
     }
     *{box-sizing:border-box}
     html,body{height:100%}
     body{margin:0; font-family:ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; background:var(--bg); color:var(--ink)}
     a{color:inherit}
-    .wrap{max-width:1140px; margin:0 auto; padding:18px}
+    .wrap{max-width:1200px; margin:0 auto; padding:18px}
 
-    header{position:sticky; top:0; z-index:50; background:rgba(11,13,16,.7); backdrop-filter:blur(12px); border-bottom:1px solid rgba(255,255,255,.06)}
+    header{position:sticky; top:0; z-index:50; background:rgba(11,13,16,.72); backdrop-filter:blur(12px); border-bottom:1px solid rgba(255,255,255,.06)}
     .nav{display:flex; justify-content:space-between; align-items:center}
     .brand{display:flex; align-items:center; gap:12px; text-decoration:none}
     .logo{width:28px; height:28px; border-radius:8px; background:linear-gradient(145deg,var(--brand),var(--brand2)); display:grid; place-items:center; font-weight:900; color:#012}
@@ -25,38 +30,39 @@ s<!doctype html>
     .btn.primary{background:linear-gradient(145deg,var(--brand),var(--brand2)); color:#00171a; border-color:transparent}
 
     /* Sections */
-    section{padding:36px 18px 72px}
+    section{padding:42px 18px 78px}
     .card{background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); box-shadow:var(--shadow)}
 
     /* Hero */
-    .hero{padding:72px 18px 12px}
-    .grid{display:grid; grid-template-columns: 1.05fr .95fr; gap:36px; align-items:center}
+    .hero{padding:82px 18px 22px}
+    .grid{display:grid; grid-template-columns: 1.05fr .95fr; gap:40px; align-items:center}
     .kicker{color:var(--muted); text-transform:uppercase; letter-spacing:1.6px; font-weight:700}
-    .h1{font-size:52px; line-height:1.04; margin:.2em 0 .4em}
+    .h1{font-size:56px; line-height:1.04; margin:.2em 0 .4em}
     .sub{color:#c9d6ee; font-size:18px}
 
-    /* Illusion block */
+    /* Illusion blocks */
     .illusion{position:relative; padding:18px}
     .display{aspect-ratio:16/12; border-radius:14px; border:1px solid rgba(255,255,255,.1); background:#0e141b; display:grid; place-items:center; overflow:hidden}
-    .controls{display:flex; gap:8px; margin-top:10px}
-    .pill{padding:8px 12px; border-radius:999px; background:#0f141b; border:1px solid rgba(255,255,255,.12); color:var(--ink); font-weight:800}
     .note{margin-top:10px; color:var(--muted); font-size:.95rem}
+    .controls{display:flex; gap:8px; margin-top:10px; flex-wrap:wrap}
+    .pill{padding:8px 12px; border-radius:999px; background:#0f141b; border:1px solid rgba(255,255,255,.12); color:var(--ink); font-weight:800}
 
     /* Two-col */
     .two{display:grid; grid-template-columns:1fr 1fr; gap:28px}
 
-    /* Episodes */
+    /* Thumbs */
     .thumbs{display:grid; grid-template-columns: repeat(3, 1fr); gap:16px}
     .thumb{aspect-ratio:16/9; border-radius:12px; border:1px solid rgba(255,255,255,.08); display:grid; place-items:center; color:var(--muted)}
 
-    /* CTA strip */
     .cta{display:flex; gap:12px; flex-wrap:wrap}
 
-    /* Footer */
     footer{padding:30px 18px; border-top:1px solid rgba(255,255,255,.08); color:var(--muted)}
 
-    @media (max-width:980px){ .grid{grid-template-columns:1fr} .h1{font-size:40px} .two{grid-template-columns:1fr} .thumbs{grid-template-columns:1fr 1fr} }
+    @media (max-width:980px){ .grid{grid-template-columns:1fr} .h1{font-size:42px} .two{grid-template-columns:1fr} .thumbs{grid-template-columns:1fr 1fr} }
     @media (max-width:640px){ .thumbs{grid-template-columns:1fr} }
+
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce){ .auto-animate{animation: none !important} }
   </style>
 </head>
 <body>
@@ -65,7 +71,8 @@ s<!doctype html>
       <a class="brand" href="#top"><div class="logo">∙</div><strong>PERCEPTUAL STEWARDSHIP LAB</strong></a>
       <nav style="display:flex; gap:12px; align-items:center">
         <a class="btn" href="#experiments">Experiments</a>
-        <a class="btn" href="#episodes">Episodes</a>
+        <a class="btn" href="#labnotes">Lab Notes</a>
+        <a class="btn" href="#about">About</a>
         <a class="btn primary" href="https://youtube.com" target="_blank" rel="noopener">YouTube</a>
       </nav>
     </div>
@@ -78,26 +85,23 @@ s<!doctype html>
         <div>
           <div class="kicker">The Earth Illusion</div>
           <div class="h1">Make reality feel weird.<br/>Then make it make sense.</div>
-          <div class="sub">Start with a classic that punches instantly: the <strong>railway illusion</strong> (Ponzo). Watch a measurement bar slide to prove the two lines are the same length—while your brain swears they’re not.</div>
+          <div class="sub">Three intuitive illusions that show how <strong>form</strong> and <strong>position</strong> shape what feels true. Then: subscribe to <em>Lab Notes</em> for deeper experiments and essays.</div>
           <div class="cta" style="margin-top:14px">
-            <a class="btn primary" href="#experiments">Run the demo</a>
-            <a class="btn" href="#about">Why it works</a>
+            <a class="btn primary" href="#experiments">Run the demos</a>
+            <a class="btn" href="#labnotes">Join Lab Notes</a>
           </div>
         </div>
-        <!-- Illusion Field: Ponzo with automatic comparator -->
-        <div class="card illusion" id="experiments">
+        <!-- Illusion 1 preview card (Ponzo) -->
+        <div class="card illusion">
           <div class="display">
             <svg id="ponzo" viewBox="0 0 800 560" xmlns="http://www.w3.org/2000/svg" aria-labelledby="ponzoTitle ponzoDesc" role="img">
-              <title id="ponzoTitle">Ponzo (Railway) Illusion demo</title>
-              <desc id="ponzoDesc">Two equal horizontal bars placed between converging rails appear to be different lengths. A sliding comparator bar periodically aligns to each bar to reveal they are identical.</desc>
-              <!-- Background -->
+              <title id="ponzoTitle">Ponzo (Railway) illusion — equal lines, warped by depth</title>
+              <desc id="ponzoDesc">Two equal horizontal bars placed between converging rails appear different in length. A sliding ruler aligns to each bar to show they are identical.</desc>
               <rect x="0" y="0" width="800" height="560" fill="#0e141b"/>
-              <!-- Converging rails -->
               <g id="rails" stroke="#2a3646" stroke-width="8" stroke-linecap="round">
                 <path d="M120,520 L360,80"/>
                 <path d="M680,520 L440,80"/>
               </g>
-              <!-- Ties -->
               <g id="ties" stroke="#1b2432" stroke-width="4">
                 <path d="M150,470 L650,470"/>
                 <path d="M180,420 L620,420"/>
@@ -106,12 +110,10 @@ s<!doctype html>
                 <path d="M270,270 L530,270"/>
                 <path d="M300,220 L500,220"/>
               </g>
-              <!-- Equal bars -->
               <g id="bars" fill="#7aa2ff">
                 <rect id="barNear"  x="220" y="410" width="360" height="18" rx="4"/>
-                <rect id="barFar"   x="220" y="230" width="360" height="18" rx="4"/>
+                <rect id="barFar"   x="320" y="230" width="360" height="18" rx="4"/>
               </g>
-              <!-- Comparator (slides up/down and snaps to each bar) -->
               <g id="compare" opacity="0.95">
                 <rect x="0" y="0" width="360" height="18" rx="4" fill="#5eead4"/>
                 <g id="chevrons" fill="#0b0d10">
@@ -121,91 +123,153 @@ s<!doctype html>
               </g>
             </svg>
           </div>
-          <div class="note">What your eyes insist: the upper bar is longer. What the comparator proves every few seconds: they’re identical. That mismatch is the illusion.</div>
           <div class="controls">
             <button class="pill" id="toggleRails" aria-pressed="false">Hide rails</button>
-            <button class="pill" id="pause" aria-pressed="false">Pause</button>
+            <button class="pill" id="pausePonzo" aria-pressed="false">Pause</button>
           </div>
+          <div class="note">Your eyes insist the upper bar is longer. The ruler proves they’re equal. <em>Context (position) rewrites truth.</em></div>
         </div>
       </div>
     </section>
 
-    <!-- ABOUT / WHY -->
+    <!-- EXPERIMENTS -->
+    <section id="experiments">
+      <div class="two">
+        <!-- Ebbinghaus -->
+        <div class="card illusion">
+          <div class="display">
+            <svg id="ebbing" viewBox="0 0 800 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="ebbTitle ebbDesc">
+              <title id="ebbTitle">Ebbinghaus (Titchener) illusion — size judged by surroundings</title>
+              <desc id="ebbDesc">Two identical orange circles are surrounded by small versus large blue circles, altering perceived size. A measuring bar verifies they match.</desc>
+              <rect width="800" height="520" fill="#0e141b"/>
+              <!-- Left cluster (surrounded by large circles) -->
+              <g id="clusterL" transform="translate(240,260)">
+                <circle cx="0" cy="0" r="60" fill="#ffb25b" id="targetL"/>
+                <!-- large surrounds -->
+                <g fill="#7aa2ff" opacity=".9">
+                  <circle cx="-150" cy="0" r="40"/>
+                  <circle cx="150" cy="0" r="40"/>
+                  <circle cx="0" cy="-150" r="40"/>
+                  <circle cx="0" cy="150" r="40"/>
+                  <circle cx="106" cy="106" r="40"/>
+                  <circle cx="-106" cy="106" r="40"/>
+                  <circle cx="106" cy="-106" r="40"/>
+                  <circle cx="-106" cy="-106" r="40"/>
+                </g>
+              </g>
+              <!-- Right cluster (surrounded by small circles) -->
+              <g id="clusterR" transform="translate(560,260)">
+                <circle cx="0" cy="0" r="60" fill="#ffb25b" id="targetR"/>
+                <!-- small surrounds -->
+                <g fill="#7aa2ff" opacity=".9">
+                  <circle cx="-95" cy="0" r="15"/>
+                  <circle cx="95" cy="0" r="15"/>
+                  <circle cx="0" cy="-95" r="15"/>
+                  <circle cx="0" cy="95" r="15"/>
+                  <circle cx="67" cy="67" r="15"/>
+                  <circle cx="-67" cy="67" r="15"/>
+                  <circle cx="67" cy="-67" r="15"/>
+                  <circle cx="-67" cy="-67" r="15"/>
+                </g>
+              </g>
+              <!-- Comparator bars under each target -->
+              <g id="ebbCompare">
+                <rect x="160" y="420" width="120" height="10" rx="4" fill="#5eead4"/>
+                <rect x="520" y="420" width="120" height="10" rx="4" fill="#5eead4"/>
+              </g>
+            </svg>
+          </div>
+          <div class="controls">
+            <button class="pill" id="toggleSurround" aria-pressed="false">Hide surrounds</button>
+          </div>
+          <div class="note">Both orange circles are identical. <em>Neighborhood (position) changes judgment.</em></div>
+        </div>
+
+        <!-- Checker‑Shadow (Adelson) -->
+        <div class="card illusion">
+          <div class="display">
+            <svg id="checker" viewBox="0 0 800 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="chkTitle chkDesc">
+              <title id="chkTitle">Checker‑Shadow — same shade, different story</title>
+              <desc id="chkDesc">A checkered board with a cast shadow makes two identical squares appear different. A reveal strip proves they match.</desc>
+              <rect width="800" height="520" fill="#0e141b"/>
+              <!-- Board -->
+              <g id="board" transform="translate(220,120)"></g>
+              <!-- Cylinder + shadow -->
+              <defs>
+                <radialGradient id="shadowGrad" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="rgba(0,0,0,.35)"/>
+                  <stop offset="100%" stop-color="rgba(0,0,0,0)"/>
+                </radialGradient>
+              </defs>
+              <g id="shadow">
+                <ellipse cx="400" cy="300" rx="190" ry="90" fill="url(#shadowGrad)"/>
+              </g>
+              <g id="cylinder" fill="#96b3ff" opacity=".95">
+                <ellipse cx="300" cy="190" rx="60" ry="18"/>
+                <rect x="240" y="190" width="120" height="140" rx="6"/>
+                <ellipse cx="300" cy="330" rx="60" ry="18"/>
+              </g>
+              <!-- Two equal squares A and B -->
+              <g id="targets" font-family="ui-sans-serif,system-ui" font-size="16" fill="#eaf2ff">
+                <rect id="sqA" x="280" y="260" width="60" height="60" fill="#6e6e6e"/>
+                <rect id="sqB" x="460" y="220" width="60" height="60" fill="#6e6e6e"/>
+                <text x="310" y="255">A</text>
+                <text x="490" y="215">B</text>
+              </g>
+              <!-- Reveal strip (hidden by default) -->
+              <rect id="bridge" x="280" y="270" width="240" height="40" fill="#6e6e6e" opacity="0"/>
+            </svg>
+          </div>
+          <div class="controls">
+            <button class="pill" id="revealShade" aria-pressed="false">Reveal same shade</button>
+          </div>
+          <div class="note">Square A looks darker than B—until you reveal the bridge. <em>Illumination (position) edits truth.</em></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY / ABOUT -->
     <section id="about">
       <div class="two">
         <div class="card" style="padding:20px">
-          <h3 style="margin-top:0">Why your brain gets fooled</h3>
-          <p><strong>Ponzo Illusion.</strong> Your visual system uses <em>context</em> to infer size. The converging rails scream “depth.” In depth, objects farther away cast a smaller retinal image. Your brain compensates—so the upper bar (placed where the rails are closer) is perceived as larger even though both bars are equal.</p>
-          <p>That’s the Earth Illusion in practice: <em>Truth = Form + Position.</em> The form (two equal bars) stays fixed; the position (context of depth cues) changes the truth you experience.</p>
+          <h3 style="margin-top:0">Why this matters</h3>
+          <p><strong>Perception writes your world.</strong> Your brain edits for context, expectation, and position. On this page, nothing cheated—but it often <em>felt</em> like it did. That’s the Earth Illusion: <strong>Truth = Form + Position.</strong></p>
+          <p>Our work: design precise, repeatable experiments that reveal these edits—and turn them into tools for better attention, argument, and identity work.</p>
         </div>
         <div class="card" style="padding:20px">
-          <h3 style="margin-top:0">Precision, not gimmicks</h3>
-          <p>The bars are equal in the SVG source. The green comparator is just a ruler that slides—no stretching, no trick code. You can right‑click → Inspect to verify the widths are identical (<code>width="360"</code>).</p>
-          <p style="color:var(--good)">Try this: cover the rails with your fingers. The illusion weakens or vanishes.</p>
+          <h3 style="margin-top:0">House rules</h3>
+          <ul style="margin:0 0 0 18px; line-height:1.7">
+            <li>Everything demonstrable. No gimmicks, no vibes-only mysticism.</li>
+            <li>Named handles you can practice (and teach).</li>
+            <li>Signal over noise. Monthly cadence, lifetime calibration.</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <!-- SECOND ILLUSION: Müller-Lyer toggle -->
-    <section>
-      <div class="card" style="padding:20px">
-        <h3 style="margin:6px 0 14px 0">Bonus: Müller‑Lyer, same lesson</h3>
-        <div class="display" style="padding:18px">
-          <svg id="muller" viewBox="0 0 800 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Müller-Lyer illusion">
-            <defs>
-              <marker id="arrowIn" markerWidth="12" markerHeight="12" refX="6" refY="6" orient="auto">
-                <path d="M0,6 L12,0 L12,12 Z" fill="#a0b1c8"/>
-              </marker>
-              <marker id="arrowOut" markerWidth="12" markerHeight="12" refX="6" refY="6" orient="auto">
-                <path d="M12,6 L0,0 L0,12 Z" fill="#a0b1c8"/>
-              </marker>
-            </defs>
-            <g stroke="#eaf2ff" stroke-width="6" stroke-linecap="round">
-              <line x1="80" y1="70" x2="720" y2="70" marker-start="url(#arrowIn)" marker-end="url(#arrowIn)"/>
-              <line x1="80" y1="150" x2="720" y2="150" marker-start="url(#arrowOut)" marker-end="url(#arrowOut)"/>
-            </g>
-            <g id="ruler" transform="translate(80,0)">
-              <rect x="0" y="58" width="640" height="12" rx="3" fill="#5eead4" opacity=".9"/>
-              <rect x="0" y="138" width="640" height="12" rx="3" fill="#5eead4" opacity=".4"/>
-            </g>
-          </svg>
+    <!-- LAB NOTES / SUBSTACK -->
+    <section id="labnotes">
+      <div class="card" style="padding:24px">
+        <h3 style="margin:6px 0 10px 0">Lab Notes — subscribe on Substack</h3>
+        <p class="sub" style="margin:0 0 12px 0">Short essays, new demos, and field notes. One powerful email every month.</p>
+        <div class="display" style="padding:0; background:#0c1118">
+          <!-- Replace YOUR-SUBSTACK with your Substack subdomain -->
+          <iframe id="substackEmbed" src="https://perceptualstewardship.substack.com/embed" width="100%" height="280" style="border:0; background:#0c1118" frameborder="0" scrolling="no" title="Substack Subscribe"></iframe>
         </div>
-        <p class="note">Same true length (640). Flip the arrowheads and your brain flips the judgment.</p>
+        <div class="cta" style="margin-top:12px">
+          <a class="btn primary" href="https://perceptualstewardship.substack.com" target="_blank" rel="noopener">Open Substack</a>
+          <a class="btn" href="#top">Back to top</a>
+        </div>
       </div>
     </section>
 
-    <!-- EPISODES -->
+    <!-- EPISODES (optional placeholder) -->
     <section id="episodes">
       <h2 style="margin:0 0 12px 0">Episodes</h2>
       <div class="thumbs">
         <div class="thumb">Trailer embed</div>
         <div class="thumb">Episode 1</div>
         <div class="thumb">Episode 2</div>
-      </div>
-      <div class="cta" style="margin-top:14px">
-        <a class="btn primary" href="https://youtube.com" target="_blank" rel="noopener">Subscribe</a>
-        <a class="btn" href="#newsletter">Join Lab Notes</a>
-      </div>
-    </section>
-
-    <!-- NEWSLETTER / CONTACT -->
-    <section id="newsletter">
-      <div class="two">
-        <div class="card" style="padding:20px">
-          <h3 style="margin:0 0 8px 0">Lab Notes</h3>
-          <p class="sub" style="margin:0 0 12px 0">One thoughtful email per week with new experiments and behind‑the‑scenes builds.</p>
-          <form action="mailto:hello@mault.co" method="post" enctype="text/plain" onsubmit="alert('Pop open your email client to send. We’ll wire a real form later.');">
-            <div style="display:flex; gap:8px; flex-wrap:wrap">
-              <input required name="email" type="email" placeholder="you@example.com" style="flex:1; min-width:220px; padding:12px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.15); background:#0e141b; color:#eaf2ff"/>
-              <button class="btn primary" type="submit">Request Invite</button>
-            </div>
-          </form>
-        </div>
-        <div class="card" style="padding:20px">
-          <h3 style="margin:0 0 8px 0">About PSL</h3>
-          <p>We design clean, testable experiences that reveal how attention builds your world—then turn them into tools you can actually use. Built in Grand Forks, North Dakota.</p>
-          <p style="color:var(--muted)">Media or collab? <a href="mailto:hello@mault.co">hello@mault.co</a></p>
-        </div>
       </div>
     </section>
   </main>
@@ -218,10 +282,13 @@ s<!doctype html>
   </footer>
 
   <script>
-    // year
+    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Ponzo comparator with smooth cross‑bar animation + controls
+    // Respect reduced motion
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // --- Ponzo comparator animation + controls ---
     (function(){
       const svg = document.getElementById('ponzo');
       if(!svg) return;
@@ -232,53 +299,67 @@ s<!doctype html>
       const ties    = svg.getElementById ? svg.getElementById('ties')    : document.getElementById('ties');
 
       const btnRails = document.getElementById('toggleRails');
-      const btnPause = document.getElementById('pause');
+      const btnPause = document.getElementById('pausePonzo');
 
-      function bboxOf(bar){
-        return {
-          x: +bar.getAttribute('x'),
-          y: +bar.getAttribute('y'),
-          w: +bar.getAttribute('width')
-        };
-      }
+      function box(bar){ return { x:+bar.getAttribute('x'), y:+bar.getAttribute('y'), w:+bar.getAttribute('width') }; }
+      let toFar=false, paused=prefersReduced, cur=box(barNear);
 
-      let toFar = false, paused = false, current = bboxOf(barNear);
-      function animateTo(target){
-        const from = current; current = target;
-        // ensure comparator width matches bar
+      function place(target){
         const rect = compare.querySelector('rect');
         rect.setAttribute('width', String(target.w));
-        const chevrons = compare.querySelectorAll('#chevrons path');
-        chevrons[1].setAttribute('transform', `translate(${target.w-22},0)`);
-        const keyframes = [
-          { transform: `translate(${from.x}px, ${from.y}px)` },
-          { transform: `translate(${target.x}px, ${target.y}px)` }
-        ];
-        compare.animate(keyframes, { duration: 1800, easing: 'cubic-bezier(.25,.8,.25,1)', fill:'forwards'});
+        const chev = compare.querySelectorAll('#chevrons path');
+        chev[1].setAttribute('transform', `translate(${target.w-22},0)`);
+        compare.style.transform = `translate(${target.x}px, ${target.y}px)`;
       }
-
-      function tick(){
-        if(paused) return setTimeout(tick, 400);
-        animateTo(toFar ? bboxOf(barNear) : bboxOf(barFar));
-        toFar = !toFar;
-        setTimeout(tick, 1800);
+      function animateTo(target){
+        const from = cur; cur = target;
+        // ensure comparator width matches
+        const rect = compare.querySelector('rect'); rect.setAttribute('width', String(target.w));
+        const chev = compare.querySelectorAll('#chevrons path'); chev[1].setAttribute('transform', `translate(${target.w-22},0)`);
+        if(prefersReduced || paused){ place(target); return; }
+        compare.animate([{ transform:`translate(${from.x}px, ${from.y}px)` },{ transform:`translate(${target.x}px, ${target.y}px)`}], { duration:900, easing:'cubic-bezier(.25,.8,.25,1)', fill:'forwards'});
       }
-      tick();
+      function loop(){ if(paused) return; animateTo(toFar?box(barNear):box(barFar)); toFar=!toFar; setTimeout(loop, 1800); }
+      place(cur); setTimeout(loop, 600);
 
       btnRails?.addEventListener('click', ()=>{
-        const on = btnRails.getAttribute('aria-pressed') === 'true';
-        const next = !on; btnRails.setAttribute('aria-pressed', String(next));
-        btnRails.textContent = next ? 'Show rails' : 'Hide rails';
-        [rails, ties].forEach(g=> g.style.opacity = next ? '0' : '1');
+        const on = btnRails.getAttribute('aria-pressed') === 'true'; const next=!on; btnRails.setAttribute('aria-pressed', String(next));
+        btnRails.textContent = next ? 'Show rails' : 'Hide rails'; [rails,ties].forEach(g=> g.style.opacity = next ? '0' : '1');
       });
-
       btnPause?.addEventListener('click', ()=>{
-        const on = btnPause.getAttribute('aria-pressed') === 'true';
-        const next = !on; btnPause.setAttribute('aria-pressed', String(next));
-        btnPause.textContent = next ? 'Resume' : 'Pause';
-        paused = next;
-        if(!paused) tick();
+        const on = btnPause.getAttribute('aria-pressed') === 'true'; const next=!on; btnPause.setAttribute('aria-pressed', String(next));
+        btnPause.textContent = next ? 'Resume' : 'Pause'; paused=next; if(!paused) loop();
       });
+    })();
+
+    // --- Ebbinghaus controls ---
+    (function(){
+      const svg = document.getElementById('ebbing'); if(!svg) return;
+      const surrounds = svg.querySelectorAll('#clusterL g, #clusterR g');
+      const btn = document.getElementById('toggleSurround');
+      btn?.addEventListener('click', ()=>{
+        const on = btn.getAttribute('aria-pressed')==='true'; const next=!on; btn.setAttribute('aria-pressed', String(next));
+        btn.textContent = next ? 'Show surrounds' : 'Hide surrounds'; surrounds.forEach(g=> g.style.opacity = next? '0':'1');
+      });
+    })();
+
+    // --- Checker‑Shadow reveal ---
+    (function(){
+      const svg = document.getElementById('checker'); if(!svg) return;
+      const board = svg.getElementById ? svg.getElementById('board') : document.getElementById('board');
+      const bridge = svg.getElementById ? svg.getElementById('bridge') : document.getElementById('bridge');
+      // draw board 8x8 two tones
+      const size = 60; const cols = 6, rows = 6; // compact board
+      for(let r=0;r<rows;r++){
+        for(let c=0;c<cols;c++){
+          const sq = document.createElementNS('http://www.w3.org/2000/svg','rect');
+          sq.setAttribute('x', String(c*size)); sq.setAttribute('y', String(r*size)); sq.setAttribute('width', String(size)); sq.setAttribute('height', String(size));
+          const light = '#bfc7d9', dark = '#303744'; const fill = (r+c)%2? dark: light; sq.setAttribute('fill', fill);
+          board.appendChild(sq);
+        }
+      }
+      const btn = document.getElementById('revealShade'); let shown=false; 
+      btn?.addEventListener('click', ()=>{ shown=!shown; bridge.style.opacity = shown? '1':'0'; btn.textContent = shown? 'Hide reveal' : 'Reveal same shade'; btn.setAttribute('aria-pressed', String(shown)); });
     })();
   </script>
 </body>
