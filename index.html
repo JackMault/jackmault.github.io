@@ -15,15 +15,33 @@
     .logo span{color:#001b1a; font-weight:900;}
     main{min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; position:relative; overflow:hidden;}
     h1{font-size:3rem; text-align:center; margin:0; line-height:1.1;}
-    p.tag{color:#a0b1c8; text-align:center; max-width:600px;}
+    p.tag{color:#a0b1c8; text-align:center; max-width:650px;}
 
-    /* Fraser-Wilcox / Peripheral Drift Illusion */
+    /* Earth Illusion: depth-from-motion parallax using real mouse/scroll data */
     .illusion {
-      position:absolute; top:0; left:0; width:100%; height:100%; display:grid; place-items:center;
+      position:absolute; top:0; left:0; width:100%; height:100%; overflow:hidden; perspective:1000px;
     }
-    svg {width:100%; height:100%;}
-    .tile {
-      transform-origin:center;
+    .layer {
+      position:absolute; top:50%; left:50%; transform-style:preserve-3d;
+    }
+    .earth {
+      width:500px; height:500px; border-radius:50%;
+      background:radial-gradient(circle at 30% 30%, #4fc3f7, #01579b);
+      box-shadow:inset -60px -60px 120px rgba(0,0,0,0.5), inset 60px 60px 120px rgba(255,255,255,0.1);
+    }
+    .clouds {
+      width:520px; height:520px; border-radius:50%;
+      background:radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 60%);
+      mix-blend-mode:screen;
+    }
+    .stars {
+      position:absolute; top:0; left:0; width:200%; height:200%;
+      background-image: radial-gradient(#fff 1px, transparent 1px);
+      background-size: 50px 50px;
+      animation: driftStars 200s linear infinite;
+    }
+    @keyframes driftStars {
+      from {transform:translate(0,0);} to {transform:translate(-50px,-50px);}
     }
   </style>
 </head>
@@ -39,55 +57,29 @@
   </header>
   <main>
     <div class="illusion">
-      <svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <radialGradient id="grad" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#fff"/>
-            <stop offset="100%" stop-color="#000"/>
-          </radialGradient>
-        </defs>
-        <!-- Create multiple "rotating snakes" illusion rings -->
-        <g id="illusion-grid">
-          <!-- Generate 3x3 grid of illusion circles -->
-          <script type="application/ecmascript"><![CDATA[
-            const svgNS = 'http://www.w3.org/2000/svg';
-            const g = document.getElementById('illusion-grid');
-            function createRing(cx,cy,radius){
-              const group = document.createElementNS(svgNS,'g');
-              group.setAttribute('transform',`translate(${cx},${cy})`);
-              const segments = 24;
-              for(let i=0;i<segments;i++){
-                const arc = document.createElementNS(svgNS,'path');
-                const startAngle = (i/segments)*2*Math.PI;
-                const endAngle = ((i+1)/segments)*2*Math.PI;
-                const x1 = Math.cos(startAngle)*radius;
-                const y1 = Math.sin(startAngle)*radius;
-                const x2 = Math.cos(endAngle)*radius;
-                const y2 = Math.sin(endAngle)*radius;
-                const largeArc = endAngle-startAngle > Math.PI ? 1 : 0;
-                const d = `M${x1},${y1} A${radius},${radius} 0 ${largeArc} 1 ${x2},${y2} L${x2*0.8},${y2*0.8} A${radius*0.8},${radius*0.8} 0 ${largeArc} 0 ${x1*0.8},${y1*0.8} Z`;
-                arc.setAttribute('d',d);
-                arc.setAttribute('fill', i%4===0||i%4===1 ? '#000' : '#fff');
-                group.appendChild(arc);
-              }
-              return group;
-            }
-            let index=0;
-            for(let row=0;row<3;row++){
-              for(let col=0;col<3;col++){
-                const ring = createRing(col*250-250, row*250-250, 100);
-                g.appendChild(ring);
-                index++;
-              }
-            }
-          ]]></script>
-        </g>
-      </svg>
+      <div class="stars"></div>
+      <div class="layer" id="layer-earth">
+        <div class="earth"></div>
+      </div>
+      <div class="layer" id="layer-clouds">
+        <div class="clouds"></div>
+      </div>
     </div>
     <h1>The Earth Illusion</h1>
-    <p class="tag">A genuine peripheral drift illusion — no animation. Shift your gaze, blink, or move your eyes slightly, and the rings will seem to rotate on their own. This is your visual system interpreting contrast and luminance gradients as motion.</p>
+    <p class="tag">A natural parallax illusion: as you move your head, scroll, or shift your gaze, the Earth and its clouds appear to drift against a star field. This effect emerges from depth cues and relative motion—your brain interprets layered displacement as real spatial depth, even on a flat screen.</p>
   </main>
   <footer>© <span id="year"></span> Mault • Perceptual Stewardship Lab</footer>
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const layerEarth = document.getElementById('layer-earth');
+    const layerClouds = document.getElementById('layer-clouds');
+    function updateParallax(e){
+      const x = (e.clientX / window.innerWidth - 0.5) * 40;
+      const y = (e.clientY / window.innerHeight - 0.5) * 40;
+      layerEarth.style.transform = `translate(-50%,-50%) rotateY(${x/5}deg) rotateX(${-y/5}deg)`;
+      layerClouds.style.transform = `translate(-50%,-50%) rotateY(${x/3}deg) rotateX(${-y/3}deg)`;
+    }
+    window.addEventListener('mousemove', updateParallax);
+  </script>
 </body>
 </html>
