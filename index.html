@@ -145,13 +145,14 @@
               <div class="corner c4"></div>
               <div class="center-dot" title="Stare here"></div>
             </div>
-            <div class="exp-controls">
-              <button class="pill" id="start">Start 60s</button>
-              <button class="pill" id="reset" disabled>Reset</button>
-              <div class="pill" id="readout">Seconds until colors faded: —</div>
+            <div class=\"exp-controls\">
+              <button class=\"pill\" id=\"start\">Start 60s</button>
+              <button class=\"pill\" id=\"reset\" disabled>Reset</button>
+              <button class=\"pill\" id=\"assist\" aria-pressed=\"false\" title=\"Demo aid; not the real effect\">Assist: OFF</button>
+              <div class=\"pill\" id=\"readout\">Seconds until colors faded: —</div>
             </div>
             <div class="meter" aria-hidden="true" style="margin-top:12px"><div class="bar" id="bar"></div></div>
-            <div style="margin-top:10px; color:var(--muted)">Instructions: Sit still. Stare at the center dot for sixty seconds without moving your eyes. Many people report the corner colors <em>vanishing</em>. That’s retinal stabilization (Troxler fading) + attention filtering. Log your time, then scroll for the why.</div>
+            <div style=\"margin-top:10px; color:var(--muted)\">Instructions: Sit still. Stare at the center dot for sixty seconds without moving your eyes. Some people see the corner colors <em>fade</em>—that’s Troxler fading (neurons adapt to unchanging input) + attention filtering. If nothing happens, you’re normal; try stepping back 1–2 feet, dim the screen slightly, keep your gaze still, and give it 30–60s. <strong>Assist</strong> simulates a fade for demo purposes; keep it OFF for a pure test.</div>
           </div>
         </div>
       </div>
@@ -214,6 +215,9 @@
     const readout = document.getElementById('readout');
     const bar = document.getElementById('bar');
     const corners = [...document.querySelectorAll('.corner')];
+    const assistBtn = document.getElementById('assist');
+
+    let assistOn = false;
 
     let t0, timer, fadeTimer, running=false, elapsed=0;
 
@@ -224,11 +228,13 @@
       startBtn.disabled = true; resetBtn.disabled = false;
       readout.textContent = 'Seconds until colors faded: —';
       bar.style.width = '0%';
-      // After 8–20s, begin gently fading corners to amplify the effect
-      const delay = 8000 + Math.random()*12000;
-      fadeTimer = setTimeout(()=>{
-        corners.forEach(c=> c.style.opacity = .15);
-      }, delay);
+      if(assistOn){
+        // Demo-only aid: simulate fade so first-timers can see the idea
+        const delay = 8000 + Math.random()*12000;
+        fadeTimer = setTimeout(()=>{
+          corners.forEach(c=> c.style.opacity = .15);
+        }, delay);
+      }
       timer = requestAnimationFrame(tick);
     }
 
@@ -259,6 +265,12 @@
 
     startBtn.addEventListener('click', start);
     resetBtn.addEventListener('click', reset);
+    function toggleAssist(){
+      assistOn = !assistOn;
+      assistBtn.setAttribute('aria-pressed', String(assistOn));
+      assistBtn.textContent = 'Assist: ' + (assistOn ? 'ON' : 'OFF');
+    }
+    assistBtn.addEventListener('click', toggleAssist);
 
     // Keyboard shortcuts
     window.addEventListener('keydown', (e)=>{
