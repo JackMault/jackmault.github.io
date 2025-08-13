@@ -346,8 +346,8 @@
     // --- Checker‑Shadow reveal ---
     (function(){
       const svg = document.getElementById('checker'); if(!svg) return;
-      const board = svg.getElementById ? svg.getElementById('board') : document.getElementById('board');
-      const bridge = svg.getElementById ? svg.getElementById('bridge') : document.getElementById('bridge');
+      const board = svg.getElementById? svg.getElementById('board') : document.getElementById('board');
+      const bridge = svg.getElementById? svg.getElementById('bridge') : document.getElementById('bridge');
       // draw board 8x8 two tones
       const size = 60; const cols = 6, rows = 6; // compact board
       for(let r=0;r<rows;r++){
