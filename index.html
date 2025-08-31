@@ -22,14 +22,13 @@
 
     <style>
       :root {
-        --bg: #0b0c10;            /* near-black */
-        --elev-1: #101218;        /* card bg */
-        --elev-2: #151822;        /* hover bg */
-        --text: #e8ebf0;          /* primary text */
-        --muted: #a8b0bd;         /* secondary text */
-        --accent: #9ef0d0;        /* mint accent */
-        --accent-2: #9ec9f0;      /* blue accent */
-        --danger: #ff7a7a;        /* subtle red for warnings */
+        --bg: #0b0c10;
+        --elev-1: #101218;
+        --elev-2: #151822;
+        --text: #e8ebf0;
+        --muted: #a8b0bd;
+        --accent: #9ef0d0;
+        --accent-2: #9ec9f0;
         --radius: 18px;
         --shadow: 0 10px 30px rgba(0,0,0,.35);
         --maxw: 1200px;
@@ -38,7 +37,7 @@
       html, body { height: 100%; }
       body {
         margin: 0;
-        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
         color: var(--text);
         background: radial-gradient(1200px 800px at 85% -10%, rgba(158, 240, 208, .10), transparent 60%),
                     radial-gradient(1000px 600px at -10% -10%, rgba(158, 201, 240, .12), transparent 55%),
@@ -49,139 +48,51 @@
       a { color: var(--accent); text-decoration: none; }
       a:hover { opacity: .9; }
 
-      /* NAV */
-      .nav {
-        position: sticky; top: 0; z-index: 50;
-        backdrop-filter: saturate(140%) blur(10px);
-        background: rgba(11,12,16,.55);
-        border-bottom: 1px solid rgba(255,255,255,.06);
-      }
-      .nav-inner {
-        max-width: var(--maxw); margin: 0 auto; display: flex; align-items: center; gap: 24px;
-        padding: 14px 20px;
-      }
+      .nav { position: sticky; top: 0; z-index: 50; backdrop-filter: saturate(140%) blur(10px); background: rgba(11,12,16,.55); border-bottom: 1px solid rgba(255,255,255,.06); }
+      .nav-inner { max-width: var(--maxw); margin: 0 auto; display: flex; align-items: center; gap: 24px; padding: 14px 20px; }
       .brand { display: flex; align-items: center; gap: 14px; }
-      .logo {
-        width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center;
-        background: linear-gradient(135deg, var(--accent), var(--accent-2));
-        color: #0b0c10; font-weight: 800; letter-spacing: .5px;
-        box-shadow: var(--shadow);
-      }
+      .logo { width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center; background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #0b0c10; font-weight: 800; letter-spacing: .5px; box-shadow: var(--shadow); }
       .brand-title { font-weight: 800; letter-spacing: .5px; }
       .tagline { color: var(--muted); font-size: 12px; }
-
       .nav-links { margin-left: auto; display: flex; align-items: center; gap: 18px; }
-      .nav-links a { color: var(--text); opacity: .9; }
-      .nav-links a[aria-current="page"] { color: var(--accent); }
-      .btn {
-        display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-        font-weight: 600; padding: 10px 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,.1);
-        background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
-      }
-      .btn.cta { background: linear-gradient(180deg, var(--accent), #65d2b0); color: #0b0c10; border-color: transparent; box-shadow: 0 4px 18px rgba(158, 240, 208,.35); }
+      .btn { display: inline-flex; align-items: center; justify-content: center; font-weight: 600; padding: 10px 16px; border-radius: 12px; }
+      .btn.cta { background: linear-gradient(180deg, var(--accent), #65d2b0); color: #0b0c10; box-shadow: 0 4px 18px rgba(158, 240, 208,.35); }
+      .btn.ghost { border: 1px solid rgba(255,255,255,.1); background: rgba(255,255,255,.02); color: var(--text); }
       .btn.ghost:hover { background: rgba(255,255,255,.06); }
 
-      /* HERO */
       .hero { max-width: var(--maxw); margin: 40px auto 0; padding: 60px 20px; display: grid; grid-template-columns: 1.15fr .85fr; gap: 34px; align-items: center; }
-      .hero h1 { font-family: "Playfair Display", serif; font-weight: 700; letter-spacing: .3px; font-size: clamp(32px, 5vw, 62px); line-height: 1.08; margin: 0 0 16px; }
+      .hero h1 { font-family: "Playfair Display", serif; font-size: clamp(32px, 5vw, 62px); margin: 0 0 16px; }
       .hero p { color: var(--muted); font-size: clamp(15px, 2.2vw, 18px); max-width: 55ch; margin: 0 0 24px; }
-      .badges { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 28px; }
-      .badge { border: 1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.03); padding: 6px 10px; border-radius: 999px; font-size: 13px; color: var(--text); }
 
-      .hero-card { position: relative; background: var(--elev-1); border: 1px solid rgba(255,255,255,.08); border-radius: 22px; box-shadow: var(--shadow); overflow: hidden; }
-      .hero-card .media { aspect-ratio: 4/5; background: linear-gradient(135deg, rgba(158, 201, 240,.06), rgba(158, 240, 208,.08)),
-                                                  radial-gradient(500px 400px at 30% 10%, rgba(255,255,255,.07), transparent 60%),
-                                                  #0f1117;
-                          display: grid; place-items: center; }
-      .hero-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
-      .hero-card figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 14px 16px; background: linear-gradient(180deg, transparent, rgba(0,0,0,.55)); font-size: 13px; color: var(--muted); }
-
-      /* SECTIONS */
       section { max-width: var(--maxw); margin: 0 auto; padding: 70px 20px; }
-      h2 { font-size: clamp(26px, 3.2vw, 40px); letter-spacing: .2px; margin: 0 0 12px; font-weight: 800; }
+      h2 { font-size: clamp(26px, 3.2vw, 40px); margin: 0 0 12px; font-weight: 800; }
       .sub { color: var(--muted); margin-bottom: 30px; }
 
       .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
       .card { background: var(--elev-1); border: 1px solid rgba(255,255,255,.08); border-radius: var(--radius); padding: 22px; box-shadow: var(--shadow); }
-      .card h3 { margin: 0 0 10px; font-size: 18px; letter-spacing: .2px; }
+      .card h3 { margin: 0 0 10px; font-size: 18px; }
       .card p { margin: 0; color: var(--muted); }
       .card ul { margin: 10px 0 0 18px; color: var(--muted); }
 
-      /* Process Map */
-      .process {
-        position: relative; padding: 26px; border-radius: var(--radius); background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
-        border: 1px dashed rgba(255,255,255,.15);
-      }
+      .process { margin-top: 22px; background: var(--elev-1); padding: 26px; border-radius: var(--radius); border: 1px dashed rgba(255,255,255,.15); }
       .steps { display: grid; gap: 14px; }
       .step { display: grid; grid-template-columns: 44px 1fr; gap: 14px; align-items: start; }
-      .step .n { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; font-weight: 700; color: #0b0c10;
-                 background: linear-gradient(135deg, var(--accent), var(--accent-2)); box-shadow: 0 6px 16px rgba(158,240,208,.35); }
+      .step .n { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; font-weight: 700; color: #0b0c10; background: linear-gradient(135deg, var(--accent), var(--accent-2)); }
       .step .body h4 { margin: 0 0 6px; font-size: 16px; }
       .step .body p { margin: 0; color: var(--muted); }
-      .step .meta { margin-top: 8px; font-size: 12px; color: var(--muted); opacity: .85; }
 
-      /* Earth Illusion teaser */
-      .teaser { display: grid; grid-template-columns: 1.2fr .8fr; gap: 16px; align-items: center; }
-      .teaser .illus { height: 260px; border-radius: var(--radius);
-                       background: radial-gradient(220px 180px at 60% 30%, rgba(158,240,208,.25), transparent 60%),
-                                   radial-gradient(200px 140px at 30% 70%, rgba(158,201,240,.25), transparent 60%),
-                                   linear-gradient(135deg, #0e1116, #11141a);
-                       border: 1px solid rgba(255,255,255,.08); box-shadow: var(--shadow); }
-
-      /* Footer */
       footer { border-top: 1px solid rgba(255,255,255,.08); background: rgba(255,255,255,.02); }
-      .footer-inner { max-width: var(--maxw); margin: 0 auto; padding: 30px 20px; display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: center; }
+      .footer-inner { max-width: var(--maxw); margin: 0 auto; padding: 30px 20px; display: flex; justify-content: space-between; }
       .small { color: var(--muted); font-size: 13px; }
 
-      /* Modal */
-      .modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,.55); display: none; place-items: center; z-index: 200; }
-      .modal { width: min(720px, 92vw); max-height: 86vh; overflow: auto; border-radius: 20px; background: var(--elev-1); border: 1px solid rgba(255,255,255,.12); box-shadow: var(--shadow); }
-      .modal header { padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,.08); }
-      .modal header h3 { margin: 0; font-size: 18px; }
-      .modal .content { padding: 18px 20px 24px; }
-      .modal .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-      .modal label { display: block; font-size: 13px; color: var(--muted); margin-bottom: 6px; }
-      .modal input, .modal select, .modal textarea { width: 100%; padding: 12px 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,.14); background: #0e1116; color: var(--text); }
-      .modal textarea { min-height: 120px; resize: vertical; }
-      .modal .actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 14px; }
-
-      /* Responsive */
-      @media (max-width: 980px) {
-        .hero { grid-template-columns: 1fr; }
-        .teaser { grid-template-columns: 1fr; }
-        .grid-3 { grid-template-columns: 1fr; }
-      }
+      @media (max-width: 980px) { .hero { grid-template-columns: 1fr; } .grid-3 { grid-template-columns: 1fr; } }
     </style>
-
-    <!-- Structured Data (update values as needed) -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Mault Co.",
-        "url": "https://mault.co/",
-        "logo": "https://mault.co/assets/logo.png",
-        "sameAs": [
-          "https://www.linkedin.com/in/jackmault/"
-        ]
-      }
-    </script>
-
-    <script>
-      // === SITE SETTINGS ===
-      // Replace with your contact email (used by the Apply form's mailto fallback)
-      const SITE_CONTACT_EMAIL = "replace-me@domain.com"; // e.g., "hello@mault.co"
-      // If you prefer sending to a Google Form, put the public form URL here (leave empty to use mailto)
-      const APPLICATION_FORM_URL = ""; // example: "https://forms.gle/your-form-id"
-    </script>
   </head>
-
   <body>
-    <!-- NAVBAR -->
-    <nav class="nav" aria-label="Primary">
+    <nav class="nav">
       <div class="nav-inner">
         <a class="brand" href="#">
-          <div class="logo" aria-hidden="true">M</div>
+          <div class="logo">M</div>
           <div>
             <div class="brand-title">Mault&nbsp;Co.</div>
             <div class="tagline">Perceptual Stewardship Lab</div>
@@ -189,289 +100,106 @@
         </a>
         <div class="nav-links">
           <a href="#miir" class="btn ghost">MIIR</a>
-          <a href="earth-illusion.html" class="btn ghost" title="Opens the Earth Illusion page">The Earth Illusion</a>
+          <a href="earth-illusion.html" class="btn ghost">The Earth Illusion</a>
           <a href="#lab" class="btn ghost">Lab</a>
-          <a href="#apply" class="btn cta" data-apply>Apply</a>
+          <a href="#apply" class="btn cta">Apply</a>
         </div>
       </div>
     </nav>
 
-    <!-- HERO -->
-    <header class="hero" id="home">
+    <header class="hero">
       <div>
         <h1>The first <span style="color:var(--accent)">Perceptual Stewardship Lab</span></h1>
-        <p>Mault Co. designs experiences that sharpen identity and steward attention. Our flagship, <strong>MIIR</strong> (Model Instantiation for Identity Refinement), combines a guided interview, measurable RTSS plots, and a high‑end portrait that anchors the shift.</p>
-        <div class="badges">
-          <span class="badge">Identity × Clarity</span>
-          <span class="badge">Measured Change</span>
-          <span class="badge">Heirloom Portrait</span>
-        </div>
-        <div class="cta">
-          <a class="btn cta" data-apply>Apply to MIIR</a>
-          <a class="btn ghost" href="#miir">How MIIR Works</a>
-        </div>
+        <p>Mault Co. designs experiences that sharpen identity and steward attention. Our flagship, <strong>MIIR</strong>, combines guided interviews, measurable change plots, and high‑end portraits that anchor personal growth.</p>
+        <a class="btn cta" href="#apply">Apply to MIIR</a>
       </div>
-      <figure class="hero-card" aria-labelledby="hero-media-caption">
-        <div class="media" role="img" aria-label="Sample portrait from a MIIR session">
-          <!-- Replace with your own image: place a file at /assets/portrait.jpg in your repo -->
-          <img src="/assets/portrait.jpg" alt="Portrait—example of Mault Co. identity portrait" onerror="this.style.display='none'">
-          <svg viewBox="0 0 300 380" width="100%" height="100%" aria-hidden="true" style="position:absolute;inset:0;opacity:.16">
-            <defs>
-              <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="var(--accent)"/>
-                <stop offset="100%" stop-color="var(--accent-2)"/>
-              </linearGradient>
-            </defs>
-            <rect x="16" y="16" width="268" height="348" rx="22" fill="none" stroke="url(#g)" stroke-width="2" />
-          </svg>
+      <figure class="hero-card">
+        <div class="media">
+          <img src="/assets/portrait.jpg" alt="Portrait example" />
         </div>
-        <figcaption id="hero-media-caption">A MIIR portrait anchors the identity you articulate.</figcaption>
       </figure>
     </header>
 
-    <!-- MIIR OVERVIEW -->
-    <section id="miir" aria-labelledby="miir-title">
-      <h2 id="miir-title">MIIR — Model Instantiation for Identity Refinement</h2>
-      <p class="sub">A premium, interview‑driven identity experience with measurable outcomes and a portrait you’ll keep for life.</p>
-
-      <div class="grid-3" role="list">
-        <article class="card" role="listitem">
+    <section id="miir">
+      <h2>MIIR — Model Instantiation for Identity Refinement</h2>
+      <p class="sub">A premium, identity‑driven experience with measurable outcomes and a portrait you’ll keep for life.</p>
+      <div class="grid-3">
+        <article class="card">
           <h3>Value Proposition</h3>
           <ul>
-            <li>Gain <strong>crisp language</strong> for who you are and what you’re building.</li>
-            <li>Two RTSS plots provide a <strong>visible measure</strong> of your confidence shift.</li>
-            <li>Leave with a <strong>museum‑grade portrait</strong> that anchors the change.</li>
+            <li>Clarity about who you are and what you’re building.</li>
+            <li>Visible measures of your shift in perspective.</li>
+            <li>A museum‑grade portrait that anchors the change.</li>
           </ul>
         </article>
-        <article class="card" role="listitem">
+        <article class="card">
           <h3>Risk Mitigation</h3>
           <ul>
-            <li><strong>Checkpoint after Plot A:</strong> continue or pause—your call.</li>
-            <li><strong>Clarity‑first scoping:</strong> we set expectations in writing.</li>
-            <li><strong>Privacy:</strong> your session is confidential by default.</li>
+            <li>Checkpoints ensure comfort at each stage.</li>
+            <li>Expectations are outlined before the session begins.</li>
+            <li>Your privacy and agency are preserved.</li>
           </ul>
         </article>
-        <article class="card" role="listitem">
+        <article class="card">
           <h3>Credibility & Fit</h3>
           <ul>
-            <li>Informed by <strong>cognitive science</strong> and <em>active inference</em> principles.</li>
-            <li>Designed for <strong>leaders & creators</strong> with high standards.</li>
-            <li>Limited openings each quarter; <a href="#apply" data-apply>apply to be considered</a>.</li>
+            <li>Grounded in cognitive science and active inference principles.</li>
+            <li>Designed for leaders and creators with high standards.</li>
+            <li><a href="/whitepaper.pdf">Download our White Paper</a> for the full framework.</li>
           </ul>
         </article>
       </div>
 
-      <div class="process" style="margin-top: 22px;">
-        <h3 style="margin:0 0 10px">The MIIR Value Stream (at a glance)</h3>
-        <p class="small" style="margin:0 0 16px">Signals the flow without giving away the secret sauce.</p>
+      <div class="process">
+        <h3>The MIIR Flow</h3>
         <div class="steps">
           <div class="step">
             <div class="n">1</div>
             <div class="body">
-              <h4>Priming Question</h4>
-              <p>What are you trying to grow—in yourself or in the world—and how will you know when you see it?</p>
-              <div class="meta">Casual conversation that sets vector and tone.</div>
+              <h4>Priming</h4>
+              <p>A guided opening conversation sets the trajectory.</p>
             </div>
           </div>
           <div class="step">
             <div class="n">2</div>
             <div class="body">
-              <h4>Identity Serialization (Round A)</h4>
-              <p>We write your identity statements from dialogue. You plot confidence on the RTSS.</p>
-              <div class="meta">Practitioner writes. You plot. Mild intimacy, strong signal.</div>
+              <h4>Identity Mapping</h4>
+              <p>Your statements are organized and confidence is measured visually.</p>
             </div>
           </div>
           <div class="step">
             <div class="n">3</div>
             <div class="body">
-              <h4>Disrupt → Consolidate (Round B)</h4>
-              <p>Targeted follow‑ups disrupt noise and consolidate a sparser, value‑aligned model.</p>
-              <div class="meta">Strategic, not generic. Your agency is preserved.</div>
+              <h4>Refinement</h4>
+              <p>We consolidate clarity into a leaner, value‑aligned model.</p>
             </div>
           </div>
           <div class="step">
             <div class="n">4</div>
             <div class="body">
-              <h4>RTSS Comparison</h4>
-              <p>We compare Plots A & B for embodiment/clarity change.</p>
-              <div class="meta">A visible before/after of confidence across identity claims.</div>
+              <h4>Portrait</h4>
+              <p>A high‑resolution portrait captures and anchors the transformation.</p>
             </div>
           </div>
-          <div class="step">
-            <div class="n">5</div>
-            <div class="body">
-              <h4>Portrait Capture</h4>
-              <p>High‑resolution portrait immediately following the interview.</p>
-              <div class="meta">Standard, not optional. This anchors the shift.</div>
-            </div>
-          </div>
-        </div>
-        <div style="display:flex; gap:10px; margin-top:18px;">
-          <a class="btn cta" data-apply>Start Application</a>
-          <a class="btn ghost" href="#faq">FAQ</a>
         </div>
       </div>
     </section>
 
-    <!-- LAB / PSL -->
-    <section id="lab" aria-labelledby="lab-title">
-      <h2 id="lab-title">Perceptual Stewardship Lab</h2>
+    <section id="lab">
+      <h2>Perceptual Stewardship Lab</h2>
       <p class="sub">We study how attention, language, and imagery cohere identity over time. MIIR is our first instrument. <em>The Earth Illusion</em> is our first theory series.</p>
-
-      <div class="teaser">
-        <div>
-          <h3 style="margin:0 0 8px">The Earth Illusion</h3>
-          <p class="small">A gentle on‑ramp to our metaphysics: why alignment at high‑order datums prevents cascades of misperception below. Read the primer and see how it informs practical life.</p>
-          <div style="margin-top:12px; display:flex; gap:10px;">
-            <a class="btn ghost" href="earth-illusion.html">Open the series</a>
-            <a class="btn" href="#">Lab notes (soon)</a>
-          </div>
-        </div>
-        <div class="illus" aria-hidden="true"></div>
-      </div>
+      <a href="earth-illusion.html" class="btn ghost">Open The Earth Illusion</a>
     </section>
 
-    <!-- FAQ (light) -->
-    <section id="faq" aria-labelledby="faq-title">
-      <h2 id="faq-title">FAQ</h2>
-      <div class="grid-3">
-        <div class="card">
-          <h3>How long is MIIR?</h3>
-          <p>Plan 2–3 hours including portrait capture. Deliverables are outlined in your agreement.</p>
-        </div>
-        <div class="card">
-          <h3>Can I bring a partner or team member?</h3>
-          <p>Yes, by request. We’ll adapt interview dynamics to preserve signal.</p>
-        </div>
-        <div class="card">
-          <h3>Where does it happen?</h3>
-          <p>Grand Forks, ND (studio / on‑location). Travel sessions available on approval.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- FOOTER -->
     <footer>
       <div class="footer-inner">
         <div class="small">© <span id="y"></span> Mault Co. • Perceptual Stewardship Lab</div>
-        <div class="small">Contact: <a id="contact-link" href="#"></a></div>
+        <div class="small"><a href="/whitepaper.pdf">Download White Paper</a></div>
       </div>
     </footer>
 
-    <!-- APPLY MODAL -->
-    <div class="modal-backdrop" id="apply-modal" role="dialog" aria-modal="true" aria-labelledby="apply-title">
-      <div class="modal">
-        <header>
-          <h3 id="apply-title">Apply to MIIR</h3>
-          <button class="btn ghost" data-close>&times; Close</button>
-        </header>
-        <form class="content" id="apply-form">
-          <div class="grid-2">
-            <div>
-              <label for="name">Full name</label>
-              <input id="name" name="name" required />
-            </div>
-            <div>
-              <label for="email">Email</label>
-              <input id="email" name="email" type="email" required />
-            </div>
-            <div>
-              <label for="location">City / Region</label>
-              <input id="location" name="location" />
-            </div>
-            <div>
-              <label for="role">Primary role</label>
-              <select id="role" name="role">
-                <option value="Leader / Exec">Leader / Exec</option>
-                <option value="Founder / Creator">Founder / Creator</option>
-                <option value="Professional">Professional</option>
-                <option value="Artist">Artist</option>
-                <option value="Other">Other</option>
-              </select>
-            </div>
-          </div>
-          <div style="margin-top:12px">
-            <label for="why">Why MIIR, and why now?</label>
-            <textarea id="why" name="why" placeholder="A few sentences is perfect." required></textarea>
-          </div>
-          <div class="grid-2" style="margin-top:12px">
-            <div>
-              <label for="availability">Preferred timing</label>
-              <input id="availability" name="availability" placeholder="e.g., next 2–4 weeks" />
-            </div>
-            <div>
-              <label for="links">Optional links</label>
-              <input id="links" name="links" placeholder="Website, LinkedIn, portfolio" />
-            </div>
-          </div>
-          <div class="actions">
-            <button type="button" class="btn ghost" data-close>Cancel</button>
-            <button type="submit" class="btn cta">Submit Application</button>
-          </div>
-          <p class="small" style="margin-top:8px">We accept a limited number of sessions per quarter. You’ll receive a reply within 3 business days.</p>
-        </form>
-      </div>
-    </div>
-
     <script>
-      // Utility: query helpers
-      const $ = (s, r=document) => r.querySelector(s);
-      const $$ = (s, r=document) => [...r.querySelectorAll(s)];
-
-      // Footer year & contact link
-      $('#y').textContent = new Date().getFullYear();
-      const contact = $('#contact-link');
-      contact.textContent = SITE_CONTACT_EMAIL || 'contact@your-domain';
-      contact.href = SITE_CONTACT_EMAIL ? `mailto:${SITE_CONTACT_EMAIL}` : '#';
-
-      // Apply modal controls
-      const modal = $('#apply-modal');
-      const openers = $$('[data-apply]');
-      const closers = $$('[data-close]');
-      openers.forEach(btn => btn.addEventListener('click', () => { modal.style.display = 'grid'; }));
-      closers.forEach(btn => btn.addEventListener('click', () => { modal.style.display = 'none'; }));
-      modal.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
-
-      // Apply form submission: Google Form URL if provided; otherwise mailto fallback
-      $('#apply-form').addEventListener('submit', (e) => {
-        e.preventDefault();
-        const data = Object.fromEntries(new FormData(e.currentTarget).entries());
-
-        if (APPLICATION_FORM_URL) {
-          // POST as simple URL-encoded form (adjust parameters to match your Google Form if you use it)
-          // Many Google Forms require specific entry.<id> field names; swap as needed.
-          window.open(APPLICATION_FORM_URL, '_blank');
-          alert('Your application page has opened in a new tab. Complete and submit there.');
-        } else if (SITE_CONTACT_EMAIL && SITE_CONTACT_EMAIL.includes('@')) {
-          const subject = encodeURIComponent('MIIR Application');
-          const body = encodeURIComponent([
-            `Name: ${data.name}`,
-            `Email: ${data.email}`,
-            `City/Region: ${data.location || ''}`,
-            `Role: ${data.role || ''}`,
-            `Why now: ${data.why || ''}`,
-            `Links: ${data.links || ''}`,
-            `Preferred timing: ${data.availability || ''}`
-          ].join('\n'));
-          window.location.href = `mailto:${SITE_CONTACT_EMAIL}?subject=${subject}&body=${body}`;
-        } else {
-          alert('Update SITE_CONTACT_EMAIL near the top of this file to enable submissions.');
-        }
-      });
-
-      // Enter animations (progressive, no framework)
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-          if (e.isIntersecting) {
-            e.target.animate([
-              {opacity: 0, transform: 'translateY(12px)'},
-              {opacity: 1, transform: 'translateY(0)'}
-            ], { duration: 500, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'both' });
-            io.unobserve(e.target);
-          }
-        });
-      }, { threshold: 0.16 });
-      $$('section .card, section .process, .teaser, .hero h1, .hero p, .hero .hero-card').forEach(el => io.observe(el));
+      document.getElementById('y').textContent = new Date().getFullYear();
     </script>
   </body>
 </html>
