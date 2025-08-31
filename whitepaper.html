@@ -9,23 +9,37 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-
   <style>
     :root { --bg:#0b0c10; --elev-1:#101218; --elev-2:#141824; --text:#e8ebf0; --muted:#a8b0bd; --accent:#9ef0d0; --accent-2:#9ec9f0; --radius:18px; --shadow:0 10px 30px rgba(0,0,0,.35); --maxw:1100px; }
     html,body{height:100%}
     body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;background:
       radial-gradient(1200px 800px at 85% -10%, rgba(158, 240, 208, .10), transparent 60%),
       radial-gradient(1000px 600px at -10% -10%, rgba(158, 201, 240, .12), transparent 55%),var(--bg);color:var(--text);line-height:1.55}
-    a{color:var(--accent);text-decoration:none}
-    a:hover{opacity:.92}
-    .nav{position:sticky;top:0;background:rgba(11,12,16,.55);backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid rgba(255,255,255,.06);z-index:50}
-    .nav-inner{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;padding:12px 18px;gap:14px}
+
+    a{color:var(--accent);text-decoration:none} a:hover{opacity:.92}
+
+    /* Responsive Nav */
+    .nav{position:sticky;top:0;z-index:1000;backdrop-filter:saturate(140%) blur(10px);background:rgba(11,12,16,.55);border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav-inner{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;gap:14px;padding:12px 16px}
+    .brand{display:flex;align-items:center;gap:12px}
     .logo{width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:grid;place-items:center;color:#0b0c10;font-weight:800}
-    .nav-links{margin-left:auto;display:flex;gap:14px}
-    .btn{padding:8px 14px;border-radius:12px;font-weight:600;display:inline-flex;align-items:center;justify-content:center}
-    .btn.ghost{border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.02);color:var(--text)}
+    .brand .title{font-weight:800}
+    .brand .tag{color:var(--muted);font-size:12px}
+    .nav-actions{margin-left:auto;display:flex;align-items:center;gap:10px}
+    .btn{padding:10px 14px;border-radius:12px;font-weight:600;display:inline-flex;align-items:center;justify-content:center}
     .btn.cta{background:linear-gradient(180deg,var(--accent),#65d2b0);color:#0b0c10;box-shadow:0 4px 18px rgba(158,240,208,.35)}
-    .wrap{max-width:var(--maxw);margin:0 auto;padding:28px 18px}
+    .btn.ghost{border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.02);color:var(--text)}
+    .btn.ghost:hover{background:rgba(255,255,255,.06)}
+    .nav-toggle{display:none;margin-left:auto;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);color:var(--text);border-radius:12px;padding:8px 10px}
+    .nav-toggle:focus{outline:2px solid var(--accent);outline-offset:2px}
+    @media (max-width:860px){
+      .nav-toggle{display:inline-flex}
+      .nav-actions{display:none}
+      .nav.open .nav-actions{display:flex;flex-direction:column;gap:10px;position:fixed;top:58px;left:0;right:0;padding:12px;background:rgba(11,12,16,.95);border-bottom:1px solid rgba(255,255,255,.08)}
+      .btn{width:100%}
+    }
+
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:28px 16px}
     .article{display:grid;grid-template-columns:2.2fr 1fr;gap:24px}
     .paper{background:var(--elev-1);border:1px solid rgba(255,255,255,.08);border-radius:22px;box-shadow:var(--shadow);padding:28px}
     .meta{background:var(--elev-1);border:1px solid rgba(255,255,255,.08);border-radius:22px;box-shadow:var(--shadow);padding:20px;height:max-content}
@@ -39,49 +53,20 @@
     ul{margin:8px 0 8px 18px;color:var(--muted)}
     .hr{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.12),transparent);margin:18px 0}
     footer{border-top:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.02);margin-top:28px}
-    .footer-inner{max-width:var(--maxw);margin:0 auto;padding:24px 18px;display:flex;justify-content:space-between;color:var(--muted);font-size:13px}
+    .footer-inner{max-width:var(--maxw);margin:0 auto;padding:24px 16px;display:flex;justify-content:space-between;color:var(--muted);font-size:13px}
     @media (max-width:980px){.article{grid-template-columns:1fr}}
     .src-list li{margin-bottom:8px}
   </style>
-
-  <!-- Schema.org (still ScholarlyArticle for discoverability, but this page is an extended abstract) -->
-  <script type="application/ld+json" id="schema-json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ScholarlyArticle",
-      "headline": "Perceptual Stewardship and Identity Refinement: The MIIR Instrument — Extended Abstract",
-      "author": [{"@type":"Person","name":"Jack Mault"}],
-      "publisher": {"@type":"Organization","name":"Mault Co."},
-      "datePublished": "2025-01-01",
-      "about": ["Perception", "Identity", "Active Inference", "Portraiture", "Narrative Identity", "Participatory Modeling"],
-      "isPartOf": {"@type":"CreativeWorkSeries","name":"Perceptual Stewardship Lab White Papers"},
-      "url": "https://mault.co/whitepaper.html"
-    }
-  </script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const y = new Date().getFullYear();
-      document.querySelectorAll('[data-year]').forEach(n=>n.textContent=y);
-      try {
-        const el = document.getElementById('schema-json');
-        const data = JSON.parse(el.textContent);
-        data.datePublished = `${y}-01-01`;
-        el.textContent = JSON.stringify(data);
-      } catch(err){}
-    });
-  </script>
 </head>
 <body>
   <nav class="nav" aria-label="Primary">
     <div class="nav-inner">
-      <a href="/index.html" style="display:flex;align-items:center;gap:12px">
+      <a class="brand" href="/index.html">
         <div class="logo" aria-hidden="true">M</div>
-        <div>
-          <div style="font-weight:800">Mault Co.</div>
-          <div style="font-size:12px;color:var(--muted)">Perceptual Stewardship Lab</div>
-        </div>
+        <div><div class="title">Mault Co.</div><div class="tag">Perceptual Stewardship Lab</div></div>
       </a>
-      <div class="nav-links">
+      <button class="nav-toggle" aria-controls="navmenu" aria-expanded="false">Menu</button>
+      <div id="navmenu" class="nav-actions">
         <a href="/index.html#miir" class="btn ghost">MIIR</a>
         <a class="btn ghost" href="https://www.youtube.com/@JackMault" target="_blank" rel="noopener">The Earth Illusion</a>
         <a href="/whitepapers.html" class="btn ghost">White Papers</a>
@@ -107,15 +92,7 @@
               The Perceptual Stewardship Lab (PSL) develops instruments that help people steward attention and articulate identity with measurable clarity. MIIR—Model Instantiation for Identity Refinement—is our first instrument. It combines brief priming, identity mapping, targeted refinement, and a portrait-based anchor. The aim is practical: produce a sparser, truer self-model and show visible pre/post change without leaking proprietary prompts or procedures.
             </p>
             <p>
-              Conceptually, MIIR treats identity as a <em>control policy</em> that can be made explicit in language, visualized as claims with confidence, and stabilized with symbolic anchors. This stance fits with modern views of mind that emphasize prediction and model maintenance under uncertainty (e.g., free-energy/predictive-processing accounts), where clarity reduces surprise and improves decisions. Empirically, adjacent literatures suggest three useful lenses:
-            </p>
-            <ul>
-              <li><strong>Structural clarity.</strong> Self-concept clarity (SCC) captures whether self-beliefs are clearly and confidently defined and internally consistent; higher SCC predicts better well-being and decision stability. MIIR targets movement toward higher SCC without prescribing content.
-              <li><strong>Narrative coherence.</strong> Narrative identity research shows life stories integrate past and future to confer meaning; shifts in narrative themes track mental-health trajectories. MIIR’s mapping step externalizes these themes to make revision tractable.
-              <li><strong>Participatory co-modeling.</strong> Participatory/“with-stakeholders” modeling offers procedures for building shared models while managing bias and uncertainty; MIIR borrows this stance to co-author an identity model with the participant rather than imposing one.
-            </ul>
-            <p>
-              MIIR’s anchor is a museum-grade portrait produced after refinement. Portraiture here functions as a mnemonic and social affordance—a compact “token” that helps carry the refined model forward in memory and signaling. We avoid behaviorist token economies (which raise generalization issues when reinforcement ends) and instead use a <em>symbolic</em> anchor chosen for durability and personal salience.
+              Conceptually, MIIR treats identity as a <em>control policy</em> that can be made explicit in language, visualized as claims with confidence, and stabilized with symbolic anchors. Adjacent literatures inform the approach, including self-concept clarity, narrative identity, participatory co-modeling, and active-inference perspectives on model maintenance.
             </p>
             <p>
               This page provides the extended abstract and a curated reading list. Methods, itemization, reliability studies, and statistical notes are available in the full paper by request.
@@ -127,9 +104,7 @@
 
         <section aria-labelledby="access">
           <h2 id="access">Access</h2>
-          <p>
-            Request the full white paper (methods, appendices, and references) via the link below. You’ll receive the latest preprint.
-          </p>
+          <p>Request the full white paper (methods, appendices, and references) below.</p>
           <p style="display:flex;gap:10px;flex-wrap:wrap">
             <a class="btn ghost" href="/whitepapers.html">All White Papers</a>
             <a class="btn cta" target="_blank" rel="noopener"
@@ -141,48 +116,21 @@
       <aside class="meta" aria-label="Sources & Further Reading">
         <div class="label">Sources & Further Reading</div>
         <ul class="src-list">
-          <li>
-            Friston, K. (2010). The free-energy principle: a unified brain theory? <em>Nature Reviews Neuroscience</em>. 
-            <a href="https://www.nature.com/articles/nrn2787" target="_blank" rel="noopener">Link</a>
-          </li>
-          <li>
-            Millidge, B., Tschantz, A., et&nbsp;al. (2024). Overview of FEP & active inference. <em>Neural Computation</em>. 
-            <a href="https://direct.mit.edu/neco/article/36/5/963/119791/An-Overview-of-the-Free-Energy-Principle-and" target="_blank" rel="noopener">Link</a>
-          </li>
-          <li>
-            Campbell, J.&nbsp;D., Trapnell, P.&nbsp;D., et&nbsp;al. (1996). Self-concept clarity scale (SCC). 
-            <a href="https://www2.psych.ubc.ca/~heine/docs/1996scc.pdf" target="_blank" rel="noopener">Scale PDF</a>
-          </li>
-          <li>
-            McAdams, D.&nbsp;P. (2001). The psychology of life stories. <em>Review of General Psychology</em>. 
-            <a href="https://journals.sagepub.com/doi/10.1037/1089-2680.5.2.100" target="_blank" rel="noopener">Link</a>
-          </li>
-          <li>
-            Adler, J.&nbsp;M., et&nbsp;al. (2015). Narrative identity & mental health (longitudinal). <em>Journal of Personality and Social Psychology</em>. 
-            <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4395856/" target="_blank" rel="noopener">Open access</a>
-          </li>
-          <li>
-            Voinov, A., &amp; Bousquet, F. (2016). Modelling with stakeholders—Next generation. <em>Environmental Modelling &amp; Software</em>. 
-            <a href="https://ris.utwente.nl/ws/files/276909153/1_s2.0_S1364815215301055_main.pdf" target="_blank" rel="noopener">PDF</a>
-          </li>
-          <li>
-            Voinov, A., et&nbsp;al. (2018). Tools & methods in participatory modeling. <em>Environmental Modelling &amp; Software</em>. 
-            <a href="https://www.sciencedirect.com/science/article/abs/pii/S1364815218303098" target="_blank" rel="noopener">Link</a>
-          </li>
-          <li>
-            Kazdin, A.&nbsp;E. (1972). The token economy: An evaluative review. <em>Journal of Applied Behavior Analysis</em>. 
-            <a href="https://onlinelibrary.wiley.com/doi/10.1901/jaba.1972.5-343" target="_blank" rel="noopener">Link</a>
-          </li>
-          <li>
-            Kazdin, A.&nbsp;E. (1982). The token economy: A decade later. <em>Canadian Journal of Psychiatry</em>. 
-            <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC1308287/" target="_blank" rel="noopener">Open access</a>
-          </li>
+          <li>Friston, K. (2010). The free-energy principle: a unified brain theory? <em>Nat. Rev. Neurosci.</em> – <a href="https://www.nature.com/articles/nrn2787" target="_blank" rel="noopener">Link</a></li>
+          <li>Millidge, B., Tschantz, A., et al. (2024). Overview of FEP & active inference. <em>Neural Computation</em> – <a href="https://direct.mit.edu/neco/article/36/5/963/119791/An-Overview-of-the-Free-Energy-Principle-and" target="_blank" rel="noopener">Link</a></li>
+          <li>Campbell, J. D., Trapnell, P. D., et al. (1996). Self-concept clarity scale. – <a href="https://www2.psych.ubc.ca/~heine/docs/1996scc.pdf" target="_blank" rel="noopener">PDF</a></li>
+          <li>McAdams, D. P. (2001). The psychology of life stories. <em>Rev. Gen. Psych.</em> – <a href="https://journals.sagepub.com/doi/10.1037/1089-2680.5.2.100" target="_blank" rel="noopener">Link</a></li>
+          <li>Adler, J. M., et al. (2015). Narrative identity & mental health. <em>JPSP</em> – <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4395856/" target="_blank" rel="noopener">Open access</a></li>
+          <li>Voinov, A., & Bousquet, F. (2016). Modelling with stakeholders. <em>EMS</em> – <a href="https://ris.utwente.nl/ws/files/276909153/1_s2.0_S1364815215301055_main.pdf" target="_blank" rel="noopener">PDF</a></li>
+          <li>Voinov, A., et al. (2018). Tools & methods in participatory modeling. <em>EMS</em> – <a href="https://www.sciencedirect.com/science/article/abs/pii/S1364815218303098" target="_blank" rel="noopener">Link</a></li>
+          <li>Kazdin, A. E. (1972). The token economy: An evaluative review. <em>JABA</em> – <a href="https://onlinelibrary.wiley.com/doi/10.1901/jaba.1972.5-343" target="_blank" rel="noopener">Link</a></li>
+          <li>Kazdin, A. E. (1982). The token economy: A decade later. <em>CJP</em> – <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC1308287/" target="_blank" rel="noopener">Open access</a></li>
         </ul>
 
         <div class="hr"></div>
         <div class="label">Cite this Page</div>
         <p style="font-size:13px;color:var(--muted)">
-          Mault, J. (<span data-year></span>). <em>Perceptual Stewardship and Identity Refinement: The MIIR Instrument — Extended Abstract</em>. Mault Co.
+          Mault, J. (<span id="yr"></span>). <em>Perceptual Stewardship and Identity Refinement: The MIIR Instrument — Extended Abstract</em>. Mault Co.
         </p>
       </aside>
     </div>
@@ -190,9 +138,28 @@
 
   <footer>
     <div class="footer-inner">
-      <div>© <span data-year></span> Mault Co. • Perceptual Stewardship Lab</div>
+      <div>© <span id="y"></span> Mault Co. • Perceptual Stewardship Lab</div>
       <div><a href="/whitepapers.html">All White Papers</a></div>
     </div>
   </footer>
+
+  <script>
+    // Year stamping
+    const nowY = new Date().getFullYear();
+    document.getElementById('y').textContent = nowY;
+    document.getElementById('yr').textContent = nowY;
+
+    // Mobile nav toggle
+    const nav = document.querySelector('.nav');
+    const btn = document.querySelector('.nav-toggle');
+    const menu = document.getElementById('navmenu');
+    btn.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      if (nav.classList.contains('open')) { nav.classList.remove('open'); btn.setAttribute('aria-expanded','false'); }
+    }));
+  </script>
 </body>
 </html>
