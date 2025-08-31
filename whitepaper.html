@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Perceptual Stewardship Lab — White Paper | Mault Co.</title>
+    <meta name="description" content="White paper hub for the Perceptual Stewardship Lab at Mault Co. Read the abstract, browse article metadata, and request a copy." />
+    <meta name="theme-color" content="#0b0c10" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <style>
+      :root { --bg:#0b0c10; --elev-1:#101218; --elev-2:#141824; --text:#e8ebf0; --muted:#a8b0bd; --accent:#9ef0d0; --accent-2:#9ec9f0; --radius:18px; --shadow:0 10px 30px rgba(0,0,0,.35); --maxw:1100px; }
+      html,body{height:100%}
+      body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;background:radial-gradient(1200px 800px at 85% -10%, rgba(158, 240, 208, .10), transparent 60%),radial-gradient(1000px 600px at -10% -10%, rgba(158, 201, 240, .12), transparent 55%),var(--bg);color:var(--text);line-height:1.55}
+      a{color:var(--accent);text-decoration:none}
+      a:hover{opacity:.92}
+
+      .nav{position:sticky;top:0;background:rgba(11,12,16,.55);backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid rgba(255,255,255,.06);z-index:50}
+      .nav-inner{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;padding:12px 18px;gap:14px}
+      .logo{width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:grid;place-items:center;color:#0b0c10;font-weight:800}
+      .nav-links{margin-left:auto;display:flex;gap:14px}
+      .btn{padding:8px 14px;border-radius:12px;font-weight:600;display:inline-flex;align-items:center;justify-content:center}
+      .btn.ghost{border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.02);color:var(--text)}
+      .btn.cta{background:linear-gradient(180deg,var(--accent),#65d2b0);color:#0b0c10;box-shadow:0 4px 18px rgba(158,240,208,.35)}
+
+      .wrap{max-width:var(--maxw);margin:0 auto;padding:28px 18px}
+      .article{display:grid;grid-template-columns:2.2fr 1fr;gap:24px}
+      .paper{background:var(--elev-1);border:1px solid rgba(255,255,255,.08);border-radius:22px;box-shadow:var(--shadow);padding:28px}
+      .meta{background:var(--elev-1);border:1px solid rgba(255,255,255,.08);border-radius:22px;box-shadow:var(--shadow);padding:20px;height:max-content}
+      .paper h1{font-family:"Playfair Display",serif;font-weight:700;letter-spacing:.2px;font-size:clamp(26px,3.5vw,40px);margin:0 0 6px}
+      .authors{color:var(--muted);margin:0 0 16px}
+      .affil{color:var(--muted);font-size:14px;margin:4px 0 16px}
+      .label{font-weight:700;font-size:13px;letter-spacing:.3px;text-transform:uppercase;color:var(--muted)}
+      .abstract{background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));border:1px dashed rgba(255,255,255,.12);border-radius:16px;padding:16px;margin:14px 0 18px}
+      h2{font-weight:800;font-size:20px;margin:24px 0 8px}
+      p{margin:10px 0}
+      ul{margin:8px 0 8px 18px;color:var(--muted)}
+      .hr{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.12),transparent);margin:18px 0}
+
+      .meta .kv{display:grid;grid-template-columns:1fr;gap:8px}
+      .kv .row{display:flex;justify-content:space-between;gap:10px}
+      .kv .k{color:var(--muted);font-size:13px}
+      .kv .v{font-size:13px}
+      .toc{margin-top:8px}
+      .toc a{display:block;padding:6px 0;color:var(--text);opacity:.9}
+      .toc a:hover{opacity:1}
+      .box{background:var(--elev-2);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:12px;margin-top:10px}
+
+      footer{border-top:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.02);margin-top:28px}
+      .footer-inner{max-width:var(--maxw);margin:0 auto;padding:24px 18px;display:flex;justify-content:space-between;color:var(--muted);font-size:13px}
+
+      @media (max-width:980px){.article{grid-template-columns:1fr}}
+    </style>
+
+    <!-- ScholarlyArticle JSON-LD -->
+    <script type="application/ld+json" id="schema-json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ScholarlyArticle",
+        "headline": "Perceptual Stewardship and Identity Refinement: The MIIR Instrument",
+        "author": [{"@type":"Person","name":"Jack Mault"}],
+        "publisher": {"@type":"Organization","name":"Mault Co."},
+        "datePublished": "2025-01-01",
+        "about": ["Perception", "Identity", "Active Inference", "Photography"],
+        "isPartOf": {"@type":"CreativeWorkSeries","name":"Perceptual Stewardship Lab White Papers"},
+        "url": "https://mault.co/whitepaper.html"
+      }
+    </script>
+
+    <script>
+      // ===== Page Settings =====
+      const SITE_CONTACT_EMAIL = "hello@mault.co"; // keep in sync with index.html
+      const REQUEST_FORM_URL = ""; // optional Google Form
+
+      // Fill year in footer and citation blocks dynamically
+      document.addEventListener('DOMContentLoaded', () => {
+        const y = new Date().getFullYear();
+        document.querySelectorAll('[data-year]').forEach(n=>n.textContent=y);
+
+        // Update JSON-LD to current year
+        try {
+          const el = document.getElementById('schema-json');
+          const data = JSON.parse(el.textContent);
+          data.datePublished = `${y}-01-01`;
+          el.textContent = JSON.stringify(data);
+        } catch(err){}
+      });
+
+      function requestCopy(){
+        if(REQUEST_FORM_URL){
+          window.open(REQUEST_FORM_URL, '_blank');
+          return;
+        }
+        if(SITE_CONTACT_EMAIL && SITE_CONTACT_EMAIL.includes('@')){
+          const subject = encodeURIComponent('Request: PSL White Paper Copy');
+          const body = encodeURIComponent('Hi Mault Co. team,\n\nPlease send me a copy of the white paper.\n\nName: \nOrganization: \nUse case: \n\nThank you!');
+          window.location.href = `mailto:${SITE_CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+        } else {
+          alert('Add a contact email on this page to enable requests.');
+        }
+      }
+
+      function downloadText(filename, text){
+        const blob = new Blob([text], {type:'text/plain'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url; a.download = filename; a.click(); URL.revokeObjectURL(url);
+      }
+
+      function citeAPA(){
+        const year = new Date().getFullYear();
+        const text = `Mault, J. (${year}). Perceptual stewardship and identity refinement: The MIIR instrument. Mault Co.`;
+        downloadText('citation-apa.txt', text);
+      }
+      function citeChicago(){
+        const year = new Date().getFullYear();
+        const text = `Mault, Jack. ${year}. "Perceptual Stewardship and Identity Refinement: The MIIR Instrument." Mault Co.`;
+        downloadText('citation-chicago.txt', text);
+      }
+      function citeBibTeX(){
+        const year = new Date().getFullYear();
+        const text = `@techreport{Mault${year},\n  title={Perceptual Stewardship and Identity Refinement: The MIIR Instrument},\n  author={Mault, Jack},\n  institution={Mault Co.},\n  year={${year}},\n  url={https://mault.co/whitepaper.html}\n}`;
+        downloadText('citation-bibtex.bib', text);
+      }
+    </script>
+  </head>
+  <body>
+    <nav class="nav" aria-label="Primary">
+      <div class="nav-inner">
+        <a href="/index.html" style="display:flex;align-items:center;gap:12px">
+          <div class="logo" aria-hidden="true">M</div>
+          <div>
+            <div style="font-weight:800">Mault Co.</div>
+            <div style="font-size:12px;color:var(--muted)">Perceptual Stewardship Lab</div>
+          </div>
+        </a>
+        <div class="nav-links">
+          <a href="/index.html#miir" class="btn ghost">MIIR</a>
+          <a href="/earth-illusion.html" class="btn ghost">The Earth Illusion</a>
+          <a href="#" class="btn ghost" aria-current="page">White Paper</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="wrap">
+      <div class="article">
+        <article class="paper" aria-labelledby="paper-title">
+          <header>
+            <h1 id="paper-title">Perceptual Stewardship and Identity Refinement: The MIIR Instrument</h1>
+            <p class="authors">Jack Mault</p>
+            <p class="affil">Perceptual Stewardship Lab, Mault Co., Grand Forks, ND, USA</p>
+          </header>
+
+          <section aria-labelledby="abs">
+            <div class="label" id="abs">Abstract</div>
+            <div class="abstract">
+              <p>
+                This white paper introduces the Perceptual Stewardship Lab and outlines MIIR (Model Instantiation for Identity Refinement) as a practical instrument for clarifying identity, measuring confidence shifts, and anchoring transformation via portraiture. Methods emphasize structured interviewing and comparative plotting while preserving participant agency. Implementation details are intentionally omitted here; readers may request a full copy for methodological specifics and results.
+              </p>
+            </div>
+            <p class="label">Keywords</p>
+            <p>identity; perception; active inference; measurement; portraiture; stewardship</p>
+          </section>
+
+          <div class="hr"></div>
+
+          <section aria-labelledby="intro">
+            <h2 id="intro">1. Introduction</h2>
+            <p>
+              The Perceptual Stewardship Lab (PSL) studies how attention, language, and imagery cohere identity over time. MIIR is the lab’s first field instrument, designed for leaders and creators seeking durable clarity. Rather than proposing an abstract ideal-self, MIIR renders an articulated self-model and measures confidence across claims before and after a structured refinement.
+            </p>
+          </section>
+
+          <section aria-labelledby="background">
+            <h2 id="background">2. Background</h2>
+            <p>
+              MIIR is informed by contemporary work in cognitive science and control theory (e.g., active inference) and by craft practices in portraiture. The approach treats identity as a living control policy: intelligible in language, legible in behavior, and stabilizable through well-chosen anchors.
+            </p>
+          </section>
+
+          <section aria-labelledby="methods">
+            <h2 id="methods">3. Methods (Overview)</h2>
+            <p>
+              At a high level, MIIR proceeds through: (a) priming to set direction, (b) identity mapping to externalize claims and visualize confidence, (c) targeted refinement to reduce noise and strengthen alignment, and (d) a photographic anchor to consolidate change. Full procedural details, itemization, and statistical notes are available upon request.
+            </p>
+          </section>
+
+          <section aria-labelledby="results">
+            <h2 id="results">4. Findings (Conceptual)</h2>
+            <ul>
+              <li>Participants reliably report higher clarity and confidence in a sparser identity model.</li>
+              <li>Before/after comparisons offer visible signal for reflective decisions and communication.</li>
+              <li>Portraiture functions as an enduring mnemonic and social affordance for the refined model.</li>
+            </ul>
+          </section>
+
+          <section aria-labelledby="discussion">
+            <h2 id="discussion">5. Discussion</h2>
+            <p>
+              As an instrument, MIIR complements coaching and therapy by emphasizing measurable articulation and a tangible anchor. PSL’s ongoing work explores generalization, session reliability, and longitudinal effects on decision quality.
+            </p>
+          </section>
+
+          <section aria-labelledby="limits">
+            <h2 id="limits">6. Limitations</h2>
+            <p>
+              This overview omits implementation specifics by design. Controlled studies and expanded datasets are in progress to estimate effect sizes across populations and contexts.
+            </p>
+          </section>
+
+          <section aria-labelledby="conclusion">
+            <h2 id="conclusion">7. Conclusion</h2>
+            <p>
+              MIIR operationalizes perceptual stewardship: it helps participants speak a truer model of themselves, measure movement, and carry the result forward. Requests for the full paper, including methods and appendices, are welcome.
+            </p>
+          </section>
+
+          <section aria-labelledby="cite">
+            <h2 id="cite">How to Cite</h2>
+            <p>Mault, J. (<span data-year></span>). <em>Perceptual Stewardship and Identity Refinement: The MIIR Instrument</em>. Mault Co.</p>
+            <div class="box" role="group" aria-label="Download citations">
+              <button class="btn ghost" onclick="citeAPA()">APA</button>
+              <button class="btn ghost" onclick="citeChicago()">Chicago</button>
+              <button class="btn ghost" onclick="citeBibTeX()">BibTeX</button>
+            </div>
+          </section>
+        </article>
+
+        <aside class="meta" aria-label="Article metadata">
+          <div class="kv">
+            <div class="row"><div class="k">Series</div><div class="v">PSL White Papers</div></div>
+            <div class="row"><div class="k">Version</div><div class="v">Preprint v0.1</div></div>
+            <div class="row"><div class="k">Year</div><div class="v"><span data-year></span></div></div>
+            <div class="row"><div class="k">DOI</div><div class="v">TBD</div></div>
+          </div>
+          <div class="toc">
+            <div class="label" style="margin-top:14px">Contents</div>
+            <a href="#intro">1. Introduction</a>
+            <a href="#background">2. Background</a>
+            <a href="#methods">3. Methods (Overview)</a>
+            <a href="#results">4. Findings</a>
+            <a href="#discussion">5. Discussion</a>
+            <a href="#limits">6. Limitations</a>
+            <a href="#conclusion">7. Conclusion</a>
+          </div>
+          <div class="box" style="margin-top:14px">
+            <div class="label">Request a Copy</div>
+            <p class="small" style="color:var(--muted)">Get the full paper with methods, appendices, and references.</p>
+            <button class="btn cta" onclick="requestCopy()">Request a Copy</button>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-inner">
+        <div>© <span data-year></span> Mault Co. • Perceptual Stewardship Lab</div>
+        <div><a href="/index.html">Back to Home</a></div>
+      </div>
+    </footer>
+  </body>
+</html>
