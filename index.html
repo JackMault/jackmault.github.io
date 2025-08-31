@@ -45,11 +45,14 @@
     .hero-card img{width:100%;height:100%;object-fit:cover;display:block}
     .hero-card figcaption {
           position: static;         /* instead of absolute */
-          margin-top: 10px;
-          font-size: 14px;
+          margin-top: 12px;
+          font-size: 15px;
           color: var(--text);       /* white text */
           text-align: center;
+          line-height: 1.4;
           }
+    .hero-card figcaption { font-weight:500; font-size:16px; }
+
 
     section{max-width:var(--maxw);margin:0 auto;padding:70px 20px}
     h2{font-size:clamp(26px,3.2vw,40px);letter-spacing:.2px;margin:0 0 12px;font-weight:800}
@@ -113,7 +116,7 @@
         <img src="/assets/portrait.jpg" alt="Portrait—example of Mault Co. identity portrait">
       </div>
       <figcaption id="hero-media-caption">
-        A MIIR portrait <span style="color:var(--accent);font-weight:600">Anchors</span> the identity you articulate.
+        A MIIR portrait <span style="background:var(--accent); color:#0b0c10; padding:2px 6px; border-radius:6px">Anchors</span> the identity you articulate.
       </figcaption>
     </figure>
 
