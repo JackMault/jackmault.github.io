@@ -55,7 +55,6 @@
       @media (max-width:980px){.article{grid-template-columns:1fr}}
     </style>
 
-    <!-- ScholarlyArticle JSON-LD -->
     <script type="application/ld+json" id="schema-json">
       {
         "@context": "https://schema.org",
@@ -71,16 +70,11 @@
     </script>
 
     <script>
-      // ===== Page Settings =====
-      const SITE_CONTACT_EMAIL = "hello@mault.co"; // keep in sync with index.html
-      const REQUEST_FORM_URL = ""; // optional Google Form
+      const SITE_CONTACT_EMAIL = "hello@mault.co";
 
-      // Fill year in footer and citation blocks dynamically
       document.addEventListener('DOMContentLoaded', () => {
         const y = new Date().getFullYear();
         document.querySelectorAll('[data-year]').forEach(n=>n.textContent=y);
-
-        // Update JSON-LD to current year
         try {
           const el = document.getElementById('schema-json');
           const data = JSON.parse(el.textContent);
@@ -90,17 +84,8 @@
       });
 
       function requestCopy(){
-        if(REQUEST_FORM_URL){
-          window.open(REQUEST_FORM_URL, '_blank');
-          return;
-        }
-        if(SITE_CONTACT_EMAIL && SITE_CONTACT_EMAIL.includes('@')){
-          const subject = encodeURIComponent('Request: PSL White Paper Copy');
-          const body = encodeURIComponent('Hi Mault Co. team,\n\nPlease send me a copy of the white paper.\n\nName: \nOrganization: \nUse case: \n\nThank you!');
-          window.location.href = `mailto:${SITE_CONTACT_EMAIL}?subject=${subject}&body=${body}`;
-        } else {
-          alert('Add a contact email on this page to enable requests.');
-        }
+        // Centralized application / request handling
+        window.location.href = "/apply.html";
       }
 
       function downloadText(filename, text){
@@ -109,7 +94,6 @@
         const a = document.createElement('a');
         a.href = url; a.download = filename; a.click(); URL.revokeObjectURL(url);
       }
-
       function citeAPA(){
         const year = new Date().getFullYear();
         const text = `Mault, J. (${year}). Perceptual stewardship and identity refinement: The MIIR instrument. Mault Co.`;
@@ -122,7 +106,13 @@
       }
       function citeBibTeX(){
         const year = new Date().getFullYear();
-        const text = `@techreport{Mault${year},\n  title={Perceptual Stewardship and Identity Refinement: The MIIR Instrument},\n  author={Mault, Jack},\n  institution={Mault Co.},\n  year={${year}},\n  url={https://mault.co/whitepaper.html}\n}`;
+        const text = `@techreport{Mault${year},
+  title={Perceptual Stewardship and Identity Refinement: The MIIR Instrument},
+  author={Mault, Jack},
+  institution={Mault Co.},
+  year={${year}},
+  url={https://mault.co/whitepaper.html}
+}`;
         downloadText('citation-bibtex.bib', text);
       }
     </script>
@@ -141,6 +131,7 @@
           <a href="/index.html#miir" class="btn ghost">MIIR</a>
           <a href="/earth-illusion.html" class="btn ghost">The Earth Illusion</a>
           <a href="#" class="btn ghost" aria-current="page">White Paper</a>
+          <a href="/apply.html" class="btn cta">Apply</a>
         </div>
       </div>
     </nav>
@@ -249,7 +240,7 @@
           <div class="box" style="margin-top:14px">
             <div class="label">Request a Copy</div>
             <p class="small" style="color:var(--muted)">Get the full paper with methods, appendices, and references.</p>
-            <button class="btn cta" onclick="requestCopy()">Request a Copy</button>
+            <a class="btn cta" href="/apply.html">Request a Copy</a>
           </div>
         </aside>
       </div>
