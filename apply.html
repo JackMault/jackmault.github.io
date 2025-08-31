@@ -41,20 +41,29 @@
       @media(max-width:820px){.grid-2{grid-template-columns:1fr}}
     </style>
 
+    <!-- Load central config if present; otherwise the inline fallback below is used -->
     <script>
-      // ===== Site Settings (centralized) =====
-      const SITE_CONTACT_EMAIL = "hello@mault.co";
-
-      // Google Forms wiring (single source of truth)
-      const GOOGLE_FORM_ID = "1FAIpQLSf04hmnO7ZQQ-C1ZZ4MOv0PoXsFcfIX-7fGi9fU5A13mAWYA";
-      const ENTRY_NAME     = "entry.1424362969";
-      const ENTRY_EMAIL    = "entry.1990995989";
-      const ENTRY_LOCATION = "entry.549266693";
-      const ENTRY_ROLE     = "entry.1514720817";
-      const ENTRY_WHY      = "entry.353308943";
-      const ENTRY_AVAIL    = "entry.1683228716";
-      const ENTRY_LINKS    = "entry.982817913";
-      const APPLICATION_FORM_URL = `https://docs.google.com/forms/d/e/${GOOGLE_FORM_ID}/formResponse`;
+      // Inline fallback config (will be overridden if /assets/site-config.js is loaded earlier)
+      window.SITE_CONFIG = window.SITE_CONFIG || (function(){
+        const CONTACT_EMAIL = "hello@mault.co";
+        const GOOGLE_FORM_ID = "1FAIpQLSf04hmnO7ZQQ-C1ZZ4MOv0PoXsFcfIX-7fGi9fU5A13mAWYA";
+        const ENTRY = {
+          name:        "entry.1424362969",
+          email:       "entry.1990995989",
+          location:    "entry.549266693",
+          role:        "entry.1514720817",
+          why:         "entry.353308943",
+          availability:"entry.1683228716",
+          links:       "entry.982817913"
+        };
+        return {
+          CONTACT_EMAIL,
+          GOOGLE_FORM_ID,
+          ENTRY,
+          APPLICATION_FORM_URL: `https://docs.google.com/forms/d/e/${GOOGLE_FORM_ID}/formResponse`,
+          VIEW_FORM_URL:        `https://docs.google.com/forms/d/e/${GOOGLE_FORM_ID}/viewform`
+        };
+      })();
     </script>
   </head>
 
@@ -81,23 +90,31 @@
           <h1 id="apply-title">Apply to MIIR</h1>
           <p class="sub">Model Instantiation for Identity Refinement</p>
         </header>
-        <form id="apply-form" novalidate>
+
+        <!--
+          Robust submission approach (no CORS issues):
+          1) Use a standard HTML form that POSTS directly to /formResponse
+          2) Name each input with the Google entry.* identifier
+          3) Submit into a hidden iframe so the page doesn't navigate away
+        -->
+        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+        <form id="apply-form" action="https://docs.google.com/forms/d/e/${SITE_CONFIG.GOOGLE_FORM_ID}/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
           <div class="grid-2">
             <div>
               <label for="name">Full name</label>
-              <input id="name" name="name" required />
+              <input id="name" name="${SITE_CONFIG.ENTRY.name}" required />
             </div>
             <div>
               <label for="email">Email address</label>
-              <input id="email" name="email" type="email" required />
+              <input id="email" name="${SITE_CONFIG.ENTRY.email}" type="email" required />
             </div>
             <div>
               <label for="location">City / Region</label>
-              <input id="location" name="location" />
+              <input id="location" name="${SITE_CONFIG.ENTRY.location}" />
             </div>
             <div>
               <label for="role">Primary role</label>
-              <select id="role" name="role">
+              <select id="role" name="${SITE_CONFIG.ENTRY.role}">
                 <option value="Leader / Exec">Leader / Exec</option>
                 <option value="Founder / Creator">Founder / Creator</option>
                 <option value="Professional">Professional</option>
@@ -108,16 +125,16 @@
           </div>
           <div style="margin-top:12px">
             <label for="why">Why MIIR, and why now?</label>
-            <textarea id="why" name="why" required placeholder="A few sentences is perfect."></textarea>
+            <textarea id="why" name="${SITE_CONFIG.ENTRY.why}" required placeholder="A few sentences is perfect."></textarea>
           </div>
           <div class="grid-2" style="margin-top:12px">
             <div>
               <label for="availability">Preferred timing</label>
-              <input id="availability" name="availability" placeholder="e.g., next 2–4 weeks" />
+              <input id="availability" name="${SITE_CONFIG.ENTRY.availability}" placeholder="e.g., next 2–4 weeks" />
             </div>
             <div>
               <label for="links">Optional links</label>
-              <input id="links" name="links" placeholder="Website, LinkedIn, portfolio" />
+              <input id="links" name="${SITE_CONFIG.ENTRY.links}" placeholder="Website, LinkedIn, portfolio" />
             </div>
           </div>
           <div class="actions">
@@ -140,47 +157,29 @@
       // Footer & contact
       document.getElementById('y').textContent = new Date().getFullYear();
       const contact = document.getElementById('contact-link');
-      contact.textContent = SITE_CONTACT_EMAIL; contact.href = `mailto:${SITE_CONTACT_EMAIL}`;
+      contact.textContent = SITE_CONFIG.CONTACT_EMAIL; contact.href = `mailto:${SITE_CONFIG.CONTACT_EMAIL}`;
 
-      // Submit handler → Google Forms
-      const form = document.getElementById('apply-form');
+      // Success notifier: when the hidden iframe loads after a submit, we show a success message
+      let submitted = false;
       const status = document.getElementById('status');
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const data = Object.fromEntries(new FormData(form).entries());
-
-        // Basic validation
-        if(!data.name || !data.email || !data.why){
-          status.textContent = 'Please complete name, email, and “Why MIIR, why now?”';
-          status.style.color = '#ffafa3';
-          return;
-        }
-
-        const params = new URLSearchParams();
-        params.set(ENTRY_NAME,     data.name || '');
-        params.set(ENTRY_EMAIL,    data.email || '');
-        params.set(ENTRY_LOCATION, data.location || '');
-        params.set(ENTRY_ROLE,     data.role || '');
-        params.set(ENTRY_WHY,      data.why || '');
-        params.set(ENTRY_AVAIL,    data.availability || '');
-        params.set(ENTRY_LINKS,    data.links || '');
-
-        status.textContent = 'Submitting…';
+      const iframe = document.getElementById('hidden_iframe');
+      iframe.addEventListener('load', () => {
+        if (!submitted) return;
+        status.innerHTML = '<span class="ok">Application received.</span> We\'ll follow up within 3 business days.';
         status.style.color = 'var(--muted)';
-        try{
-          await fetch(APPLICATION_FORM_URL, {
-            method: 'POST', mode: 'no-cors',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: params.toString()
-          });
-          status.innerHTML = '<span class="ok">Application received.</span> We\'ll follow up within 3 business days.';
-          form.reset();
-        }catch(err){
-          console.error(err);
-          status.textContent = 'Could not submit to Google Forms. Please email us directly.';
-          setTimeout(()=>{ window.location.href = `mailto:${SITE_CONTACT_EMAIL}?subject=MIIR Application&body=${encodeURIComponent(JSON.stringify(data, null, 2))}` }, 600);
-        }
+        document.getElementById('apply-form').reset();
+        submitted = false;
       });
+
+      // Guardrails & helpful hints
+      (function checkFormSettings(){
+        // Tip the user if form is likely misconfigured (common issues)
+        const msg = [];
+        if (!SITE_CONFIG.GOOGLE_FORM_ID) msg.push('Missing GOOGLE_FORM_ID.');
+        // If the Google Form requires sign-in or restricts to domain, submissions won\'t land.
+        msg.push('Ensure your Google Form: (1) Accepts responses, (2) Does NOT require sign-in, (3) Is not restricted to your domain.');
+        if (msg.length) console.debug('[Apply] Hints:', msg.join(' '));
+      })();
     </script>
   </body>
 </html>
