@@ -7,101 +7,51 @@
     <meta name="description" content="Mault Co. is the first Perceptual Stewardship Lab. MIIR is our flagship identity-portrait experience that clarifies who you are, measures the shift, and gives you an heirloom portrait to anchor it." />
     <meta name="theme-color" content="#0b0c10" />
 
-    <!-- Open Graph / Twitter -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Mault Co. — Perceptual Stewardship Lab" />
-    <meta property="og:description" content="The first Perceptual Stewardship Lab. MIIR: measure your identity shift and take home the portrait that anchors it." />
-    <meta property="og:image" content="/assets/portrait.jpg" />
-    <meta property="og:url" content="https://mault.co/" />
-    <meta name="twitter:card" content="summary_large_image" />
-
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
     <style>
-      :root {
-        --bg: #0b0c10;
-        --elev-1: #101218;
-        --elev-2: #151822;
-        --text: #e8ebf0;
-        --muted: #a8b0bd;
-        --accent: #9ef0d0;
-        --accent-2: #9ec9f0;
-        --radius: 18px;
-        --shadow: 0 10px 30px rgba(0,0,0,.35);
-        --maxw: 1200px;
-      }
-
-      html, body { height: 100%; }
-      body {
-        margin: 0;
-        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-        color: var(--text);
-        background: radial-gradient(1200px 800px at 85% -10%, rgba(158, 240, 208, .10), transparent 60%),
-                    radial-gradient(1000px 600px at -10% -10%, rgba(158, 201, 240, .12), transparent 55%),
-                    var(--bg);
-        line-height: 1.5;
-      }
-
-      a { color: var(--accent); text-decoration: none; }
-      a:hover { opacity: .9; }
-
-      .nav { position: sticky; top: 0; z-index: 50; backdrop-filter: saturate(140%) blur(10px); background: rgba(11,12,16,.55); border-bottom: 1px solid rgba(255,255,255,.06); }
-      .nav-inner { max-width: var(--maxw); margin: 0 auto; display: flex; align-items: center; gap: 24px; padding: 14px 20px; }
-      .brand { display: flex; align-items: center; gap: 14px; }
-      .logo { width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center; background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #0b0c10; font-weight: 800; letter-spacing: .5px; box-shadow: var(--shadow); }
-      .brand-title { font-weight: 800; letter-spacing: .5px; }
-      .tagline { color: var(--muted); font-size: 12px; }
-      .nav-links { margin-left: auto; display: flex; align-items: center; gap: 18px; }
-      .btn { display: inline-flex; align-items: center; justify-content: center; font-weight: 600; padding: 10px 16px; border-radius: 12px; }
-      .btn.cta { background: linear-gradient(180deg, var(--accent), #65d2b0); color: #0b0c10; box-shadow: 0 4px 18px rgba(158, 240, 208,.35); }
-      .btn.ghost { border: 1px solid rgba(255,255,255,.1); background: rgba(255,255,255,.02); color: var(--text); }
-      .btn.ghost:hover { background: rgba(255,255,255,.06); }
-
-      .hero { max-width: var(--maxw); margin: 40px auto 0; padding: 60px 20px; display: grid; grid-template-columns: 1.15fr .85fr; gap: 34px; align-items: center; }
-      .hero h1 { font-family: "Playfair Display", serif; font-size: clamp(32px, 5vw, 62px); margin: 0 0 16px; }
-      .hero p { color: var(--muted); font-size: clamp(15px, 2.2vw, 18px); max-width: 55ch; margin: 0 0 24px; }
-
-      section { max-width: var(--maxw); margin: 0 auto; padding: 70px 20px; }
-      h2 { font-size: clamp(26px, 3.2vw, 40px); margin: 0 0 12px; font-weight: 800; }
-      .sub { color: var(--muted); margin-bottom: 30px; }
-
-      .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-      .card { background: var(--elev-1); border: 1px solid rgba(255,255,255,.08); border-radius: var(--radius); padding: 22px; box-shadow: var(--shadow); }
-      .card h3 { margin: 0 0 10px; font-size: 18px; }
-      .card p { margin: 0; color: var(--muted); }
-      .card ul { margin: 10px 0 0 18px; color: var(--muted); }
-
-      .process { margin-top: 22px; background: var(--elev-1); padding: 26px; border-radius: var(--radius); border: 1px dashed rgba(255,255,255,.15); }
-      .steps { display: grid; gap: 14px; }
-      .step { display: grid; grid-template-columns: 44px 1fr; gap: 14px; align-items: start; }
-      .step .n { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; font-weight: 700; color: #0b0c10; background: linear-gradient(135deg, var(--accent), var(--accent-2)); }
-      .step .body h4 { margin: 0 0 6px; font-size: 16px; }
-      .step .body p { margin: 0; color: var(--muted); }
-
-      footer { border-top: 1px solid rgba(255,255,255,.08); background: rgba(255,255,255,.02); }
-      .footer-inner { max-width: var(--maxw); margin: 0 auto; padding: 30px 20px; display: flex; justify-content: space-between; }
-      .small { color: var(--muted); font-size: 13px; }
-
-      @media (max-width: 980px) { .hero { grid-template-columns: 1fr; } .grid-3 { grid-template-columns: 1fr; } }
+      :root { --bg:#0b0c10; --elev-1:#101218; --text:#e8ebf0; --muted:#a8b0bd; --accent:#9ef0d0; --accent-2:#9ec9f0; --radius:18px; --shadow:0 10px 30px rgba(0,0,0,.35); --maxw:1200px; }
+      body { margin:0; font-family:Inter,system-ui; background:var(--bg); color:var(--text); }
+      a { color:var(--accent); text-decoration:none; }
+      .nav { position:sticky; top:0; background:rgba(11,12,16,.55); backdrop-filter:saturate(140%) blur(10px); border-bottom:1px solid rgba(255,255,255,.06); }
+      .nav-inner { max-width:var(--maxw); margin:0 auto; display:flex; align-items:center; padding:14px 20px; gap:20px; }
+      .logo { width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg,var(--accent),var(--accent-2)); display:grid; place-items:center; color:#0b0c10; font-weight:800; }
+      .brand-title { font-weight:800; }
+      .tagline { font-size:12px; color:var(--muted); }
+      .nav-links { margin-left:auto; display:flex; gap:18px; }
+      .btn { padding:8px 14px; border-radius:12px; font-weight:600; }
+      .btn.cta { background:linear-gradient(180deg,var(--accent),#65d2b0); color:#0b0c10; }
+      .btn.ghost { border:1px solid rgba(255,255,255,.1); background:rgba(255,255,255,.02); color:var(--text); }
+      .hero { max-width:var(--maxw); margin:40px auto 0; padding:60px 20px; display:grid; grid-template-columns:1.15fr .85fr; gap:34px; align-items:center; }
+      .hero h1 { font-family:"Playfair Display",serif; font-size:clamp(32px,5vw,62px); margin:0 0 16px; }
+      .hero p { color:var(--muted); }
+      section { max-width:var(--maxw); margin:0 auto; padding:70px 20px; }
+      h2 { font-size:clamp(26px,3.2vw,40px); margin:0 0 12px; font-weight:800; }
+      .grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+      .card { background:var(--elev-1); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:22px; box-shadow:var(--shadow); }
+      .process { margin-top:22px; background:var(--elev-1); padding:26px; border-radius:var(--radius); border:1px dashed rgba(255,255,255,.15); }
+      .step { display:grid; grid-template-columns:44px 1fr; gap:14px; }
+      .step .n { width:44px; height:44px; border-radius:12px; display:grid; place-items:center; background:linear-gradient(135deg,var(--accent),var(--accent-2)); color:#0b0c10; font-weight:700; }
+      footer { border-top:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.02); }
+      .footer-inner { max-width:var(--maxw); margin:0 auto; padding:30px 20px; display:flex; justify-content:space-between; }
+      .small { font-size:13px; color:var(--muted); }
     </style>
   </head>
   <body>
     <nav class="nav">
       <div class="nav-inner">
-        <a class="brand" href="#">
-          <div class="logo">M</div>
-          <div>
-            <div class="brand-title">Mault&nbsp;Co.</div>
-            <div class="tagline">Perceptual Stewardship Lab</div>
-          </div>
-        </a>
+        <div class="logo">M</div>
+        <div>
+          <div class="brand-title">Mault Co.</div>
+          <div class="tagline">Perceptual Stewardship Lab</div>
+        </div>
         <div class="nav-links">
           <a href="#miir" class="btn ghost">MIIR</a>
           <a href="earth-illusion.html" class="btn ghost">The Earth Illusion</a>
           <a href="#lab" class="btn ghost">Lab</a>
+          <a href="whitepaper.html" class="btn ghost">White Paper</a>
           <a href="#apply" class="btn cta">Apply</a>
         </div>
       </div>
@@ -110,26 +60,21 @@
     <header class="hero">
       <div>
         <h1>The first <span style="color:var(--accent)">Perceptual Stewardship Lab</span></h1>
-        <p>Mault Co. designs experiences that sharpen identity and steward attention. Our flagship, <strong>MIIR</strong>, combines guided interviews, measurable change plots, and high‑end portraits that anchor personal growth.</p>
+        <p>Mault Co. designs experiences that sharpen identity and steward attention. Our flagship, <strong>MIIR</strong>, combines guided interviews, measurable change plots, and high-end portraits that anchor personal growth.</p>
         <a class="btn cta" href="#apply">Apply to MIIR</a>
       </div>
-      <figure class="hero-card">
-        <div class="media">
-          <img src="/assets/portrait.jpg" alt="Portrait example" />
-        </div>
-      </figure>
     </header>
 
     <section id="miir">
       <h2>MIIR — Model Instantiation for Identity Refinement</h2>
-      <p class="sub">A premium, identity‑driven experience with measurable outcomes and a portrait you’ll keep for life.</p>
+      <p class="sub">A premium, identity-driven experience with measurable outcomes and a portrait you’ll keep for life.</p>
       <div class="grid-3">
         <article class="card">
           <h3>Value Proposition</h3>
           <ul>
             <li>Clarity about who you are and what you’re building.</li>
             <li>Visible measures of your shift in perspective.</li>
-            <li>A museum‑grade portrait that anchors the change.</li>
+            <li>A museum-grade portrait that anchors the change.</li>
           </ul>
         </article>
         <article class="card">
@@ -145,43 +90,17 @@
           <ul>
             <li>Grounded in cognitive science and active inference principles.</li>
             <li>Designed for leaders and creators with high standards.</li>
-            <li><a href="/whitepaper.pdf">Download our White Paper</a> for the full framework.</li>
+            <li>See our <a href="whitepaper.html">White Paper</a> for the full framework.</li>
           </ul>
         </article>
       </div>
 
       <div class="process">
         <h3>The MIIR Flow</h3>
-        <div class="steps">
-          <div class="step">
-            <div class="n">1</div>
-            <div class="body">
-              <h4>Priming</h4>
-              <p>A guided opening conversation sets the trajectory.</p>
-            </div>
-          </div>
-          <div class="step">
-            <div class="n">2</div>
-            <div class="body">
-              <h4>Identity Mapping</h4>
-              <p>Your statements are organized and confidence is measured visually.</p>
-            </div>
-          </div>
-          <div class="step">
-            <div class="n">3</div>
-            <div class="body">
-              <h4>Refinement</h4>
-              <p>We consolidate clarity into a leaner, value‑aligned model.</p>
-            </div>
-          </div>
-          <div class="step">
-            <div class="n">4</div>
-            <div class="body">
-              <h4>Portrait</h4>
-              <p>A high‑resolution portrait captures and anchors the transformation.</p>
-            </div>
-          </div>
-        </div>
+        <div class="step"><div class="n">1</div><div class="body"><h4>Priming</h4><p>A guided opening sets the trajectory.</p></div></div>
+        <div class="step"><div class="n">2</div><div class="body"><h4>Identity Mapping</h4><p>Your statements are organized and confidence is visualized.</p></div></div>
+        <div class="step"><div class="n">3</div><div class="body"><h4>Refinement</h4><p>We consolidate clarity into a leaner, value-aligned model.</p></div></div>
+        <div class="step"><div class="n">4</div><div class="body"><h4>Portrait</h4><p>A high-resolution portrait anchors the transformation.</p></div></div>
       </div>
     </section>
 
@@ -194,12 +113,10 @@
     <footer>
       <div class="footer-inner">
         <div class="small">© <span id="y"></span> Mault Co. • Perceptual Stewardship Lab</div>
-        <div class="small"><a href="/whitepaper.pdf">Download White Paper</a></div>
+        <div class="small"><a href="whitepaper.html">White Paper</a></div>
       </div>
     </footer>
 
-    <script>
-      document.getElementById('y').textContent = new Date().getFullYear();
-    </script>
+    <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
   </body>
 </html>
