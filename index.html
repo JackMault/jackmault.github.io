@@ -26,35 +26,44 @@
       radial-gradient(1000px 600px at -10% -10%, rgba(158, 201, 240, .12), transparent 55%), var(--bg); line-height:1.5}
     a{color:var(--accent);text-decoration:none} a:hover{opacity:.92}
 
-    .nav{position:sticky;top:0;z-index:50;backdrop-filter:saturate(140%) blur(10px);background:rgba(11,12,16,.55);border-bottom:1px solid rgba(255,255,255,.06)}
-    .nav-inner{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;gap:24px;padding:14px 20px}
-    .logo{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#0b0c10;font-weight:800;letter-spacing:.5px;box-shadow:var(--shadow)}
-    .brand-title{font-weight:800;letter-spacing:.3px}
-    .tagline{color:var(--muted);font-size:12px}
-    .nav-links{margin-left:auto;display:flex;align-items:center;gap:18px}
-    .btn{display:inline-flex;align-items:center;justify-content:center;font-weight:600;padding:10px 16px;border-radius:12px}
-    .btn.cta{background:linear-gradient(180deg,var(--accent),#65d2b0);color:#0b0c10;border-color:transparent;box-shadow:0 4px 18px rgba(158,240,208,.35)}
+    /* ===== Responsive Nav ===== */
+    .nav{position:sticky;top:0;z-index:1000;backdrop-filter:saturate(140%) blur(10px);background:rgba(11,12,16,.55);border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav-inner{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;gap:14px;padding:12px 16px}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+    .logo{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#0b0c10;font-weight:800;letter-spacing:.5px;box-shadow:var(--shadow)}
+    .brand .title{font-weight:800}
+    .brand .tag{color:var(--muted);font-size:12px}
+
+    .nav-actions{margin-left:auto;display:flex;align-items:center;gap:10px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;font-weight:600;padding:10px 14px;border-radius:12px}
+    .btn.cta{background:linear-gradient(180deg,var(--accent),#65d2b0);color:#0b0c10;box-shadow:0 4px 18px rgba(158,240,208,.35)}
     .btn.ghost{border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.02);color:var(--text)}
     .btn.ghost:hover{background:rgba(255,255,255,.06)}
 
-    .hero{max-width:var(--maxw);margin:40px auto 0;padding:60px 20px;display:grid;grid-template-columns:1.15fr .85fr;gap:34px;align-items:center}
+    /* Mobile menu button */
+    .nav-toggle{display:none;margin-left:auto;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);color:var(--text);border-radius:12px;padding:8px 10px}
+    .nav-toggle:focus{outline:2px solid var(--accent);outline-offset:2px}
+
+    /* Mobile menu panel */
+    .nav-menu{display:flex;gap:10px}
+    @media (max-width: 860px){
+      .nav-toggle{display:inline-flex}
+      .nav-actions{display:none}            /* hidden until open */
+      .nav.open .nav-actions{display:flex;flex-direction:column;gap:10px;position:fixed;top:58px;left:0;right:0;padding:12px;background:rgba(11,12,16,.95);border-bottom:1px solid rgba(255,255,255,.08)}
+      .btn{width:100%;justify-content:center}
+    }
+
+    /* ===== Page layout ===== */
+    .hero{max-width:var(--maxw);margin:40px auto 0;padding:60px 16px;display:grid;grid-template-columns:1.15fr .85fr;gap:34px;align-items:center}
     .hero h1{font-family:"Playfair Display",serif;font-weight:700;letter-spacing:.3px;font-size:clamp(32px,5vw,62px);line-height:1.08;margin:0 0 16px}
     .hero p{color:var(--muted);font-size:clamp(15px,2.2vw,18px);max-width:55ch;margin:0 0 24px}
-    .hero-card{position:relative;background:var(--elev-1);border:1px solid rgba(255,255,255,.08);border-radius:22px;box-shadow:var(--shadow);overflow:hidden}
-    .hero-card .media{aspect-ratio:4/5;background:#0f1117;display:grid;place-items:center}
+    .hero-card{background:var(--elev-1);border:1px solid rgba(255,255,255,.08);border-radius:22px;box-shadow:var(--shadow);padding:16px}
+    .hero-card .media{aspect-ratio:4/5;background:#0f1117;border-radius:12px;overflow:hidden}
     .hero-card img{width:100%;height:100%;object-fit:cover;display:block}
-    .hero-card figcaption {
-          position: static;         /* instead of absolute */
-          margin-top: 12px;
-          font-size: 15px;
-          color: var(--text);       /* white text */
-          text-align: center;
-          line-height: 1.4;
-          }
-    .hero-card figcaption { font-weight:500; font-size:16px; }
+    .hero-card figcaption{margin-top:12px;font-size:16px;color:var(--text);text-align:center;line-height:1.4}
+    .hero-card figcaption .hl{background:var(--accent);color:#0b0c10;padding:2px 6px;border-radius:6px}
 
-
-    section{max-width:var(--maxw);margin:0 auto;padding:70px 20px}
+    section{max-width:var(--maxw);margin:0 auto;padding:60px 16px}
     h2{font-size:clamp(26px,3.2vw,40px);letter-spacing:.2px;margin:0 0 12px;font-weight:800}
     .sub{color:var(--muted);margin-bottom:30px}
     .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
@@ -62,7 +71,6 @@
     .card h3{margin:0 0 10px;font-size:18px;letter-spacing:.2px}
     .card p{margin:0;color:var(--muted)}
     .card ul{margin:10px 0 0 18px;color:var(--muted)}
-
     .process{margin-top:22px;background:var(--elev-1);padding:26px;border-radius:var(--radius);border:1px dashed rgba(255,255,255,.15)}
     .step{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start}
     .step .n{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-weight:700;color:#0b0c10;background:linear-gradient(135deg,var(--accent),var(--accent-2));box-shadow:0 6px 16px rgba(158,240,208,.35)}
@@ -70,28 +78,27 @@
     .step .body p{margin:0;color:var(--muted)}
 
     footer{border-top:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.02)}
-    .footer-inner{max-width:var(--maxw);margin:0 auto;padding:30px 20px;display:flex;justify-content:space-between;align-items:center}
+    .footer-inner{max-width:var(--maxw);margin:0 auto;padding:30px 16px;display:flex;justify-content:space-between;align-items:center}
     .small{color:var(--muted);font-size:13px}
 
     @media (max-width:980px){.hero{grid-template-columns:1fr}.grid-3{grid-template-columns:1fr}}
   </style>
-  <script>
-    const SITE_CONTACT_EMAIL = "hello@mault.co";
-    document.addEventListener('DOMContentLoaded', () => {
-      document.getElementById('y').textContent = new Date().getFullYear();
-      const c = document.getElementById('contact-link');
-      if (c) { c.textContent = SITE_CONTACT_EMAIL; c.href = `mailto:${SITE_CONTACT_EMAIL}`; }
-    });
-  </script>
 </head>
 <body>
+  <!-- NAV -->
   <nav class="nav" aria-label="Primary">
     <div class="nav-inner">
-      <a class="brand" href="#home" style="display:flex;align-items:center;gap:14px">
+      <a class="brand" href="#home">
         <div class="logo" aria-hidden="true">M</div>
-        <div><div class="brand-title">Mault&nbsp;Co.</div><div class="tagline">Perceptual Stewardship Lab</div></div>
+        <div>
+          <div class="title">Mault Co.</div>
+          <div class="tag">Perceptual Stewardship Lab</div>
+        </div>
       </a>
-      <div class="nav-links">
+
+      <button class="nav-toggle" aria-controls="navmenu" aria-expanded="false">Menu</button>
+
+      <div id="navmenu" class="nav-actions">
         <a href="#miir" class="btn ghost">MIIR</a>
         <a class="btn ghost" href="https://www.youtube.com/@JackMault" target="_blank" rel="noopener">The Earth Illusion</a>
         <a href="whitepapers.html" class="btn ghost">White Papers</a>
@@ -101,6 +108,7 @@
     </div>
   </nav>
 
+  <!-- HERO -->
   <header class="hero" id="home">
     <div>
       <h1>The first <span style="color:var(--accent)">Perceptual Stewardship Lab</span></h1>
@@ -111,17 +119,18 @@
         <a class="btn ghost" href="#miir">How MIIR Works</a>
       </div>
     </div>
+
     <figure class="hero-card" aria-labelledby="hero-media-caption">
       <div class="media" role="img" aria-label="Sample portrait from a MIIR session">
         <img src="/assets/portrait.jpg" alt="Portrait—example of Mault Co. identity portrait">
       </div>
       <figcaption id="hero-media-caption">
-        A MIIR portrait <span style="background:var(--accent); color:#0b0c10; padding:2px 6px; border-radius:6px">Anchors</span> the identity you articulate.
+        A MIIR portrait <span class="hl">Anchors</span> the identity you articulate.
       </figcaption>
     </figure>
-
   </header>
 
+  <!-- MIIR -->
   <section id="miir" aria-labelledby="miir-title">
     <h2 id="miir-title">MIIR — Model Instantiation for Identity Refinement</h2>
     <p class="sub">A premium, identity-driven experience with measurable outcomes and a portrait you’ll keep for life.</p>
@@ -153,13 +162,13 @@
       </article>
     </div>
 
-    <div class="process" aria-label="MIIR process overview" style="margin-top:22px;background:var(--elev-1);padding:26px;border-radius:var(--radius);border:1px dashed rgba(255,255,255,.15)">
+    <div class="process" aria-label="MIIR process overview">
       <h3 style="margin:0 0 10px">The MIIR Flow</h3>
       <div class="step"><div class="n">1</div><div class="body"><h4>Priming</h4><p>A guided opening sets the trajectory.</p></div></div>
       <div class="step"><div class="n">2</div><div class="body"><h4>Identity Mapping</h4><p>Your statements are organized and confidence is visualized.</p></div></div>
       <div class="step"><div class="n">3</div><div class="body"><h4>Refinement</h4><p>We consolidate clarity into a leaner, value-aligned model.</p></div></div>
       <div class="step"><div class="n">4</div><div class="body"><h4>Portrait</h4><p>A high-resolution portrait anchors the transformation.</p></div></div>
-      <div style="display:flex;gap:10px;margin-top:14px">
+      <div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap">
         <a class="btn cta" target="_blank" rel="noopener"
            href="https://docs.google.com/forms/d/e/1FAIpQLSf04hmnO7ZQO-C1ZZ4MOv0PoXsFcf1X-7FGi9fU5A13TmAWYA/viewform?usp=header">Start Application</a>
         <a class="btn ghost" href="#faq">FAQ</a>
@@ -167,6 +176,7 @@
     </div>
   </section>
 
+  <!-- LAB -->
   <section id="lab" aria-labelledby="lab-title">
     <h2 id="lab-title">Perceptual Stewardship Lab</h2>
     <p class="sub">We study how attention, language, and imagery cohere identity over time. MIIR is our first instrument. <em>The Earth Illusion</em> is our first theory series.</p>
@@ -176,6 +186,7 @@
     </div>
   </section>
 
+  <!-- FAQ -->
   <section id="faq" aria-labelledby="faq-title">
     <h2 id="faq-title">FAQ</h2>
     <div class="grid-3">
@@ -185,11 +196,30 @@
     </div>
   </section>
 
+  <!-- FOOTER -->
   <footer>
     <div class="footer-inner">
       <div class="small">© <span id="y"></span> Mault Co. • Perceptual Stewardship Lab</div>
-      <div class="small">Contact: <a id="contact-link" href="#">hello@mault.co</a></div>
+      <div class="small">Contact: <a id="contact-link" href="mailto:hello@mault.co">hello@mault.co</a></div>
     </div>
   </footer>
+
+  <script>
+    // Year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Mobile nav toggle
+    const nav = document.querySelector('.nav');
+    const btn = document.querySelector('.nav-toggle');
+    const menu = document.getElementById('navmenu');
+    btn.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    // Close menu on link click (mobile)
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      if (nav.classList.contains('open')) { nav.classList.remove('open'); btn.setAttribute('aria-expanded','false'); }
+    }));
+  </script>
 </body>
 </html>
