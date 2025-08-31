@@ -1,188 +1,183 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Mault Co. — Perceptual Stewardship Lab</title>
-    <meta name="description" content="Mault Co. is the first Perceptual Stewardship Lab. MIIR is our flagship identity-portrait experience that clarifies who you are, measures the shift, and gives you an heirloom portrait to anchor it." />
-    <meta name="theme-color" content="#0b0c10" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Mault Co. — Perceptual Stewardship Lab" />
-    <meta property="og:description" content="The first Perceptual Stewardship Lab. MIIR: measure your identity shift and take home the portrait that anchors it." />
-    <meta property="og:image" content="/assets/portrait.jpg" />
-    <meta property="og:url" content="https://mault.co/" />
-    <meta name="twitter:card" content="summary_large_image" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mault Co. — Perceptual Stewardship Lab</title>
+  <meta name="description" content="Mault Co. is the first Perceptual Stewardship Lab. MIIR clarifies identity, measures the shift, and anchors it with portraiture." />
+  <meta name="theme-color" content="#0b0c10" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Mault Co. — Perceptual Stewardship Lab" />
+  <meta property="og:description" content="The first Perceptual Stewardship Lab. MIIR: measure your identity shift and take home the portrait that anchors it." />
+  <meta property="og:image" content="/assets/portrait.jpg" />
+  <meta property="og:url" content="https://mault.co/" />
+  <meta name="twitter:card" content="summary_large_image" />
 
-    <style>
-      :root { --bg:#0b0c10; --elev-1:#101218; --elev-2:#151822; --text:#e8ebf0; --muted:#a8b0bd; --accent:#9ef0d0; --accent-2:#9ec9f0; --radius:18px; --shadow:0 10px 30px rgba(0,0,0,.35); --maxw:1200px; }
-      html,body{height:100%}
-      body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;color:var(--text);background:
-        radial-gradient(1200px 800px at 85% -10%, rgba(158, 240, 208, .10), transparent 60%),
-        radial-gradient(1000px 600px at -10% -10%, rgba(158, 201, 240, .12), transparent 55%), var(--bg); line-height:1.5}
-      a{color:var(--accent);text-decoration:none} a:hover{opacity:.92}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
-      .nav{position:sticky;top:0;z-index:50;backdrop-filter:saturate(140%) blur(10px);background:rgba(11,12,16,.55);border-bottom:1px solid rgba(255,255,255,.06)}
-      .nav-inner{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;gap:24px;padding:14px 20px}
-      .logo{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#0b0c10;font-weight:800;letter-spacing:.5px;box-shadow:var(--shadow)}
-      .brand-title{font-weight:800;letter-spacing:.3px}
-      .tagline{color:var(--muted);font-size:12px}
-      .nav-links{margin-left:auto;display:flex;align-items:center;gap:18px}
-      .btn{display:inline-flex;align-items:center;justify-content:center;font-weight:600;padding:10px 16px;border-radius:12px}
-      .btn.cta{background:linear-gradient(180deg,var(--accent),#65d2b0);color:#0b0c10;border-color:transparent;box-shadow:0 4px 18px rgba(158,240,208,.35)}
-      .btn.ghost{border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.02);color:var(--text)}
-      .btn.ghost:hover{background:rgba(255,255,255,.06)}
+  <style>
+    :root { --bg:#0b0c10; --elev-1:#101218; --elev-2:#151822; --text:#e8ebf0; --muted:#a8b0bd; --accent:#9ef0d0; --accent-2:#9ec9f0; --radius:18px; --shadow:0 10px 30px rgba(0,0,0,.35); --maxw:1200px; }
+    html,body{height:100%}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;color:var(--text);background:
+      radial-gradient(1200px 800px at 85% -10%, rgba(158, 240, 208, .10), transparent 60%),
+      radial-gradient(1000px 600px at -10% -10%, rgba(158, 201, 240, .12), transparent 55%), var(--bg); line-height:1.5}
+    a{color:var(--accent);text-decoration:none} a:hover{opacity:.92}
 
-      .hero{max-width:var(--maxw);margin:40px auto 0;padding:60px 20px;display:grid;grid-template-columns:1.15fr .85fr;gap:34px;align-items:center}
-      .hero h1{font-family:"Playfair Display",serif;font-weight:700;letter-spacing:.3px;font-size:clamp(32px,5vw,62px);line-height:1.08;margin:0 0 16px}
-      .hero p{color:var(--muted);font-size:clamp(15px,2.2vw,18px);max-width:55ch;margin:0 0 24px}
-      .hero-card{position:relative;background:var(--elev-1);border:1px solid rgba(255,255,255,.08);border-radius:22px;box-shadow:var(--shadow);overflow:hidden}
-      .hero-card .media{aspect-ratio:4/5;background:#0f1117;display:grid;place-items:center}
-      .hero-card img{width:100%;height:100%;object-fit:cover;display:block}
-      .hero-card figcaption{position:absolute;left:0;right:0;bottom:0;padding:14px 16px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.55));font-size:13px;color:var(--muted)}
+    .nav{position:sticky;top:0;z-index:50;backdrop-filter:saturate(140%) blur(10px);background:rgba(11,12,16,.55);border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav-inner{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;gap:24px;padding:14px 20px}
+    .logo{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#0b0c10;font-weight:800;letter-spacing:.5px;box-shadow:var(--shadow)}
+    .brand-title{font-weight:800;letter-spacing:.3px}
+    .tagline{color:var(--muted);font-size:12px}
+    .nav-links{margin-left:auto;display:flex;align-items:center;gap:18px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;font-weight:600;padding:10px 16px;border-radius:12px}
+    .btn.cta{background:linear-gradient(180deg,var(--accent),#65d2b0);color:#0b0c10;border-color:transparent;box-shadow:0 4px 18px rgba(158,240,208,.35)}
+    .btn.ghost{border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.02);color:var(--text)}
+    .btn.ghost:hover{background:rgba(255,255,255,.06)}
 
-      section{max-width:var(--maxw);margin:0 auto;padding:70px 20px}
-      h2{font-size:clamp(26px,3.2vw,40px);letter-spacing:.2px;margin:0 0 12px;font-weight:800}
-      .sub{color:var(--muted);margin-bottom:30px}
-      .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-      .card{background:var(--elev-1);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
-      .card h3{margin:0 0 10px;font-size:18px;letter-spacing:.2px}
-      .card p{margin:0;color:var(--muted)}
-      .card ul{margin:10px 0 0 18px;color:var(--muted)}
+    .hero{max-width:var(--maxw);margin:40px auto 0;padding:60px 20px;display:grid;grid-template-columns:1.15fr .85fr;gap:34px;align-items:center}
+    .hero h1{font-family:"Playfair Display",serif;font-weight:700;letter-spacing:.3px;font-size:clamp(32px,5vw,62px);line-height:1.08;margin:0 0 16px}
+    .hero p{color:var(--muted);font-size:clamp(15px,2.2vw,18px);max-width:55ch;margin:0 0 24px}
+    .hero-card{position:relative;background:var(--elev-1);border:1px solid rgba(255,255,255,.08);border-radius:22px;box-shadow:var(--shadow);overflow:hidden}
+    .hero-card .media{aspect-ratio:4/5;background:#0f1117;display:grid;place-items:center}
+    .hero-card img{width:100%;height:100%;object-fit:cover;display:block}
+    .hero-card figcaption{position:absolute;left:0;right:0;bottom:0;padding:14px 16px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.55));font-size:13px;color:var(--muted)}
 
-      .process{margin-top:22px;background:var(--elev-1);padding:26px;border-radius:var(--radius);border:1px dashed rgba(255,255,255,.15)}
-      .step{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start}
-      .step .n{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-weight:700;color:#0b0c10;background:linear-gradient(135deg,var(--accent),var(--accent-2));box-shadow:0 6px 16px rgba(158,240,208,.35)}
-      .step .body h4{margin:0 0 6px;font-size:16px}
-      .step .body p{margin:0;color:var(--muted)}
+    section{max-width:var(--maxw);margin:0 auto;padding:70px 20px}
+    h2{font-size:clamp(26px,3.2vw,40px);letter-spacing:.2px;margin:0 0 12px;font-weight:800}
+    .sub{color:var(--muted);margin-bottom:30px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:var(--elev-1);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+    .card h3{margin:0 0 10px;font-size:18px;letter-spacing:.2px}
+    .card p{margin:0;color:var(--muted)}
+    .card ul{margin:10px 0 0 18px;color:var(--muted)}
 
-      footer{border-top:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.02)}
-      .footer-inner{max-width:var(--maxw);margin:0 auto;padding:30px 20px;display:flex;justify-content:space-between;align-items:center}
-      .small{color:var(--muted);font-size:13px}
+    .process{margin-top:22px;background:var(--elev-1);padding:26px;border-radius:var(--radius);border:1px dashed rgba(255,255,255,.15)}
+    .step{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start}
+    .step .n{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-weight:700;color:#0b0c10;background:linear-gradient(135deg,var(--accent),var(--accent-2));box-shadow:0 6px 16px rgba(158,240,208,.35)}
+    .step .body h4{margin:0 0 6px;font-size:16px}
+    .step .body p{margin:0;color:var(--muted)}
 
-      @media (max-width:980px){.hero{grid-template-columns:1fr}.grid-3{grid-template-columns:1fr}}
-    </style>
+    footer{border-top:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.02)}
+    .footer-inner{max-width:var(--maxw);margin:0 auto;padding:30px 20px;display:flex;justify-content:space-between;align-items:center}
+    .small{color:var(--muted);font-size:13px}
 
-    <script type="application/ld+json">
-      {"@context":"https://schema.org","@type":"Organization","name":"Mault Co.","url":"https://mault.co/","logo":"/assets/logo.png","sameAs":["https://www.linkedin.com/in/jackmault/"]}
-    </script>
-
-    <script>
-      const SITE_CONTACT_EMAIL = "hello@mault.co";
-      document.addEventListener('DOMContentLoaded', () => {
-        document.getElementById('y').textContent = new Date().getFullYear();
-        const c = document.getElementById('contact-link');
-        c.textContent = SITE_CONTACT_EMAIL; c.href = `mailto:${SITE_CONTACT_EMAIL}`;
-      });
-    </script>
-  </head>
-
-  <body>
-    <nav class="nav" aria-label="Primary">
-      <div class="nav-inner">
-        <a class="brand" href="#home" style="display:flex;align-items:center;gap:14px">
-          <div class="logo" aria-hidden="true">M</div>
-          <div>
-            <div class="brand-title">Mault&nbsp;Co.</div>
-            <div class="tagline">Perceptual Stewardship Lab</div>
-          </div>
-        </a>
-        <div class="nav-links">
-          <a href="#miir" class="btn ghost">MIIR</a>
-          <a href="earth-illusion.html" class="btn ghost">The Earth Illusion</a>
-          <a href="whitepapers.html" class="btn ghost">White Papers</a>
-          <a href="apply.html" class="btn cta">Apply</a>
-        </div>
+    @media (max-width:980px){.hero{grid-template-columns:1fr}.grid-3{grid-template-columns:1fr}}
+  </style>
+  <script>
+    const SITE_CONTACT_EMAIL = "hello@mault.co";
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('y').textContent = new Date().getFullYear();
+      const c = document.getElementById('contact-link');
+      if (c) { c.textContent = SITE_CONTACT_EMAIL; c.href = `mailto:${SITE_CONTACT_EMAIL}`; }
+    });
+  </script>
+</head>
+<body>
+  <nav class="nav" aria-label="Primary">
+    <div class="nav-inner">
+      <a class="brand" href="#home" style="display:flex;align-items:center;gap:14px">
+        <div class="logo" aria-hidden="true">M</div>
+        <div><div class="brand-title">Mault&nbsp;Co.</div><div class="tagline">Perceptual Stewardship Lab</div></div>
+      </a>
+      <div class="nav-links">
+        <a href="#miir" class="btn ghost">MIIR</a>
+        <a href="earth-illusion.html" class="btn ghost">The Earth Illusion</a>
+        <a href="whitepapers.html" class="btn ghost">White Papers</a>
+        <a class="btn cta" target="_blank" rel="noopener"
+           href="https://docs.google.com/forms/d/e/1FAIpQLSf04hmnO7ZQO-C1ZZ4MOv0PoXsFcf1X-7FGi9fU5A13TmAWYA/viewform?usp=header">Apply</a>
       </div>
-    </nav>
+    </div>
+  </nav>
 
-    <header class="hero" id="home">
-      <div>
-        <h1>The first <span style="color:var(--accent)">Perceptual Stewardship Lab</span></h1>
-        <p>Mault Co. designs experiences that sharpen identity and steward attention. Our flagship, <strong>MIIR</strong>, combines guided interviews, measurable change plots, and high-end portraits that anchor personal growth.</p>
-        <div style="display:flex;gap:10px;flex-wrap:wrap">
-          <a class="btn cta" href="apply.html">Apply to MIIR</a>
-          <a class="btn ghost" href="#miir">How MIIR Works</a>
-        </div>
-      </div>
-      <figure class="hero-card" aria-labelledby="hero-media-caption">
-        <div class="media" role="img" aria-label="Sample portrait from a MIIR session">
-          <img src="/assets/portrait.jpg" alt="Portrait—example of Mault Co. identity portrait" onerror="this.style.display='none'">
-        </div>
-        <figcaption id="hero-media-caption">A MIIR portrait anchors the identity you articulate.</figcaption>
-      </figure>
-    </header>
-
-    <section id="miir" aria-labelledby="miir-title">
-      <h2 id="miir-title">MIIR — Model Instantiation for Identity Refinement</h2>
-      <p class="sub">A premium, identity-driven experience with measurable outcomes and a portrait you’ll keep for life.</p>
-
-      <div class="grid-3" role="list">
-        <article class="card" role="listitem">
-          <h3>Value Proposition</h3>
-          <ul>
-            <li>Clarity about who you are and what you’re building.</li>
-            <li>Visible measures of your shift in perspective.</li>
-            <li>A museum-grade portrait that anchors the change.</li>
-          </ul>
-        </article>
-        <article class="card" role="listitem">
-          <h3>Risk Mitigation</h3>
-          <ul>
-            <li>Checkpoints ensure comfort at each stage.</li>
-            <li>Expectations are outlined before the session begins.</li>
-            <li>Your privacy and agency are preserved.</li>
-          </ul>
-        </article>
-        <article class="card" role="listitem">
-          <h3>Credibility & Fit</h3>
-          <ul>
-            <li>Grounded in cognitive science and active inference principles.</li>
-            <li>Designed for leaders and creators with high standards.</li>
-            <li>See our <a href="whitepapers.html">White Papers</a> for the research backbone.</li>
-          </ul>
-        </article>
-      </div>
-
-      <div class="process" aria-label="MIIR process overview">
-        <h3 style="margin:0 0 10px">The MIIR Flow</h3>
-        <div class="step"><div class="n">1</div><div class="body"><h4>Priming</h4><p>A guided opening sets the trajectory.</p></div></div>
-        <div class="step"><div class="n">2</div><div class="body"><h4>Identity Mapping</h4><p>Your statements are organized and confidence is visualized.</p></div></div>
-        <div class="step"><div class="n">3</div><div class="body"><h4>Refinement</h4><p>We consolidate clarity into a leaner, value-aligned model.</p></div></div>
-        <div class="step"><div class="n">4</div><div class="body"><h4>Portrait</h4><p>A high-resolution portrait anchors the transformation.</p></div></div>
-        <div style="display:flex;gap:10px;margin-top:14px">
-          <a class="btn cta" href="apply.html">Start Application</a>
-          <a class="btn ghost" href="whitepapers.html">See White Papers</a>
-        </div>
-      </div>
-    </section>
-
-    <section id="lab" aria-labelledby="lab-title">
-      <h2 id="lab-title">Perceptual Stewardship Lab</h2>
-      <p class="sub">We study how attention, language, and imagery cohere identity over time. MIIR is our first instrument. <em>The Earth Illusion</em> is our first theory series.</p>
+  <header class="hero" id="home">
+    <div>
+      <h1>The first <span style="color:var(--accent)">Perceptual Stewardship Lab</span></h1>
+      <p>Mault Co. designs experiences that sharpen identity and steward attention. Our flagship, <strong>MIIR</strong>, combines guided interviews, measurable change plots, and high-end portraits that anchor personal growth.</p>
       <div style="display:flex;gap:10px;flex-wrap:wrap">
-        <a class="btn ghost" href="earth-illusion.html">Open The Earth Illusion</a>
-        <a class="btn ghost" href="whitepapers.html">Read White Papers</a>
+        <a class="btn cta" target="_blank" rel="noopener"
+           href="https://docs.google.com/forms/d/e/1FAIpQLSf04hmnO7ZQO-C1ZZ4MOv0PoXsFcf1X-7FGi9fU5A13TmAWYA/viewform?usp=header">Apply to MIIR</a>
+        <a class="btn ghost" href="#miir">How MIIR Works</a>
       </div>
-    </section>
+    </div>
+    <figure class="hero-card" aria-labelledby="hero-media-caption">
+      <div class="media" role="img" aria-label="Sample portrait from a MIIR session">
+        <img src="/assets/portrait.jpg" alt="Portrait—example of Mault Co. identity portrait" onerror="this.style.display='none'">
+      </div>
+      <figcaption id="hero-media-caption">A MIIR portrait anchors the identity you articulate.</figcaption>
+    </figure>
+  </header>
 
-    <section id="faq" aria-labelledby="faq-title">
-      <h2 id="faq-title">FAQ</h2>
-      <div class="grid-3">
-        <div class="card"><h3>How long is MIIR?</h3><p>Plan 2–3 hours including portrait capture. Deliverables are outlined in your agreement.</p></div>
-        <div class="card"><h3>Can I bring a partner or team member?</h3><p>Yes, by request. We’ll adapt interview dynamics to preserve signal.</p></div>
-        <div class="card"><h3>Where does it happen?</h3><p>Grand Forks, ND (studio / on-location). Travel sessions available on approval.</p></div>
-      </div>
-    </section>
+  <section id="miir" aria-labelledby="miir-title">
+    <h2 id="miir-title">MIIR — Model Instantiation for Identity Refinement</h2>
+    <p class="sub">A premium, identity-driven experience with measurable outcomes and a portrait you’ll keep for life.</p>
 
-    <footer>
-      <div class="footer-inner">
-        <div class="small">© <span id="y"></span> Mault Co. • Perceptual Stewardship Lab</div>
-        <div class="small">Contact: <a id="contact-link" href="#"></a></div>
+    <div class="grid-3" role="list">
+      <article class="card" role="listitem">
+        <h3>Value Proposition</h3>
+        <ul>
+          <li>Clarity about who you are and what you’re building.</li>
+          <li>Visible measures of your shift in perspective.</li>
+          <li>A museum-grade portrait that anchors the change.</li>
+        </ul>
+      </article>
+      <article class="card" role="listitem">
+        <h3>Risk Mitigation</h3>
+        <ul>
+          <li>Checkpoints ensure comfort at each stage.</li>
+          <li>Expectations are outlined before the session begins.</li>
+          <li>Your privacy and agency are preserved.</li>
+        </ul>
+      </article>
+      <article class="card" role="listitem">
+        <h3>Credibility & Fit</h3>
+        <ul>
+          <li>Grounded in cognitive science and active inference principles.</li>
+          <li>Designed for leaders and creators with high standards.</li>
+          <li>See our <a href="whitepapers.html">White Papers</a> for the full framework.</li>
+        </ul>
+      </article>
+    </div>
+
+    <div class="process" aria-label="MIIR process overview" style="margin-top:22px;background:var(--elev-1);padding:26px;border-radius:var(--radius);border:1px dashed rgba(255,255,255,.15)">
+      <h3 style="margin:0 0 10px">The MIIR Flow</h3>
+      <div class="step"><div class="n">1</div><div class="body"><h4>Priming</h4><p>A guided opening sets the trajectory.</p></div></div>
+      <div class="step"><div class="n">2</div><div class="body"><h4>Identity Mapping</h4><p>Your statements are organized and confidence is visualized.</p></div></div>
+      <div class="step"><div class="n">3</div><div class="body"><h4>Refinement</h4><p>We consolidate clarity into a leaner, value-aligned model.</p></div></div>
+      <div class="step"><div class="n">4</div><div class="body"><h4>Portrait</h4><p>A high-resolution portrait anchors the transformation.</p></div></div>
+      <div style="display:flex;gap:10px;margin-top:14px">
+        <a class="btn cta" target="_blank" rel="noopener"
+           href="https://docs.google.com/forms/d/e/1FAIpQLSf04hmnO7ZQO-C1ZZ4MOv0PoXsFcf1X-7FGi9fU5A13TmAWYA/viewform?usp=header">Start Application</a>
+        <a class="btn ghost" href="#faq">FAQ</a>
       </div>
-    </footer>
-  </body>
+    </div>
+  </section>
+
+  <section id="lab" aria-labelledby="lab-title">
+    <h2 id="lab-title">Perceptual Stewardship Lab</h2>
+    <p class="sub">We study how attention, language, and imagery cohere identity over time. MIIR is our first instrument. <em>The Earth Illusion</em> is our first theory series.</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <a class="btn ghost" href="earth-illusion.html">Open The Earth Illusion</a>
+      <a class="btn ghost" href="whitepapers.html">Read White Papers</a>
+    </div>
+  </section>
+
+  <section id="faq" aria-labelledby="faq-title">
+    <h2 id="faq-title">FAQ</h2>
+    <div class="grid-3">
+      <div class="card"><h3>How long is MIIR?</h3><p>Plan 2–3 hours including portrait capture. Deliverables are outlined in your agreement.</p></div>
+      <div class="card"><h3>Can I bring a partner or team member?</h3><p>Yes, by request. We’ll adapt interview dynamics to preserve signal.</p></div>
+      <div class="card"><h3>Where does it happen?</h3><p>Grand Forks, ND (studio / on-location). Travel sessions available on approval.</p></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="small">© <span id="y"></span> Mault Co. • Perceptual Stewardship Lab</div>
+      <div class="small">Contact: <a id="contact-link" href="#">hello@mault.co</a></div>
+    </div>
+  </footer>
+</body>
 </html>
