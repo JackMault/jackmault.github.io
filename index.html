@@ -43,7 +43,13 @@
     .hero-card{position:relative;background:var(--elev-1);border:1px solid rgba(255,255,255,.08);border-radius:22px;box-shadow:var(--shadow);overflow:hidden}
     .hero-card .media{aspect-ratio:4/5;background:#0f1117;display:grid;place-items:center}
     .hero-card img{width:100%;height:100%;object-fit:cover;display:block}
-    .hero-card figcaption{position:absolute;left:0;right:0;bottom:0;padding:14px 16px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.55));font-size:13px;color:var(--muted)}
+    .hero-card figcaption {
+          position: static;         /* instead of absolute */
+          margin-top: 10px;
+          font-size: 14px;
+          color: var(--text);       /* white text */
+          text-align: center;
+          }
 
     section{max-width:var(--maxw);margin:0 auto;padding:70px 20px}
     h2{font-size:clamp(26px,3.2vw,40px);letter-spacing:.2px;margin:0 0 12px;font-weight:800}
