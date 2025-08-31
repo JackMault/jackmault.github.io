@@ -43,7 +43,7 @@
 
     <!-- Load central config if present; otherwise the inline fallback below is used -->
     <script>
-      // Inline fallback config (will be overridden if /assets/site-config.js is loaded earlier)
+      // Inline fallback config (overridden if /assets/site-config.js is loaded earlier)
       window.SITE_CONFIG = window.SITE_CONFIG || (function(){
         const CONTACT_EMAIL = "hello@mault.co";
         const GOOGLE_FORM_ID = "1FAIpQLSf04hmnO7ZQQ-C1ZZ4MOv0PoXsFcfIX-7fGi9fU5A13mAWYA";
@@ -78,7 +78,7 @@
           </div>
         </a>
         <div class="nav-links">
-          <a href="/whitepaper.html" class="btn ghost">White Paper</a>
+          <a href="/whitepapers.html" class="btn ghost">White Papers</a>
           <a href="/earth-illusion.html" class="btn ghost">The Earth Illusion</a>
         </div>
       </div>
@@ -91,30 +91,25 @@
           <p class="sub">Model Instantiation for Identity Refinement</p>
         </header>
 
-        <!--
-          Robust submission approach (no CORS issues):
-          1) Use a standard HTML form that POSTS directly to /formResponse
-          2) Name each input with the Google entry.* identifier
-          3) Submit into a hidden iframe so the page doesn't navigate away
-        -->
-        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
-        <form id="apply-form" action="https://docs.google.com/forms/d/e/${SITE_CONFIG.GOOGLE_FORM_ID}/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
+        <!-- Robust submission via formResponse + hidden iframe to avoid navigation -->
+        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none"></iframe>
+        <form id="apply-form" method="POST" target="hidden_iframe">
           <div class="grid-2">
             <div>
               <label for="name">Full name</label>
-              <input id="name" name="${SITE_CONFIG.ENTRY.name}" required />
+              <input id="name" data-field="name" required />
             </div>
             <div>
               <label for="email">Email address</label>
-              <input id="email" name="${SITE_CONFIG.ENTRY.email}" type="email" required />
+              <input id="email" data-field="email" type="email" required />
             </div>
             <div>
               <label for="location">City / Region</label>
-              <input id="location" name="${SITE_CONFIG.ENTRY.location}" />
+              <input id="location" data-field="location" />
             </div>
             <div>
               <label for="role">Primary role</label>
-              <select id="role" name="${SITE_CONFIG.ENTRY.role}">
+              <select id="role" data-field="role">
                 <option value="Leader / Exec">Leader / Exec</option>
                 <option value="Founder / Creator">Founder / Creator</option>
                 <option value="Professional">Professional</option>
@@ -125,16 +120,16 @@
           </div>
           <div style="margin-top:12px">
             <label for="why">Why MIIR, and why now?</label>
-            <textarea id="why" name="${SITE_CONFIG.ENTRY.why}" required placeholder="A few sentences is perfect."></textarea>
+            <textarea id="why" data-field="why" required placeholder="A few sentences is perfect."></textarea>
           </div>
           <div class="grid-2" style="margin-top:12px">
             <div>
               <label for="availability">Preferred timing</label>
-              <input id="availability" name="${SITE_CONFIG.ENTRY.availability}" placeholder="e.g., next 2–4 weeks" />
+              <input id="availability" data-field="availability" placeholder="e.g., next 2–4 weeks" />
             </div>
             <div>
               <label for="links">Optional links</label>
-              <input id="links" name="${SITE_CONFIG.ENTRY.links}" placeholder="Website, LinkedIn, portfolio" />
+              <input id="links" data-field="links" placeholder="Website, LinkedIn, portfolio" />
             </div>
           </div>
           <div class="actions">
@@ -159,27 +154,45 @@
       const contact = document.getElementById('contact-link');
       contact.textContent = SITE_CONFIG.CONTACT_EMAIL; contact.href = `mailto:${SITE_CONFIG.CONTACT_EMAIL}`;
 
-      // Success notifier: when the hidden iframe loads after a submit, we show a success message
+      // Configure form action and Google entry names from SITE_CONFIG
+      const form = document.getElementById('apply-form');
+      form.action = SITE_CONFIG.APPLICATION_FORM_URL; // https://.../formResponse
+      const map = SITE_CONFIG.ENTRY;
+      document.querySelectorAll('[data-field]').forEach(el => {
+        const key = el.getAttribute('data-field');
+        if (map[key]) el.setAttribute('name', map[key]);
+      });
+
+      // Hidden-iframe success handling
       let submitted = false;
       const status = document.getElementById('status');
-      const iframe = document.getElementById('hidden_iframe');
-      iframe.addEventListener('load', () => {
-        if (!submitted) return;
+      document.getElementById('hidden_iframe').addEventListener('load', () => {
+        if (!submitted) return; // ignore initial load
         status.innerHTML = '<span class="ok">Application received.</span> We\'ll follow up within 3 business days.';
         status.style.color = 'var(--muted)';
-        document.getElementById('apply-form').reset();
+        form.reset();
         submitted = false;
       });
 
-      // Guardrails & helpful hints
-      (function checkFormSettings(){
-        // Tip the user if form is likely misconfigured (common issues)
-        const msg = [];
-        if (!SITE_CONFIG.GOOGLE_FORM_ID) msg.push('Missing GOOGLE_FORM_ID.');
-        // If the Google Form requires sign-in or restricts to domain, submissions won\'t land.
-        msg.push('Ensure your Google Form: (1) Accepts responses, (2) Does NOT require sign-in, (3) Is not restricted to your domain.');
-        if (msg.length) console.debug('[Apply] Hints:', msg.join(' '));
-      })();
+      // Validate & mark submission
+      form.addEventListener('submit', (e) => {
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const why = document.getElementById('why').value.trim();
+        if (!name || !email || !why) {
+          e.preventDefault();
+          status.textContent = 'Please complete name, email, and “Why MIIR, why now?”';
+          status.style.color = '#ffafa3';
+          return;
+        }
+        submitted = true;
+        status.textContent = 'Submitting…';
+        status.style.color = 'var(--muted)';
+      });
+
+      // Helpful hints in console
+      console.debug('[Apply] Using Google Form:', SITE_CONFIG.GOOGLE_FORM_ID);
+      console.debug('[Apply] Ensure the Form is accepting responses and not restricted by sign-in/domain.');
     </script>
   </body>
 </html>
